@@ -4,5 +4,39 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    
+    #region Fields
+
+    public static GameManager instance;
+    private List<Entity> entities = new List<Entity>();
+
+    #endregion
+
+    #region MonoBehaviour Callbacks
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
+    #endregion
+
+    #region Public Methods
+
+    public void RegisterEntity(Entity entity)
+    {
+        Entities.Add(entity);
+    }
+
+    public void UnregisterEntity(Entity entity)
+    {
+        Entities.Remove(entity);
+    }
+
+    #endregion
+
+    #region Properties
+
+    public List<Entity> Entities { get => entities; }
+
+    #endregion
 }
