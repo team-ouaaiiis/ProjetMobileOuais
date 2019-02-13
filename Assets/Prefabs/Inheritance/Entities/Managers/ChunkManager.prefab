@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855d1b71f46a9874e846b20cccf9031c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthPoints: 1
   chunks: []
   chunkScroller: {fileID: 3303164606334049780}
   scrollSpeed: 5
@@ -140,6 +141,21 @@ PrefabInstance:
     - target: {fileID: 3919007408676732527, guid: ddf36c1bd20622142873cf2d61afbf14,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 378484868360446341, guid: ddf36c1bd20622142873cf2d61afbf14,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4411920521284947550, guid: ddf36c1bd20622142873cf2d61afbf14,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2341252164929199148, guid: ddf36c1bd20622142873cf2d61afbf14,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
