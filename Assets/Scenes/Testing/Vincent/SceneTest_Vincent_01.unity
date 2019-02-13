@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -137,7 +137,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 228061531}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.27, y: 1.44, z: 0.03}
+  m_LocalPosition: {x: 1.719, y: 1.44, z: 0.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 527593910}
@@ -278,10 +278,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curveColor: {r: 1, g: 1, b: 1, a: 1}
   controlPointsColor: {r: 0, g: 1, b: 0, a: 1}
-  curveCreated: 1
+  startPoint: {fileID: 1023189396}
+  endPoint: {fileID: 673992739}
+  controlPointStart: {fileID: 732950728}
+  controlPointEnd: {fileID: 228061532}
   startPosition: {x: -1.9078697, y: 0.606, z: -3.382}
   startControlPosition: {x: -0.5658697, y: 0.6707203, z: -1.9428989}
-  endControlPosition: {x: 2.3041303, y: 0.6806939, z: -1.9436255}
+  endControlPosition: {x: 1.7531303, y: 0.6806939, z: -1.9436255}
   endPosition: {x: 1.7011304, y: 0.606, z: -3.382}
 --- !u!4 &527593910
 Transform:

@@ -10,37 +10,35 @@ public class CurveTrajectory : MonoBehaviour
     [BoxGroup("Color settings")]
     public Color controlPointsColor = Color.green;
 
-    [ValidateInput("CurveConfigured", "The curve isn't created")]
-    [ReadOnly]
-    public bool curveCreated;
-
     //Has to be at least 4 so-called control points
-    Transform startPoint;
-    Transform endPoint;
-    Transform controlPointStart;
-    Transform controlPointEnd;
+    [Required]
+    public Transform startPoint;
+    [Required]
+    public Transform endPoint;
+    [Required]
+    public Transform controlPointStart;
+    [Required]
+    public Transform controlPointEnd;
 
     [ReadOnly]
-    [ShowIf("curveCreated")]
+    [ShowIf("CurveConfigured")]
+    [BoxGroup("Positions")]
     public Vector3 startPosition, startControlPosition, endControlPosition, endPosition;
 
-    public bool CurveConfigured(bool _boolToSet)
+    public bool CurveConfigured()
     {
         if (startPoint == null || endPoint == null || controlPointStart == null || controlPointEnd == null)
         {
-            _boolToSet = false;
             return false;
         }
         else
         {
-            _boolToSet = true;
             return true;
         }
     }
 
     void OnDrawGizmos()
     {
-        if (!curveCreated) return;
 
         GetPositions();
 
@@ -84,6 +82,7 @@ public class CurveTrajectory : MonoBehaviour
         endControlPosition = controlPointEnd.position;
         endPosition = endPoint.position;
     }
+
 
     public Vector3 BezierCurvePoint(float t)
     {
@@ -137,7 +136,7 @@ public class CurveTrajectory : MonoBehaviour
         controlEndPointObject.transform.localPosition = new Vector3(1.5f, 1, 0);
         controlEndPointObject.AddComponent<CurveHandle>();
         controlPointEnd = controlEndPointObject.transform;
-        curveCreated = true;
+
     }
 
     [Button("Delete curve")]
@@ -150,8 +149,6 @@ public class CurveTrajectory : MonoBehaviour
             if(childs[i].gameObject != gameObject)
                 DestroyImmediate(childs[i].gameObject);
         }
-
-        curveCreated = false;
 
         startPosition = Vector3.zero;
         startControlPosition = Vector3.zero;
