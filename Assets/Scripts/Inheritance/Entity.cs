@@ -2,8 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Entity : MonoBehaviour
+public class Entity : MonoBehaviour, IDamageListener
 {
+    #region Fields
+
+    [Header("Health")]
+    [SerializeField] private float healthPoints = 1;
+    private bool isDead = false;
+
+    #endregion
+
     #region Monobehaviour Callbacks
 
     public virtual void Awake()
@@ -32,5 +40,46 @@ public class Entity : MonoBehaviour
     }
 
     #endregion
+
+    #region Private Methods
+
+    private void HealthManager()
+    {
+        if(healthPoints <= 0 && !isDead)
+        {
+            
+        }
+    }
+
+    #endregion
+
+    #region Public Methods
+
+    public virtual void Death()
+    {
+        isDead = true;
+    }
+
+    /// <summary>
+    /// Takes a certain amount of damage.
+    /// </summary>
+    /// <param name="dmg">Amount of damage taken. </param>
+    public virtual void TakeDamage(float dmg)
+    {
+        healthPoints -= dmg;
+    }
+
+    #endregion
+
+    #region Properties
+
+    public float HealthPoints { get => healthPoints; }
+
+    #endregion
+}
+
+public interface IDamageListener
+{
+    void TakeDamage(float dmg);
 }
 
