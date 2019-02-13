@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class Chunk : NonInteractable
 {
+    #region Fields
+
     [Header("Chunk")]
     [SerializeField] private List<Entity> chunkMembers = new List<Entity>();
     [SerializeField] private Transform chunkPool;
+
+    #endregion
+
+    #region Monobehaviour Callbacks
 
     public override void Update()
     {
         base.Update();
         CheckDistance();
     }
+
+    #endregion
+
+    #region Private Methods
 
     private void CheckDistance()
     {
@@ -29,4 +39,6 @@ public class Chunk : NonInteractable
         GameManager.instance.ChunkManager.SpawnNewChunk();
         gameObject.SetActive(false);
     }
+
+    #endregion
 }
