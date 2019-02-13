@@ -12,6 +12,7 @@ public class ChunkManager : Manager
 
     [Header("Parameters")]
     [SerializeField] private float scrollSpeed = 5f;
+    [SerializeField] private float chunkSize = 20f;
 
     #endregion
 
@@ -21,6 +22,12 @@ public class ChunkManager : Manager
     {
         base.Update();
         Scrolling();
+    }
+
+    public override void OnEnable()
+    {
+        base.OnEnable();
+        GameManager.instance.ChunkManager = this;
     }
 
     #endregion
@@ -35,7 +42,7 @@ public class ChunkManager : Manager
     {
         Chunk newChunk = NewChunk();
         newChunk.gameObject.SetActive(true);
-        newChunk.transform.localPosition = Vector3.zero;
+        newChunk.transform.localPosition = new Vector3(0,0, chunkSize);
         newChunk.transform.parent = chunkScroller;
     }
 
@@ -55,6 +62,19 @@ public class ChunkManager : Manager
     #region Properties
 
     public float ScrollSpeed { get => scrollSpeed; set => scrollSpeed = value; }
+
+    public float ChunkSize
+    {
+        get
+        {
+            return chunkSize;
+        }
+
+        set
+        {
+            chunkSize = value;
+        }
+    }
 
     #endregion
 }

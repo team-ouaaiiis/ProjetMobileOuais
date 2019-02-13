@@ -16,7 +16,7 @@ public class Chunk : NonInteractable
 
     private void CheckDistance()
     {
-        if (transform.position.z < 20f)
+        if (transform.position.z < -GameManager.instance.ChunkManager.ChunkSize)
         {
             DeactivateChunk();
         }
@@ -26,6 +26,7 @@ public class Chunk : NonInteractable
     {
         Debug.Log("Deactivate");
         transform.parent = chunkPool;
+        GameManager.instance.ChunkManager.SpawnNewChunk();
         gameObject.SetActive(false);
     }
 }

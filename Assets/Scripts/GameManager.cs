@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     private List<Entity> entities = new List<Entity>();
 
+    [Header("Components")]
+    private ChunkManager chunkManager;
+
     #endregion
 
     #region MonoBehaviour Callbacks
@@ -37,6 +40,19 @@ public class GameManager : MonoBehaviour
     #region Properties
 
     public List<Entity> Entities { get => entities; }
+
+    public ChunkManager ChunkManager
+    {
+        get
+        {
+            return chunkManager;
+        }
+
+        set
+        {
+            chunkManager = value;
+        }
+    }
 
     #endregion
 }
