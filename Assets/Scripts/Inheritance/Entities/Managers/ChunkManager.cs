@@ -28,7 +28,28 @@ public class ChunkManager : Manager
     private void Scrolling()
     {
         float zScroll = Time.deltaTime * scrollSpeed;
-        chunkScroller.position += new Vector3(0, 0, zScroll);
+        chunkScroller.position -= new Vector3(0, 0, zScroll);
+    }
+
+    public void SpawnNewChunk()
+    {
+        Chunk newChunk = NewChunk();
+        newChunk.gameObject.SetActive(true);
+        newChunk.transform.localPosition = Vector3.zero;
+        newChunk.transform.parent = chunkScroller;
+    }
+
+    private Chunk NewChunk()
+    {
+        for (int i = 0; i < chunks.Count; i++)
+        {
+            if(!chunks[i].gameObject.activeInHierarchy)
+            {
+                return chunks[i];
+            }
+        }
+
+        return null;    
     }
 
     #region Properties
