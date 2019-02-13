@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class Enemy : Character
 {
-    
+    public virtual void Attack()
+    {
+
+    }
 }
