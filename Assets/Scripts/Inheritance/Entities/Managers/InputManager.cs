@@ -1,23 +1,223 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using NaughtyAttributes;
+using System;
 
 public class InputManager : Manager
-{ 
+{
+    [Header("Input Manager")]
+    [Space(20)]
+    [ReadOnly]
+    [SerializeField] bool fingerOnScreen;
+
+    
+    private Vector2 fingerDownPosition; //position start
+    private Vector2 fingerUpPosition; //position end
+
+    [SerializeField]
+    private bool detectSwipeOnlyAfterRelease = false;
+    [SerializeField]
+    private bool detectTapOnlyAfterRelease = false;
+
+    public float detectTapTime = 0.5f;
+
+    [SerializeField]
+    private float minDistanceForSwipe = 20f;
+
+    //timing variables
+    [ReadOnly]
+    public float timeOnScreen;
+    [ReadOnly]
+    public float previousTimeOnScreen;
+
+    public enum SwipeDirection
+    {
+        Up,
+        Down,
+        Left,
+        Right
+    }
+
     public override void Start()
     {
         base.Start();
     }
 
-
     public override void Update()
     {
         base.Update();
+
+        TouchInput();
+        TouchTimer();
     }
 
     public bool TapOnScreen()
     {
-        if(Input.GetTouch(0).phase == TouchPhase.Stationary)
+        if (Input.touchCount == 0)
+        {
+            return false;
+        }
+
+
+        if (Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            Debug.Log("TAP");
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public bool FingerOnScreen
+    {
+        get
+        {
+            return fingerOnScreen;
+        }
+        set
+        {
+
+            if (value == true)
+            {
+
+            }
+            else
+            {
+                StopTimer();
+            }
+
+            fingerOnScreen = value;
+        }
+    }
+
+    public void TouchInput()
+    {
+        if (Input.touches.Length > 0)
+        {
+            FingerOnScreen = true;
+            Touch touch = Input.touches[0];
+
+            if (touch.phase == TouchPhase.Began)
+            {
+                fingerUpPosition = touch.position;
+                fingerDownPosition = touch.position;
+            }
+
+            if (!detectSwipeOnlyAfterRelease && touch.phase == TouchPhase.Moved)
+            {
+                fingerDownPosition = touch.position;
+                DetectSwipe();
+            }
+
+            if (!detectTapOnlyAfterRelease && touch.phase == TouchPhase.Stationary)
+            {
+                fingerDownPosition = touch.position;
+                DetectTap();
+            }
+
+            if (touch.phase == TouchPhase.Ended)
+            {
+                fingerDownPosition = touch.position;
+
+                if (SwipeDistanceCheckMet())
+                {
+                    if(detectSwipeOnlyAfterRelease) Swipe();
+                }
+                else if(detectTapOnlyAfterRelease)
+                {
+                    Tap();
+                }
+
+            }
+        }
+        else if(FingerOnScreen)
+        {
+            FingerOnScreen = false;
+        }
+    }
+
+    void TouchTimer()
+    {
+        if (FingerOnScreen)
+        {
+            timeOnScreen += Time.unscaledDeltaTime;
+        }
+    }
+
+    void StopTimer()
+    {
+        previousTimeOnScreen = timeOnScreen;
+        timeOnScreen = 0;
+    }
+
+    void DetectTap()
+    {
+        if (timeOnScreen >= detectTapTime)
+        {
+            Tap();
+        }
+    }
+
+    private void Tap()
+    {
+        Debug.Log("TAP ON SCREEN");
+    }
+
+    #region Swipe functions
+
+    private void DetectSwipe()
+    {
+        if (SwipeDistanceCheckMet())
+        {
+            Swipe();
+        }
+    }
+
+    private void Swipe()
+    {
+        if (IsVerticalSwipe())
+        {
+            SwipeDirection direction;
+
+            if (fingerDownPosition.y - fingerUpPosition.y > 0)
+            {
+                direction = SwipeDirection.Up;
+            }
+            else
+            {
+                direction = SwipeDirection.Down;
+            }
+
+            //SendSwipe(direction)
+
+            Debug.Log("SWIPE " + direction);
+        }
+        else
+        {
+            SwipeDirection direction;
+
+            if (fingerDownPosition.x - fingerUpPosition.x > 0)
+            {
+                direction = SwipeDirection.Right;
+            }
+            else
+            {
+                direction = SwipeDirection.Left;
+            }
+
+            //SendSwipe(direction)
+
+            Debug.Log("SWIPE " + direction);
+        }
+        fingerUpPosition = fingerDownPosition;
+    }
+
+    private bool SwipeDistanceCheckMet()
+    {
+        if(VerticalMovementDistance() > minDistanceForSwipe || HorizontalMovementDistance() > minDistanceForSwipe)
         {
             return true;
         }
@@ -26,4 +226,26 @@ public class InputManager : Manager
             return false;
         }
     }
+
+    private bool IsVerticalSwipe()
+    {
+        return VerticalMovementDistance() > HorizontalMovementDistance();
+    }
+
+    private float VerticalMovementDistance()
+    {
+        return Mathf.Abs(fingerDownPosition.y - fingerUpPosition.y);
+    }
+
+    private float HorizontalMovementDistance()
+    {
+        return Mathf.Abs(fingerDownPosition.x - fingerUpPosition.x);
+    }
+
+    public static void SendSwipe()
+    {
+
+    }
+
+    #endregion
 }
