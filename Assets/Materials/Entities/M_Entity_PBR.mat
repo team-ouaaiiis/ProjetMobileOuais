@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_Entity
-  m_Shader: {fileID: 4800000, guid: 8f1cb12cfab1cfd488d584e404b3eb23, type: 3}
-  m_ShaderKeywords: 
+  m_Name: M_Entity_PBR
+  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_ShaderKeywords: _NORMALMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -19,11 +19,19 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_518BB2D6:
+    - _BumpMap:
         m_Texture: {fileID: 2800000, guid: 6b8b9ff52041600479c8e0feab67a890, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _BumpMap:
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -36,22 +44,22 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 9b7099ac61ec73747a96de6726069455, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTexture:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 9b7099ac61ec73747a96de6726069455, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _NormalTex:
+    - _OcclusionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _OcclusionMap:
+    - _ParallaxMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -63,56 +71,45 @@ Material:
         m_Texture: {fileID: 2800000, guid: 2cdff8b623743494ba4a1a535fbdbc0e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _Texture2DAsset_DBA65FAC_Out:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_1FB64514: 0.35
     - Vector1_2B538A24: -200
-    - Vector1_71C1C764: 2
-    - Vector1_8FDEA90E: 0.4
-    - Vector1_9D73627F: 0.17
     - Vector1_BB2A2B98: 200
-    - _AddedStrength: 0.1
+    - _AddedStrength: 0.2
     - _AlphaClip: 0
     - _Blend: 0
     - _BlinkStrength: 0
     - _BumpScale: 1
     - _Cull: 2
     - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _FresnelStrength: 1
     - _GlossMapScale: 1
-    - _Glossiness: 0.5
+    - _Glossiness: 0.876
     - _GlossyReflections: 1
     - _Metallic: 0
-    - _NormalStrength: 0.501
+    - _Mode: 0
     - _OcclusionStrength: 1
+    - _Parallax: 0.02
     - _ReceiveShadows: 1
-    - _ShadowSharp: 0.49
     - _ShadowStrength: 0.2
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
+    - _UVSec: 0
     - _WorkflowMode: 1
     - _XGradient: 0.707
     - _YGradient: 0.579
     - _ZGradient: 0.28
     - _ZWrite: 1
     m_Colors:
-    - Color_CFCE4A3A: {r: 0, g: 0, b: 0, a: 0}
-    - Vector2_3516D235: {r: 0, g: 1, b: 0, a: 0}
-    - Vector4_7D8D2AFA: {r: 0, g: 1, b: 0.5, a: 0.48}
-    - _AddColor: {r: 1, g: 0.9466156, b: 0.8156863, a: 1}
+    - _AddColor: {r: 1, g: 0.96407074, b: 0.8726415, a: 0}
     - _BlinkColor: {r: 1, g: 1, b: 1, a: 0}
-    - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FresnelColor: {r: 1, g: 0.6556604, b: 0.6556604, a: 0}
-    - _LightCol: {r: 1, g: 0.8495766, b: 0.6462264, a: 0}
-    - _LightColor: {r: 1, g: 0.8495766, b: 0.6462264, a: 0}
-    - _LightDir: {r: 0.6047732, g: -0.78498787, b: 0.13432609, a: 0}
+    - _LightDir: {r: 20, g: 41.78, b: 20, a: 0}
     - _MainColor: {r: 1, g: 1, b: 1, a: 0}
-    - _ShadowColor: {r: 0.14818439, g: 0.15088776, b: 0.16981131, a: 1}
+    - _ShadowColor: {r: 0.29725882, g: 0.32498562, b: 0.3773585, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
