@@ -6,10 +6,15 @@ public class ChunkManager : Manager
 {
     #region Fields 
 
+    [Header("Dimensions")]
+    [SerializeField] [Range(0,8)] private int rows = 5;
+    [SerializeField] [Range(0,5)] private int columns = 3;
+
     [Header("Components")]
     [SerializeField] private List<Chunk> chunks = new List<Chunk>();
+    [SerializeField] private ChunkPattern[] chunkPatterns;
 
-    [Header("Parameters")]
+    [Header("Parameters")]    
     [SerializeField] private float scrollSpeed = 5f;
     [SerializeField] private float chunkSize = 20f;
 
@@ -25,10 +30,16 @@ public class ChunkManager : Manager
     public override void OnEnable()
     {
         base.OnEnable();
-        GameManager.instance.ChunkManager = this;
+        AssignToGameManager();
     }
 
     #endregion
+
+    [ContextMenu("Assign")]
+    private void AssignToGameManager()
+    {
+        GameManager.instance.ChunkManager = this;
+    }
 
     public void SpawnNewChunk()
     {
@@ -67,7 +78,6 @@ public class ChunkManager : Manager
     #region Properties
 
     public float ScrollSpeed { get => scrollSpeed; set => scrollSpeed = value; }
-
     public float ChunkSize
     {
         get
@@ -80,6 +90,8 @@ public class ChunkManager : Manager
             chunkSize = value;
         }
     }
+    public int Rows { get => rows; set => rows = value; }
+    public int Columns { get => columns; set => columns = value; }
 
     #endregion
 }

@@ -9,6 +9,7 @@ public class Chunk : NonInteractable
     [Header("Chunk")]
     [SerializeField] private List<Entity> chunkMembers = new List<Entity>();
     private ChunkManager chunkManager;
+    private ChunkPattern chunkPattern;
 
     #endregion
 
@@ -26,7 +27,7 @@ public class Chunk : NonInteractable
         CheckDistance();
         Scrolling();
     }
-
+    
     #endregion
 
     #region Private Methods
@@ -50,6 +51,20 @@ public class Chunk : NonInteractable
         Debug.Log("Deactivate");
         GameManager.instance.ChunkManager.SpawnNewChunk();
         gameObject.SetActive(false);
+    }
+
+    #endregion
+
+    #region Public Methods
+
+    public void InitializeChunk(ChunkPattern pattern)
+    {
+        chunkPattern = pattern;
+
+        for (int i = 0; i < chunkPattern.ChunkElements.Count; i++)
+        {
+
+        }
     }
 
     #endregion

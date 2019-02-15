@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoints: 1
+  rows: 5
+  columns: 3
   chunks:
   - {fileID: 2991306090999059160}
   - {fileID: 2991306091219565687}
@@ -22,8 +24,22 @@ MonoBehaviour:
   - {fileID: 2991306092010167777}
   - {fileID: 2991306092160606720}
   - {fileID: 2991306092679687067}
-  scrollSpeed: 15
+  chunkPatterns: []
+  scrollSpeed: 2
   chunkSize: 20
+--- !u!114 &4008566990191565692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184247976057937538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbc954343f9fea14891a972993a63d2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chunkManager: {fileID: 2260593791279057385}
 --- !u!1 &6866228194053585881
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,13 +10,19 @@ public class GameManager : MonoBehaviour
     private List<Entity> entities = new List<Entity>();
 
     [Header("Components")]
-    private ChunkManager chunkManager;
+    [SerializeField] private ChunkManager chunkManager;
 
     #endregion
 
     #region MonoBehaviour Callbacks
 
     private void Awake()
+    {
+        Initialize();
+    }
+
+    [ContextMenu("Initialize")]
+    private void Initialize()
     {
         instance = this;
     }
