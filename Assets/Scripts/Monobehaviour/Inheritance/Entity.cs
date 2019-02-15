@@ -69,6 +69,11 @@ public class Entity : MonoBehaviour, IDamageListener
         healthPoints -= dmg;
     }
 
+    public virtual void LaunchedSword()
+    {
+
+    }
+
     #endregion
 
     #region Properties

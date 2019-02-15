@@ -35,6 +35,14 @@ public class GameManager : MonoBehaviour
         Entities.Remove(entity);
     }
 
+    public void LaunchedSword()
+    {
+        for (int i = 0; i < entities.Count; i++)
+        {
+            entities[i].LaunchedSword();
+        }
+    }
+
     #endregion
 
     #region Properties

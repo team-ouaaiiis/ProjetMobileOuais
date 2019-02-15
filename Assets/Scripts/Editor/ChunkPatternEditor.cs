@@ -22,6 +22,7 @@ public class ChunkPatternEditor : Editor
         {
             Object source = new Object();
             source = EditorGUILayout.ObjectField(source, typeof(Object), true);
+            
         }
     }
 }
