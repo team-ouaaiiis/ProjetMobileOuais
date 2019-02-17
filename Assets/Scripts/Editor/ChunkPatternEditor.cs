@@ -61,7 +61,7 @@ public class ChunkPatternEditor : Editor
                     {
                         //Editor editor = CreateEditor(property.objectReferenceValue);
                         var previewRect = new Rect(60 + x * 120, 100 + 120 * y, 85, 80);
-                        OnInteractivePreviewGUI(previewRect, EditorStyles.);
+                        OnInteractivePreviewGUI(previewRect, EditorStyles.label);
                     }
 
                     z++;

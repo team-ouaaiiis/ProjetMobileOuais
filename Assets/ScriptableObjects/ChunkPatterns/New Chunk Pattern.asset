@@ -14,20 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chunkDifficulty: 0
   chunkElements:
+  - prefab: {fileID: 6358384896391196285, guid: 901d1d86e3f538b4ea41819de6799848,
+      type: 3}
+  - prefab: {fileID: 100000, guid: 2915c98da54f260418228d45cb9287e4, type: 3}
+  - prefab: {fileID: 224692342214357214, guid: 2735dd363c3237a47901310d692b9ecb, type: 3}
+  - prefab: {fileID: 0}
+  - prefab: {fileID: 0}
+  - prefab: {fileID: 0}
+  - prefab: {fileID: 4950151078823820522, guid: 8d4dc90a1072dc64d84ea82d98085f75,
+      type: 3}
+  - prefab: {fileID: 1612944339471420248, guid: 2b60b8f397db0b241b08834a2833840f,
+      type: 3}
   - prefab: {fileID: 0}
   - prefab: {fileID: 0}
   - prefab: {fileID: 0}
   - prefab: {fileID: 0}
   - prefab: {fileID: 0}
-  - prefab: {fileID: 0}
-  - prefab: {fileID: 0}
-  - prefab: {fileID: 0}
-  - prefab: {fileID: 0}
-  - prefab: {fileID: 0}
-  - prefab: {fileID: 0}
-  - prefab: {fileID: 0}
-  - prefab: {fileID: 0}
-  - prefab: {fileID: 0}
+  - prefab: {fileID: 224692342214357214, guid: 2735dd363c3237a47901310d692b9ecb, type: 3}
   - prefab: {fileID: 0}
   - prefab: {fileID: 0}
   - prefab: {fileID: 0}
