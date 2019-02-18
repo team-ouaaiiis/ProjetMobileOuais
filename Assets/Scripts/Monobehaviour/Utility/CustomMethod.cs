@@ -101,7 +101,6 @@ public static class CustomMethod
         return equal;
     }
 
-
     public static int LayerMaskToLayerIndex(LayerMask layerMask)
     {
         int layerNumber = 0;
@@ -116,5 +115,32 @@ public static class CustomMethod
         return layerNumber - 1;
     }
 
+    /// <summary>
+    /// Method used to return a number clamped between a min and max value, based on where a variable interpolates between her min and max value.
+    /// </summary>
+    /// <param name="minValueReturn">The minimum of the returned value.</param>
+    /// <param name="maxValueReturn">The maximum of the returned value.</param>
+    /// <param name="minValueToCheck">The minimum of the value we're checking.</param>
+    /// <param name="maxValueToCheck">The maximum of the value we're checking.</param>
+    /// <param name="valueToCheck">The value we're checking.</param>
+    public static float Interpolate(float minValueReturn, float maxValueReturn, float minValueToCheck, float maxValueToCheck, float valueToCheck)
+    {
+        return Mathf.Lerp(minValueReturn, maxValueReturn, Mathf.InverseLerp(minValueToCheck, maxValueToCheck, valueToCheck));
+    }
+
+    /// <summary>
+    /// Method used to return a number clamped between a min and max value, based on where a variable interpolates between her min and max value.
+    /// </summary>
+    /// <param name="minValueReturn">The minimum of the returned value.</param>
+    /// <param name="maxValueReturn">The maximum of the returned value.</param>
+    /// <param name="minValueToCheck">The minimum of the value we're checking.</param>
+    /// <param name="maxValueToCheck">The maximum of the value we're checking.</param>
+    /// <param name="valueToCheck">The value we're checking.</param>
+    public static Vector2 InterpolateVector2(Vector2 minValueReturn, Vector2 maxValueReturn, Vector2 minValueToCheck, Vector2 maxValueToCheck, Vector2 valueToCheck)
+    {
+        float x = Mathf.Lerp(minValueReturn.x, maxValueReturn.x, Mathf.InverseLerp(minValueToCheck.x, maxValueToCheck.x, valueToCheck.x));
+        float y = Mathf.Lerp(minValueReturn.y, maxValueReturn.y, Mathf.InverseLerp(minValueToCheck.y, maxValueToCheck.y, valueToCheck.y));
+        return new Vector2(x, y);
+    }
 }
 

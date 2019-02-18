@@ -10,20 +10,12 @@ public class ChunkPatternEditor : Editor
     [SerializeField] private SerializedObject GetTarget;
     [SerializeField] private ChunkPattern chunkPattern;
     [SerializeField] private SerializedProperty chunkElements;
-    private Editor editorPreview;
 
     private void OnEnable()
-    {
+    {      
         chunkPattern = (ChunkPattern)target;
         GetTarget = new SerializedObject(chunkPattern);
-        
         AssignProperties();
-    }
-
-    private void OnDisable()
-    {
-        
-        
     }
 
     private void AssignProperties()
@@ -33,9 +25,9 @@ public class ChunkPatternEditor : Editor
 
     public override void OnInspectorGUI()
     {
-        //base.OnInspectorGUI();
-        GetTarget.Update();
+
         EditorGUI.BeginChangeCheck();
+        GetTarget.Update();
         DrawRects();
         GetTarget.ApplyModifiedProperties();
     }
@@ -55,8 +47,11 @@ public class ChunkPatternEditor : Editor
                 var objectRect = new Rect(60 + x * 120, 100 + 120 * y, 100, 80);
                 if (z < chunkElements.arraySize)
                 {
-                    SerializedProperty property = chunkElements.GetArrayElementAtIndex(z).FindPropertyRelative("prefab");
+                    SerializedProperty property = chunkElements.GetArrayElementAtIndex(z).FindPropertyRelative("entity");
                     property.objectReferenceValue = EditorGUI.ObjectField(objectRect, property.objectReferenceValue, typeof(GameObject), false);
+                    chunkPattern.ChunkElements[z].XPos = x;
+                    chunkPattern.ChunkElements[z].ZPos = y;
+
                     if (property.objectReferenceValue != null)
                     {
                         //Editor editor = CreateEditor(property.objectReferenceValue);

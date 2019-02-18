@@ -10,11 +10,17 @@ public enum ChunkDifficulty
 }
 
 [System.Serializable]
-public struct ChunkElement
+public class ChunkElement
 {
     [SerializeField] private GameObject prefab;
+    [SerializeField] private Entity entity;
+    [SerializeField] private int xPos;
+    [SerializeField] private int zPos;
 
     public GameObject Prefab { get => prefab; set => prefab = value; }
+    public Entity Entity { get => entity; set => entity = value; }
+    public int XPos { get => xPos; set => xPos = value; }
+    public int ZPos { get => zPos; set => zPos = value; }
 }
 
 [CreateAssetMenu]
