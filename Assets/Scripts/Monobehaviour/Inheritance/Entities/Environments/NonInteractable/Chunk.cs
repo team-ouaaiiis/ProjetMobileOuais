@@ -54,15 +54,17 @@ public class Chunk : NonInteractable
 
     private void DeactivateChunk()
     {
-
         Debug.Log("Deactivate");
-        gameObject.SetActive(false);
-        chunkManager.SpawnNewChunk();
 
         for (int i = 0; i < chunkElements.Count; i++)
         {
             //Replacer les entities dans les pools
+            chunkElements[i].transform.parent = chunkElements[i].Holder;
+            chunkElements[i].gameObject.SetActive(false);
         }
+
+        chunkManager.SpawnNewChunk();
+        gameObject.SetActive(false);
     }
 
     #endregion
@@ -86,7 +88,6 @@ public class Chunk : NonInteractable
                 newEntity.gameObject.transform.localPosition = new Vector3(x, 0, z);
                 chunkElements.Add(newEntity);
             }
-
         }
     }
 

@@ -10,6 +10,8 @@ public class ChunkPatternEditor : Editor
     [SerializeField] private SerializedObject GetTarget;
     [SerializeField] private ChunkPattern chunkPattern;
     [SerializeField] private SerializedProperty chunkElements;
+    [SerializeField] Editor gameObjectEditor;
+    [SerializeField] Rect preview;
 
     private void OnEnable()
     {      
@@ -25,12 +27,18 @@ public class ChunkPatternEditor : Editor
 
     public override void OnInspectorGUI()
     {
-
         EditorGUI.BeginChangeCheck();
         GetTarget.Update();
         DrawRects();
         GetTarget.ApplyModifiedProperties();
     }
+
+    //public override void OnPreviewGUI(Rect r, GUIStyle background)
+    //{
+    //        if (gameObjectEditor == null)
+    //            gameObjectEditor = CreateEditor(chunkPattern.ChunkElements[0].Entity.gameObject);
+    //        gameObjectEditor.OnPreviewGUI(r, background);
+    //}
 
     private void DrawRects()
     {
@@ -48,16 +56,18 @@ public class ChunkPatternEditor : Editor
                 if (z < chunkElements.arraySize)
                 {
                     SerializedProperty property = chunkElements.GetArrayElementAtIndex(z).FindPropertyRelative("entity");
+                    
                     property.objectReferenceValue = EditorGUI.ObjectField(objectRect, property.objectReferenceValue, typeof(GameObject), false);
+                    
                     chunkPattern.ChunkElements[z].XPos = x;
                     chunkPattern.ChunkElements[z].ZPos = y;
-
+                    
                     if (property.objectReferenceValue != null)
                     {
-                        //Editor editor = CreateEditor(property.objectReferenceValue);
-                        var previewRect = new Rect(60 + x * 120, 100 + 120 * y, 85, 80);
-                        OnInteractivePreviewGUI(previewRect, EditorStyles.label);
-                    }
+                        gameObjectEditor = CreateEditor(chunkPattern.ChunkElements[z].Entity);
+                        preview = new Rect(60 + x * 120, 100 + 120 * y, 85, 80);
+                        OnPreviewGUI(preview, EditorStyles.textField);       
+                    }                   
 
                     z++;
                 }

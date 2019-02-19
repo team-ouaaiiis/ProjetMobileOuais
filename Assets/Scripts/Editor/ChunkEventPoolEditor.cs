@@ -83,8 +83,11 @@ public class ChunkEventPoolEditor : Editor
             {
                 GameObject newPrefab = PrefabUtility.InstantiatePrefab(chunkEventPool.EventPrefabs[i]) as GameObject;
                 newPrefab.SetActive(false);
-                chunkEventPool.EventPools[i].EventEntities.Add(newPrefab.GetComponentInChildren<Entity>());
+
+                Entity entity = newPrefab.GetComponentInChildren<Entity>();
+                chunkEventPool.EventPools[i].EventEntities.Add(entity);
                 newPrefab.transform.parent = holder.transform;                
+                entity.Holder = holder.transform;
             }
         }
 
