@@ -6,12 +6,13 @@ using System;
 
 public class InputManager : Manager
 {
+    public static InputManager inputManager;
+
     [Header("Input Manager")]
     [Space(20)]
     [ReadOnly]
     [SerializeField] bool fingerOnScreen;
 
-    
     private Vector2 fingerDownPosition; //position start
     private Vector2 fingerUpPosition; //position end
 
@@ -31,12 +32,21 @@ public class InputManager : Manager
     [ReadOnly]
     public float previousTimeOnScreen;
 
+    //Delegates
+    public event Action<SwipeDirection> OnSwipe = delegate { };
+
     public enum SwipeDirection
     {
         Up,
         Down,
         Left,
         Right
+    }
+
+    public override void Awake()
+    {
+        base.Awake();
+        inputManager = this;
     }
 
     public override void Start()
@@ -191,7 +201,7 @@ public class InputManager : Manager
                 direction = SwipeDirection.Down;
             }
 
-            //SendSwipe(direction)
+            SendSwipe(direction);
 
             Debug.Log("SWIPE " + direction);
         }
@@ -208,7 +218,7 @@ public class InputManager : Manager
                 direction = SwipeDirection.Left;
             }
 
-            //SendSwipe(direction)
+            SendSwipe(direction);
 
             Debug.Log("SWIPE " + direction);
         }
@@ -242,9 +252,9 @@ public class InputManager : Manager
         return Mathf.Abs(fingerDownPosition.x - fingerUpPosition.x);
     }
 
-    public static void SendSwipe()
+    public void SendSwipe(SwipeDirection _direction)
     {
-
+        OnSwipe(_direction);
     }
 
     #endregion

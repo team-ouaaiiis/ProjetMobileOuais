@@ -10,6 +10,8 @@ public class Entity : MonoBehaviour, IDamageListener
     [SerializeField] private float healthPoints = 1;
     private bool isDead = false;
 
+    private Transform holder;
+
     #endregion
 
     #region Monobehaviour Callbacks
@@ -79,6 +81,7 @@ public class Entity : MonoBehaviour, IDamageListener
     #region Properties
 
     public float HealthPoints { get => healthPoints; }
+    public Transform Holder { get => holder; set => holder = value; }
 
     #endregion
 }
