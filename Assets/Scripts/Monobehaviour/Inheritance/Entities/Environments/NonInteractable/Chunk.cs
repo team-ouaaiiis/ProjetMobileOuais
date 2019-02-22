@@ -63,7 +63,7 @@ public class Chunk : NonInteractable
 
         for (int i = 0; i < chunkPattern.ChunkElements.Count; i++)
         {
-
+             
         }
     }
 
