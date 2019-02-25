@@ -24,7 +24,7 @@ public class Chunk : NonInteractable
     public override void OnEnable()
     {
         base.OnEnable();
-        chunkManager = GameManager.instance.ChunkManager;
+        chunkManager = ChunkManagerReferencer.instance.ChunkManager;
     }
 
     public override void Update()

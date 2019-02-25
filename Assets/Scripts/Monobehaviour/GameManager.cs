@@ -8,9 +8,7 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance;
     private List<Entity> entities = new List<Entity>();
-
-    [Header("Components")]
-    [SerializeField] private ChunkManager chunkManager;
+    
 
     #endregion
 
@@ -54,19 +52,6 @@ public class GameManager : MonoBehaviour
     #region Properties
 
     public List<Entity> Entities { get => entities; }
-
-    public ChunkManager ChunkManager
-    {
-        get
-        {
-            return chunkManager;
-        }
-
-        set
-        {
-            chunkManager = value;
-        }
-    }
 
     #endregion
 }
