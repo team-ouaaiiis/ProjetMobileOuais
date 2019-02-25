@@ -6,9 +6,14 @@ using NaughtyAttributes;
 [System.Serializable]
 public class WeaponStats
 {
-    public float damagePoint = 1, maxDamagePoints = 5;
+    [Header("Damages points")]
+    public float damagePoint = 1;
+    public float maxDamagePoints = 5;
+
+    [Header("States")]
     public bool isEquipped;
     public bool isThrown;
+
     [Header("Attack Range")]
     public float range = 1;
     public float throwRadiusRange = 1;

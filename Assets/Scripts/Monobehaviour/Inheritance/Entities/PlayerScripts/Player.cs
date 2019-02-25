@@ -12,6 +12,7 @@ public class Player : Character
     InputManager inputManager;
     PlayerWeaponsList weaponsList;
 
+    public static Player playerInstance;
 
     #endregion
 
@@ -20,6 +21,7 @@ public class Player : Character
     public override void Awake()
     {
         base.Awake();
+        playerInstance = this;
     }
 
     public override void Start()
@@ -31,8 +33,8 @@ public class Player : Character
 
         //Get Weapon
         weaponsList = PlayerWeaponsList.playerWeaponsList;
-        weapon = weaponsList.currentWeapon.playerWeapon;
         weaponsList.LoadCurrentWeapon();
+        weapon = weaponsList.currentWeapon.playerWeapon;
     }
 
     public override void Update()
@@ -52,8 +54,14 @@ public class Player : Character
 
     #endregion
 
+    public override void Death()
+    {
+        base.Death();
+        Debug.Log("Game over");
+    }
+
     #region Inputs Methods
-    
+
     public void OnSwipe(InputManager.SwipeDirection _swipeDirection)
     {
         if (!weapon.IsThrown)
@@ -61,6 +69,7 @@ public class Player : Character
             weapon.ThrowWeapon();
         }
     }
+
     [Button]
     public void OnTap()
     {

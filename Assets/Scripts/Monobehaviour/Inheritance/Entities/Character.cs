@@ -4,5 +4,13 @@ using UnityEngine;
 
 public class Character : Entity
 {
+    public override void TakeDamage(float dmg)
+    {
+        base.TakeDamage(dmg);
 
+        if (HealthPoints <= 0)
+        {
+            Death();
+        }
+    }
 }
