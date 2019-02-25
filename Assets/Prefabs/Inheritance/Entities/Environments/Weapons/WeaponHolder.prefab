@@ -107,6 +107,7 @@ MonoBehaviour:
   healthPoints: 1
   weapon:
     damagePoint: 1
+    maxDamagePoints: 5
     isEquipped: 0
     isThrown: 0
     range: 2
@@ -139,15 +140,54 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   attackBoxOffset: {x: 0, y: 0, z: 0.5}
-  isAttacking: 0
+  thrownHitboxActiveTime: {x: 0.3, y: 0.7}
+  damageEvolution:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.6
+      value: 0.15
+      inSlope: 0.6696494
+      outSlope: 0.6696494
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.23741464
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 3.8422267
+      outSlope: 3.8422267
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.08616778
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  maxThrown: 20
+  thrown: 0
+  timeBeforePowerOff: 1
   attackDelay: 0
   attackDuration: 0.35
   attackTargetLayer:
     serializedVersion: 2
     m_Bits: 512
+  currentDamage: 0
+  isAttacking: 0
   showDebugBox: 1
   attackBoxColor: {r: 1, g: 0, b: 0, a: 1}
   throwSphereColor: {r: 0, g: 0, b: 1, a: 1}
+  curveActiveColor: {r: 0, g: 1, b: 0.30203557, a: 1}
 --- !u!1 &1338235152388928084
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,10 +370,10 @@ MonoBehaviour:
   endPoint: {fileID: 8815607688553167935}
   controlPointStart: {fileID: 4055339036097444201}
   controlPointEnd: {fileID: 2921594187020339646}
-  startPosition: {x: -2.3, y: 1.06, z: -3.7}
-  startControlPosition: {x: -2.27, y: 1.0199999, z: -2.2599998}
-  endControlPosition: {x: 2.709, y: 1.0299999, z: -2.2599998}
-  endPosition: {x: 2.7, y: 1.06, z: -3.7}
+  startPosition: {x: -0.31999993, y: 1.06, z: -0.61}
+  startControlPosition: {x: -0.28999996, y: 1.0199999, z: 0.83000016}
+  endControlPosition: {x: 4.689, y: 1.0299999, z: 0.83000016}
+  endPosition: {x: 4.6800003, y: 1.06, z: -0.61}
 --- !u!1 &8252094850050152160
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,7 +432,7 @@ PrefabInstance:
     - target: {fileID: 747874032103184920, guid: 07e66bc0f7197da47baf8feb96009019,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.2
+      value: 2.18
       objectReference: {fileID: 0}
     - target: {fileID: 747874032103184920, guid: 07e66bc0f7197da47baf8feb96009019,
         type: 3}
@@ -402,7 +442,7 @@ PrefabInstance:
     - target: {fileID: 747874032103184920, guid: 07e66bc0f7197da47baf8feb96009019,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.7
+      value: -0.61
       objectReference: {fileID: 0}
     - target: {fileID: 747874032103184920, guid: 07e66bc0f7197da47baf8feb96009019,
         type: 3}

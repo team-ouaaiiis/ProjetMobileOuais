@@ -12,7 +12,7 @@ public class PlayerWeapon : Interactable
 
     [Header("Weapon Movement")]
     public CurveTrajectory trajectory;
-    [Range(0,2)]
+    [Range(0, 2)]
     [Tooltip("throw time before the weapon reach the other character")]
     [SerializeField] float throwTime = 0.2f; // le throw time before the weapon reach the other character
     float currentThrowTime = 0;
@@ -22,18 +22,30 @@ public class PlayerWeapon : Interactable
         Right,
         Left
     }
+
     public ThrowDirection throwDirection;
     [SerializeField] AnimationCurve speedEvolution;
 
     [Header("Weapon Attack range")]
     [SerializeField] Vector3 attackBoxOffset;
     Vector3 attackBoxSize = Vector3.one;
+    [MinMaxSlider(0.0f,1.0f)] public Vector2 thrownHitboxActiveTime;
+    float activeTimeMin, activeTimeMax;
+
+    [Header("Power accumulation")]
+    public AnimationCurve damageEvolution;
+    public int maxThrown = 20;
+    [ReadOnly] public int thrown = 0;
+    public float timeBeforePowerOff = 1;
+    float powerDecreaseTimer = 0;
+
 
     [Header("Weapon Attack values")]
-    [ReadOnly] public bool isAttacking;
-    [SerializeField] [Range(0.0f,1.0f)] float attackDelay = 0.0f;
-    [SerializeField] [Range(0.0f,1.0f)] float attackDuration = 0.2f;
+    [SerializeField] [Range(0.0f, 1.0f)] float attackDelay = 0.0f;
+    [SerializeField] [Range(0.0f, 1.0f)] float attackDuration = 0.2f;
     [SerializeField] LayerMask attackTargetLayer;
+    [ReadOnly] public float currentDamage;
+    [ReadOnly] public bool isAttacking;
     IEnumerator attack;
 
     //[Header("Debugs")]
@@ -49,6 +61,10 @@ public class PlayerWeapon : Interactable
     [BoxGroup("Debug Colors")]
     [SerializeField] Color throwSphereColor = Color.blue;
 
+    [ShowIf("showDebugBox")]
+    [BoxGroup("Debug Colors")]
+    [SerializeField] Color curveActiveColor = Color.red;
+
 
     #endregion
 
@@ -57,6 +73,10 @@ public class PlayerWeapon : Interactable
         base.Start();
         SetAttackBoxSize();
         ThrowMovement(0);
+        currentDamage = GetThrownDamagePower();
+
+        activeTimeMin = thrownHitboxActiveTime.x;
+        activeTimeMax = thrownHitboxActiveTime.y;
     }
 
     public override void Update()
@@ -75,7 +95,7 @@ public class PlayerWeapon : Interactable
         if (isAttacking) boxAlpha = 0.6f;
 
         //attackBoxSize box
-        Gizmos.color = new Color(attackBoxColor.r, attackBoxColor.g,attackBoxColor.b,boxAlpha);
+        Gizmos.color = new Color(attackBoxColor.r, attackBoxColor.g, attackBoxColor.b, boxAlpha);
         Gizmos.DrawCube(transform.position + attackBoxOffset, attackBoxSize);
         Gizmos.color = new Color(attackBoxColor.r, attackBoxColor.g, attackBoxColor.b, 1);
         Gizmos.DrawWireCube(transform.position + attackBoxOffset, attackBoxSize);
@@ -85,6 +105,37 @@ public class PlayerWeapon : Interactable
         Gizmos.DrawSphere(transform.position, weapon.throwRadiusRange);
         Gizmos.color = new Color(throwSphereColor.r, throwSphereColor.g, throwSphereColor.b, 1);
         Gizmos.DrawWireSphere(transform.position, weapon.throwRadiusRange);
+
+        //CURVE
+        Gizmos.color = curveActiveColor;
+        float min = thrownHitboxActiveTime.x;
+        float max = thrownHitboxActiveTime.y;
+
+        //The start position of the line
+        Vector3 lastPos = trajectory.BezierCurvePoint(min);
+
+
+        //The resolution of the line
+        float resolution = 0.02f; //0.02 c'est bien, faut pas faire le fou avec cette variable
+
+
+        int loops = Mathf.FloorToInt(1f / resolution);
+
+        for (int i = 1; i <= loops; i++)
+        {
+            float t = i * resolution;
+
+            if(t < max && t > min)
+            {
+                Vector3 newPos = trajectory.BezierCurvePoint(t); //Find positions between the control points
+
+
+                Gizmos.DrawLine(lastPos, newPos); //Draw as a new segment
+
+
+                lastPos = newPos; //Save this pos pour draw the next segment
+            }
+        }
     }
 
     void SetAttackBoxSize()
@@ -117,14 +168,27 @@ public class PlayerWeapon : Interactable
 
     void ThrowTimer()
     {
-        if (!IsThrown) return;
+        if (!IsThrown)
+        {
+            if(thrown > 0)
+            {
+                powerDecreaseTimer += Time.deltaTime;
+
+                if(powerDecreaseTimer >= timeBeforePowerOff)
+                {
+                    ResetThrownNumber();
+                }
+            }
+
+            return;
+        }
 
         currentThrowTime += Time.deltaTime;
+        float timePercent = currentThrowTime / throwTime;
+        ThrowMovement(timePercent);
+        CheckHitbox(timePercent);
 
-        ThrowMovement(currentThrowTime / throwTime);
-        ThrowHitBox();
-
-        if(currentThrowTime >= throwTime)
+        if (currentThrowTime >= throwTime)
         {
             //end throw
             IsThrown = false;
@@ -167,6 +231,7 @@ public class PlayerWeapon : Interactable
     public void ThrowWeapon()
     {
         IsThrown = true;
+        ThrownNumberIncrement();
 
         switch (throwDirection)
         {
@@ -183,7 +248,7 @@ public class PlayerWeapon : Interactable
 
         posT = speedEvolution.Evaluate(_timePercent);
 
-        if(throwDirection == ThrowDirection.Left)
+        if (throwDirection == ThrowDirection.Left)
         {
             posT = 1 - posT;
         }
@@ -204,9 +269,20 @@ public class PlayerWeapon : Interactable
         }
     }
 
+    void CheckHitbox(float _timePercent)
+    {
+        float percent = speedEvolution.Evaluate(_timePercent);
+
+        if (percent > activeTimeMin && percent < activeTimeMax)
+        {
+            Debug.Log("ACTIVE");
+            ThrowHitBox();
+        }
+    }
+
     void ThrowHitBox()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position,weapon.throwRadiusRange,attackTargetLayer,QueryTriggerInteraction.Collide);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, weapon.throwRadiusRange, attackTargetLayer, QueryTriggerInteraction.Collide);
         Debug.Log("THROW ATTACK");
 
         if (colliders.Length > 0)
@@ -223,6 +299,29 @@ public class PlayerWeapon : Interactable
         }
     }
 
+    void ThrownNumberIncrement()
+    {
+        thrown++;
+        thrown = Mathf.Clamp(thrown, 0, maxThrown);
+    }
+
+    void ResetThrownNumber()
+    {
+        thrown = 0;
+        powerDecreaseTimer = 0.0f;
+    }
+
+    public float GetThrownDamagePower()
+    {
+        float power = 0;
+
+        float percent = (float)thrown / (float)maxThrown;
+        float curveEval = damageEvolution.Evaluate(percent);
+        power = Mathf.Lerp(weapon.damagePoint, weapon.maxDamagePoints, curveEval);
+
+        return power;
+    }
+
     #endregion
 
     #region Attack functions
@@ -236,14 +335,16 @@ public class PlayerWeapon : Interactable
             return;
         }
 
+        currentDamage = GetThrownDamagePower();
         attack = Attacking();
         StartCoroutine(attack);
         isAttacking = true;
+        ResetThrownNumber();
     }
 
     public void CancelAttack()
     {
-        if(attack != null)
+        if (attack != null)
         {
             StopCoroutine(attack);
         }
@@ -262,7 +363,7 @@ public class PlayerWeapon : Interactable
             for (int i = 0; i < colliders.Length; i++)
             {
                 IDamageListener damageListener = colliders[i].GetComponent<IDamageListener>();
-                if(damageListener != null)
+                if (damageListener != null)
                 {
                     damageListener.TakeDamage(weapon.damagePoint);
                     Debug.Log("Damaging something");

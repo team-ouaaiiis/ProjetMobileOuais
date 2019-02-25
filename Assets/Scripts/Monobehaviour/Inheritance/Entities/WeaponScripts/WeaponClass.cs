@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using NaughtyAttributes;
 
 [System.Serializable]
 public class WeaponStats
 {
-    public float damagePoint = 1;
+    public float damagePoint = 1, maxDamagePoints = 5;
     public bool isEquipped;
     public bool isThrown;
     [Header("Attack Range")]
@@ -17,10 +18,10 @@ public class WeaponStats
 public class Weapon
 {
     public string weaponName = "weapon with no name";
-    public PlayerWeapon playerWeapon;
+    [ReadOnly] public PlayerWeapon playerWeapon;
     public bool weaponIsLocked;
     public GameObject weaponPrefab;
-    public GameObject instance;
+    [ReadOnly] public GameObject instance;
 
     public void GetPlayerWeaponInstance()
     {
