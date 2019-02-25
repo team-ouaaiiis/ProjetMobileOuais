@@ -11,6 +11,7 @@ public class ChunkPatternEditor : Editor
     [SerializeField] private ChunkPattern chunkPattern;
     [SerializeField] private SerializedProperty chunkElements;
     [SerializeField] Editor gameObjectEditor;
+    [SerializeField] GameObject gameObject;
     //[SerializeField] Rect preview;
 
     private void OnEnable()
@@ -33,13 +34,6 @@ public class ChunkPatternEditor : Editor
         GetTarget.ApplyModifiedProperties();
     }
 
-    //public override void OnPreviewGUI(Rect r, GUIStyle background)
-    //{
-    //        if (gameObjectEditor == null)
-    //            gameObjectEditor = CreateEditor(chunkPattern.ChunkElements[0].Entity.gameObject);
-    //        gameObjectEditor.OnPreviewGUI(r, background);
-    //}
-
     private void DrawRects()
     {
         if(chunkPattern.ChunkElements.Count != ChunkManagerReferencer.instance.ChunkManager.Columns * ChunkManagerReferencer.instance.ChunkManager.Rows)
@@ -55,22 +49,21 @@ public class ChunkPatternEditor : Editor
                 var objectRect = new Rect(60 + x * 120, 100 + 120 * y, 100, 80);
                 if (z < chunkElements.arraySize)
                 {
-                    SerializedProperty property = chunkElements.GetArrayElementAtIndex(z).FindPropertyRelative("entity");
 
+                    SerializedProperty property = chunkElements.GetArrayElementAtIndex(z).FindPropertyRelative("go");
                     property.objectReferenceValue = EditorGUI.ObjectField(objectRect, property.objectReferenceValue, typeof(GameObject), false);
-
+                    GameObject GO = (GameObject)property.objectReferenceValue;
                     chunkPattern.ChunkElements[z].XPos = x;
-                    chunkPattern.ChunkElements[z].ZPos = y;
-                    
-                    if (property.objectReferenceValue != null)
+                    chunkPattern.ChunkElements[z].ZPos = y;                  
+
+                    if (GO != null)
                     {
-                        //gameObjectEditor = CreateEditor(chunkPattern.ChunkElements[z].Entity);
-                        //Rect preview = new Rect(60 + x * 120, 100 + 120 * y, 85, 80);
-                        //OnPreviewGUI(preview, EditorStyles.whiteLabel);
-                        //Texture2D tex = AssetPreview.GetAssetPreview(property.objectReferenceValue);
-                        //if(tex != null)
-                        //EditorGUI.DrawPreviewTexture(preview, tex);
-                        //DestroyImmediate(gameObjectEditor);
+                        GUIStyle bgColor = new GUIStyle();
+                        bgColor.normal.background = EditorGUIUtility.whiteTexture;
+                        Editor newGameObjectEditor = CreateEditor(GO);
+                        Rect preview = new Rect(60 + x * 120, 100 + 120 * y, 85, 80);
+                        newGameObjectEditor.OnPreviewGUI(preview, bgColor);
+                        DestroyImmediate(newGameObjectEditor);
                     }                   
 
                     z++;

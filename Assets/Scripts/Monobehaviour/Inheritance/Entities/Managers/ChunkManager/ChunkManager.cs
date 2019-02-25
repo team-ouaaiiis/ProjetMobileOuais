@@ -32,16 +32,18 @@ public class ChunkManager : Manager
     public override void OnEnable()
     {
         base.OnEnable();
-        AssignToGameManager();
+    }
+
+    public override void Start()
+    {
+        base.Start();
+        for (int i = 0; i < chunkPatterns.Length; i++)
+        {
+            chunkPatterns[i].Initialize();
+        }
     }
 
     #endregion
-
-    [ContextMenu("Assign")]
-    private void AssignToGameManager()
-    {
-
-    }
 
     public void SpawnNewChunk()
     {

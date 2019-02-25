@@ -62,8 +62,6 @@ public class Chunk : NonInteractable
 
     private void DeactivateChunk()
     {
-        Debug.Log("Deactivate");
-
         for (int i = 0; i < chunkElements.Count; i++)
         {
             //Replacer les entities dans les pools
@@ -89,9 +87,10 @@ public class Chunk : NonInteractable
             if (chunkPattern.ChunkElements[i].Entity != null)
             {
                 Entity newEntity = chunkManager.ChunkEventsPool.GetEntity(chunkPattern.ChunkElements[i].Entity);
+
                 newEntity.gameObject.SetActive(true);
                 newEntity.transform.parent = transform;
-                float x = CustomMethod.Interpolate(chunkManager.ChunkWidth / 2, -chunkManager.ChunkWidth / 2, 0, chunkManager.Columns - 1, chunkPattern.ChunkElements[i].XPos);
+                float x = CustomMethod.Interpolate(-chunkManager.ChunkWidth / 2, chunkManager.ChunkWidth / 2, 0, chunkManager.Columns - 1, chunkPattern.ChunkElements[i].XPos);
                 float z = CustomMethod.Interpolate(chunkManager.ChunkLength / 2, -chunkManager.ChunkLength / 2, 0, chunkManager.Rows - 1, chunkPattern.ChunkElements[i].ZPos);
                 newEntity.gameObject.transform.localPosition = new Vector3(x, 0, z);
                 chunkElements.Add(newEntity);

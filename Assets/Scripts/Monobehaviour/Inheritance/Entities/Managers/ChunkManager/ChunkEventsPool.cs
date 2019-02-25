@@ -32,6 +32,7 @@ public class ChunkEventsPool : MonoBehaviour
         {
             if (eventPools[i].EventEntities[0].name == entity.name)
             {
+                Debug.Log("Entity Match");
                 for (int x = 0; x < eventPools[i].EventEntities.Count; x++)
                 {
                     if(!eventPools[i].EventEntities[x].gameObject.activeInHierarchy)
@@ -42,7 +43,7 @@ public class ChunkEventsPool : MonoBehaviour
             }
         }
 
-        Debug.Log("null");
+
 
         return null;
     }

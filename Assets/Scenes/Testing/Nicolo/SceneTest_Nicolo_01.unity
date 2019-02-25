@@ -247,7 +247,13 @@ PrefabInstance:
         type: 3}
       propertyPath: chunkPatterns.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 37c44d68be0623f4eb9498502ab104cb,
+      objectReference: {fileID: 11400000, guid: 075798b969da87549a4199c4e6ff6de8,
+        type: 2}
+    - target: {fileID: 2260593791279057385, guid: e3fbb31d7ffda0347a3a7519cec0708f,
+        type: 3}
+      propertyPath: chunkPatterns.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 075798b969da87549a4199c4e6ff6de8,
         type: 2}
     - target: {fileID: 4008566990191565692, guid: e3fbb31d7ffda0347a3a7519cec0708f,
         type: 3}
