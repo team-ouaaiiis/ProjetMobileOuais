@@ -19,6 +19,12 @@ public class Chunk : NonInteractable
     public override void Start()
     {
         base.Start();
+
+        if(ChunkManagerReferencer.instance == null)
+        {
+            Debug.Log("C LA MERD");
+        }
+
         chunkManager = ChunkManagerReferencer.instance.ChunkManager;
     }
 

@@ -10,6 +10,11 @@ public class ChunkManagerReferencer : MonoBehaviour
 
     public ChunkManager ChunkManager { get => chunkManager; set => chunkManager = value; }
 
+    private void Awake()
+    {
+        instance = this;
+    }
+
     private void Update()
     {
         instance = this;
