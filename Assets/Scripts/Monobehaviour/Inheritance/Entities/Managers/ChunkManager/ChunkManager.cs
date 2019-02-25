@@ -51,8 +51,9 @@ public class ChunkManager : Manager
         newChunk.gameObject.SetActive(true);
         newChunk.transform.localPosition = new Vector3(0, 0, GetFurthestChunkZ() + chunkLength);
         
-        if(GameManager.instance.BiomeManager.CurrentBiomeAsset.SpecificPatternRate >= Random.Range(0 , 1f)) // AAAH COMMENT ONF AIT DEJA
+      //  if(GameManager.instance.BiomeManager.CurrentBiomeAsset.SpecificPatternRate >= Random.Range(0 , 1f)) // AAAH COMMENT ONF AIT DEJA
         newChunk.InitializeChunk(generalPatterns[Random.Range(0,generalPatterns.Length)]);
+
     }
 
     private Chunk NewChunk()
