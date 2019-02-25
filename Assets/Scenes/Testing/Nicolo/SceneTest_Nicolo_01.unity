@@ -249,6 +249,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 37c44d68be0623f4eb9498502ab104cb,
         type: 2}
+    - target: {fileID: 4008566990191565692, guid: e3fbb31d7ffda0347a3a7519cec0708f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2991306090999059160, guid: e3fbb31d7ffda0347a3a7519cec0708f,
+        type: 3}
+      propertyPath: chunkManager
+      value: 
+      objectReference: {fileID: 2260593791279057385}
+    - target: {fileID: 2991306091219565687, guid: e3fbb31d7ffda0347a3a7519cec0708f,
+        type: 3}
+      propertyPath: chunkManager
+      value: 
+      objectReference: {fileID: 2260593791279057385}
+    - target: {fileID: 2991306091550601658, guid: e3fbb31d7ffda0347a3a7519cec0708f,
+        type: 3}
+      propertyPath: chunkManager
+      value: 
+      objectReference: {fileID: 2260593791279057385}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3fbb31d7ffda0347a3a7519cec0708f, type: 3}
 --- !u!1 &1699784450

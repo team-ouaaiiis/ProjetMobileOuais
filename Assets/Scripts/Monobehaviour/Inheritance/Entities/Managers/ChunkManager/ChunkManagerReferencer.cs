@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteInEditMode]
+[ExecuteAlways]
 public class ChunkManagerReferencer : MonoBehaviour
 {
     [SerializeField] private ChunkManager chunkManager;
     public static ChunkManagerReferencer instance;
+
+    public ChunkManager ChunkManager { get => chunkManager; set => chunkManager = value; }
 
     private void Update()
     {
         instance = this;
     }
 
-    public ChunkManager ChunkManager { get => chunkManager; set => chunkManager = value; }
 }

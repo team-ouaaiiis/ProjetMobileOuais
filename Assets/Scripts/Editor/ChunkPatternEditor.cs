@@ -11,7 +11,7 @@ public class ChunkPatternEditor : Editor
     [SerializeField] private ChunkPattern chunkPattern;
     [SerializeField] private SerializedProperty chunkElements;
     [SerializeField] Editor gameObjectEditor;
-    [SerializeField] Rect preview;
+    //[SerializeField] Rect preview;
 
     private void OnEnable()
     {      
@@ -56,17 +56,21 @@ public class ChunkPatternEditor : Editor
                 if (z < chunkElements.arraySize)
                 {
                     SerializedProperty property = chunkElements.GetArrayElementAtIndex(z).FindPropertyRelative("entity");
-                    
+
                     property.objectReferenceValue = EditorGUI.ObjectField(objectRect, property.objectReferenceValue, typeof(GameObject), false);
-                    
+
                     chunkPattern.ChunkElements[z].XPos = x;
                     chunkPattern.ChunkElements[z].ZPos = y;
                     
                     if (property.objectReferenceValue != null)
                     {
-                        gameObjectEditor = CreateEditor(chunkPattern.ChunkElements[z].Entity);
-                        preview = new Rect(60 + x * 120, 100 + 120 * y, 85, 80);
-                        OnPreviewGUI(preview, EditorStyles.textField);       
+                        //gameObjectEditor = CreateEditor(chunkPattern.ChunkElements[z].Entity);
+                        //Rect preview = new Rect(60 + x * 120, 100 + 120 * y, 85, 80);
+                        //OnPreviewGUI(preview, EditorStyles.whiteLabel);
+                        //Texture2D tex = AssetPreview.GetAssetPreview(property.objectReferenceValue);
+                        //if(tex != null)
+                        //EditorGUI.DrawPreviewTexture(preview, tex);
+                        //DestroyImmediate(gameObjectEditor);
                     }                   
 
                     z++;

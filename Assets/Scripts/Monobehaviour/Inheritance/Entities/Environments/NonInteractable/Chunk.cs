@@ -8,7 +8,7 @@ public class Chunk : NonInteractable
     #region Fields
 
     [Header("Chunk")]
-    private ChunkManager chunkManager;
+    public ChunkManager chunkManager;
     private ChunkPattern chunkPattern;
     private List<Entity> chunkElements = new List<Entity>();
 
@@ -19,6 +19,7 @@ public class Chunk : NonInteractable
     public override void Start()
     {
         base.Start();
+        chunkManager = ChunkManagerReferencer.instance.ChunkManager;
     }
 
     public override void OnEnable()
@@ -40,6 +41,7 @@ public class Chunk : NonInteractable
 
     private void CheckDistance()
     {
+        if(chunkManager != null)
         if (transform.position.z <= -chunkManager.ChunkLength)
         {
             DeactivateChunk();
