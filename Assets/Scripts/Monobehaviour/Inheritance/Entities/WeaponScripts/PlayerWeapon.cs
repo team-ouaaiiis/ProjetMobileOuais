@@ -8,7 +8,7 @@ public class PlayerWeapon : Interactable
     #region Fields
 
     [Space(20)]
-    public Weapon weapon;
+    public WeaponStats weapon;
 
     [Header("Weapon Movement")]
     public CurveTrajectory trajectory;

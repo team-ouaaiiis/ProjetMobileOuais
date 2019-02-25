@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using NaughtyAttributes;
 
 public class Player : Character
 {
@@ -9,6 +10,7 @@ public class Player : Character
     [Header("Player's weapon")]
     public PlayerWeapon weapon;
     InputManager inputManager;
+    PlayerWeaponsList weaponsList;
 
 
     #endregion
@@ -26,6 +28,11 @@ public class Player : Character
         inputManager = InputManager.inputManager;
         inputManager.OnSwipe += OnSwipe;
         inputManager.OnTap += OnTap;
+
+        //Get Weapon
+        weaponsList = PlayerWeaponsList.playerWeaponsList;
+        weapon = weaponsList.currentWeapon.playerWeapon;
+        weaponsList.LoadCurrentWeapon();
     }
 
     public override void Update()
@@ -46,7 +53,7 @@ public class Player : Character
     #endregion
 
     #region Inputs Methods
-
+    
     public void OnSwipe(InputManager.SwipeDirection _swipeDirection)
     {
         if (!weapon.IsThrown)
@@ -54,7 +61,7 @@ public class Player : Character
             weapon.ThrowWeapon();
         }
     }
-
+    [Button]
     public void OnTap()
     {
         if (!weapon.IsThrown)
