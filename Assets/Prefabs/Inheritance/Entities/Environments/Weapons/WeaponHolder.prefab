@@ -107,6 +107,7 @@ MonoBehaviour:
   healthPoints: 1
   weapon:
     damagePoint: 1
+    maxDamagePoints: 5
     isEquipped: 0
     isThrown: 0
     range: 2
@@ -139,12 +140,49 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   attackBoxOffset: {x: 0, y: 0, z: 0.5}
-  isAttacking: 0
+  damageEvolution:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.6
+      value: 0.15
+      inSlope: 0.6696494
+      outSlope: 0.6696494
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.23741464
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 3.8422267
+      outSlope: 3.8422267
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.08616778
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  maxThrown: 20
+  thrown: 0
+  timeBeforePowerOff: 1
   attackDelay: 0
   attackDuration: 0.35
   attackTargetLayer:
     serializedVersion: 2
     m_Bits: 512
+  currentDamage: 0
+  isAttacking: 0
   showDebugBox: 1
   attackBoxColor: {r: 1, g: 0, b: 0, a: 1}
   throwSphereColor: {r: 0, g: 0, b: 1, a: 1}

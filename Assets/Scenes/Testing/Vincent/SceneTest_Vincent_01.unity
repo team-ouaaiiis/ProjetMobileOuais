@@ -1370,6 +1370,7 @@ MonoBehaviour:
   healthPoints: 1
   weapon:
     damagePoint: 1
+    maxDamagePoints: 5
     isEquipped: 0
     isThrown: 0
     range: 2
@@ -1402,12 +1403,22 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   attackBoxOffset: {x: 0, y: 0, z: 0.5}
-  isAttacking: 0
+  damageEvolution:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  maxThrown: 20
+  thrown: 0
+  timeBeforePowerOff: 1
   attackDelay: 0
   attackDuration: 0.35
   attackTargetLayer:
     serializedVersion: 2
     m_Bits: 512
+  currentDamage: 0
+  isAttacking: 0
   showDebugBox: 1
   attackBoxColor: {r: 1, g: 0, b: 0, a: 1}
   throwSphereColor: {r: 0, g: 0, b: 1, a: 1}
@@ -2037,6 +2048,7 @@ MonoBehaviour:
   healthPoints: 1
   weapon:
     damagePoint: 1
+    maxDamagePoints: 5
     isEquipped: 0
     isThrown: 0
     range: 2
@@ -2069,12 +2081,22 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   attackBoxOffset: {x: 0, y: 0, z: 0.5}
-  isAttacking: 0
+  damageEvolution:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  maxThrown: 20
+  thrown: 0
+  timeBeforePowerOff: 1
   attackDelay: 0
   attackDuration: 0.35
   attackTargetLayer:
     serializedVersion: 2
     m_Bits: 512
+  currentDamage: 0
+  isAttacking: 0
   showDebugBox: 1
   attackBoxColor: {r: 1, g: 0, b: 0, a: 1}
   throwSphereColor: {r: 0, g: 0, b: 1, a: 1}

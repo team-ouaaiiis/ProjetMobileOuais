@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class WeaponStats
 {
-    public float damagePoint = 1;
+    public float damagePoint = 1, maxDamagePoints = 5;
     public bool isEquipped;
     public bool isThrown;
     [Header("Attack Range")]
