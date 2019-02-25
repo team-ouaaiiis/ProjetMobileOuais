@@ -56,6 +56,7 @@ public class PlayerWeapon : Interactable
     {
         base.Start();
         SetAttackBoxSize();
+        ThrowMovement(0);
     }
 
     public override void Update()

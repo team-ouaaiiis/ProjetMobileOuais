@@ -34,6 +34,7 @@ public class InputManager : Manager
 
     //Delegates
     public event Action<SwipeDirection> OnSwipe = delegate { };
+    public event Action OnTap = delegate { };
 
     public enum SwipeDirection
     {
@@ -174,6 +175,7 @@ public class InputManager : Manager
     private void Tap()
     {
         Debug.Log("TAP ON SCREEN");
+        OnTap();
     }
 
     #region Swipe functions
