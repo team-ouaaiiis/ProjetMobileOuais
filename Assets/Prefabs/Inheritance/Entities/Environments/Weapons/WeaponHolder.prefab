@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 508626387047461129}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.195, y: -0.087, z: 0.04}
+  m_LocalPosition: {x: -1.964, y: -0.087, z: 0.042}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 8406232579795901197}
@@ -109,7 +109,7 @@ MonoBehaviour:
     damagePoint: 1
     isEquipped: 0
     isThrown: 0
-    range: 1
+    range: 2
     throwRadiusRange: 0.6
   trajectory: {fileID: 7380211930189869098}
   throwTime: 0.25
@@ -138,13 +138,13 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  attackBoxOffset: {x: 0, y: 0, z: 0.76}
+  attackBoxOffset: {x: 0, y: 0, z: 0.5}
   isAttacking: 0
   attackDelay: 0
-  attackDuration: 0.2
+  attackDuration: 0.35
   attackTargetLayer:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 512
   showDebugBox: 1
   attackBoxColor: {r: 1, g: 0, b: 0, a: 1}
   throwSphereColor: {r: 0, g: 0, b: 1, a: 1}
@@ -173,7 +173,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1338235152388928084}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.942, y: 0, z: 0}
+  m_LocalPosition: {x: -2.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1954973804758824157}
@@ -216,7 +216,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1932426059752926895}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.667, y: 0, z: 0}
+  m_LocalPosition: {x: 2.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1954973804758824157}
@@ -259,7 +259,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4111171011854987705}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.719, y: 1.44, z: 0.03}
+  m_LocalPosition: {x: 2.509, y: 1.44, z: 0.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1954973804758824157}
@@ -330,10 +330,10 @@ MonoBehaviour:
   endPoint: {fileID: 8815607688553167935}
   controlPointStart: {fileID: 4055339036097444201}
   controlPointEnd: {fileID: 2921594187020339646}
-  startPosition: {x: -1.742, y: 1.06, z: -3.7}
-  startControlPosition: {x: -1.7299999, y: 1.0199999, z: -2.2599998}
-  endControlPosition: {x: 1.919, y: 1.0299999, z: -2.2599998}
-  endPosition: {x: 1.8670001, y: 1.06, z: -3.7}
+  startPosition: {x: -2.3, y: 1.06, z: -3.7}
+  startControlPosition: {x: -2.27, y: 1.0199999, z: -2.2599998}
+  endControlPosition: {x: 2.709, y: 1.0299999, z: -2.2599998}
+  endPosition: {x: 2.7, y: 1.06, z: -3.7}
 --- !u!1 &8252094850050152160
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,7 +359,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8252094850050152160}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.93, y: 1.44, z: 0.04}
+  m_LocalPosition: {x: -2.47, y: 1.44, z: 0.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1954973804758824157}

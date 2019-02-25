@@ -8,7 +8,7 @@ public class PlayerWeapon : Interactable
     #region Fields
 
     [Space(20)]
-    public Weapon weapon;
+    public WeaponStats weapon;
 
     [Header("Weapon Movement")]
     public CurveTrajectory trajectory;
@@ -56,6 +56,7 @@ public class PlayerWeapon : Interactable
     {
         base.Start();
         SetAttackBoxSize();
+        ThrowMovement(0);
     }
 
     public override void Update()
