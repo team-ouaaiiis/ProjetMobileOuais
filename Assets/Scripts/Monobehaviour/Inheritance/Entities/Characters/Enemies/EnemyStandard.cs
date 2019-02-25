@@ -7,5 +7,5 @@ public class EnemyStandard : Enemy
     public override void Attack()
     {
         base.Attack();
-    }
+    }    
 }

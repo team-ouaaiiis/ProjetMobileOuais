@@ -40,7 +40,7 @@ public class ChunkManager : Manager
     [ContextMenu("Assign")]
     private void AssignToGameManager()
     {
-        GameManager.instance.ChunkManager = this;
+
     }
 
     public void SpawnNewChunk()
