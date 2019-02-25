@@ -121,6 +121,7 @@ public class PlayerWeapon : Interactable
         currentThrowTime += Time.deltaTime;
 
         ThrowMovement(currentThrowTime / throwTime);
+        ThrowHitBox();
 
         if(currentThrowTime >= throwTime)
         {
@@ -199,6 +200,25 @@ public class PlayerWeapon : Interactable
             case ThrowDirection.Left:
                 throwDirection = ThrowDirection.Right;
                 break;
+        }
+    }
+
+    void ThrowHitBox()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position,weapon.throwRadiusRange,attackTargetLayer,QueryTriggerInteraction.Collide);
+        Debug.Log("THROW ATTACK");
+
+        if (colliders.Length > 0)
+        {
+            for (int i = 0; i < colliders.Length; i++)
+            {
+                IDamageListener damageListener = colliders[i].GetComponent<IDamageListener>();
+                if (damageListener != null)
+                {
+                    damageListener.TakeDamage(weapon.damagePoint);
+                    Debug.Log("Damaging something with throw attack");
+                }
+            }
         }
     }
 
