@@ -29,6 +29,8 @@ public class PlayerWeapon : Interactable
     [Header("Weapon Attack range")]
     [SerializeField] Vector3 attackBoxOffset;
     Vector3 attackBoxSize = Vector3.one;
+    [MinMaxSlider(0.0f,1.0f)] public Vector2 thrownHitboxActiveTime;
+    float activeTimeMin, activeTimeMax;
 
     [Header("Power accumulation")]
     public AnimationCurve damageEvolution;
@@ -59,6 +61,10 @@ public class PlayerWeapon : Interactable
     [BoxGroup("Debug Colors")]
     [SerializeField] Color throwSphereColor = Color.blue;
 
+    [ShowIf("showDebugBox")]
+    [BoxGroup("Debug Colors")]
+    [SerializeField] Color curveActiveColor = Color.red;
+
 
     #endregion
 
@@ -68,6 +74,9 @@ public class PlayerWeapon : Interactable
         SetAttackBoxSize();
         ThrowMovement(0);
         currentDamage = GetThrownDamagePower();
+
+        activeTimeMin = thrownHitboxActiveTime.x;
+        activeTimeMax = thrownHitboxActiveTime.y;
     }
 
     public override void Update()
@@ -96,6 +105,37 @@ public class PlayerWeapon : Interactable
         Gizmos.DrawSphere(transform.position, weapon.throwRadiusRange);
         Gizmos.color = new Color(throwSphereColor.r, throwSphereColor.g, throwSphereColor.b, 1);
         Gizmos.DrawWireSphere(transform.position, weapon.throwRadiusRange);
+
+        //CURVE
+        Gizmos.color = curveActiveColor;
+        float min = thrownHitboxActiveTime.x;
+        float max = thrownHitboxActiveTime.y;
+
+        //The start position of the line
+        Vector3 lastPos = trajectory.BezierCurvePoint(min);
+
+
+        //The resolution of the line
+        float resolution = 0.02f; //0.02 c'est bien, faut pas faire le fou avec cette variable
+
+
+        int loops = Mathf.FloorToInt(1f / resolution);
+
+        for (int i = 1; i <= loops; i++)
+        {
+            float t = i * resolution;
+
+            if(t < max && t > min)
+            {
+                Vector3 newPos = trajectory.BezierCurvePoint(t); //Find positions between the control points
+
+
+                Gizmos.DrawLine(lastPos, newPos); //Draw as a new segment
+
+
+                lastPos = newPos; //Save this pos pour draw the next segment
+            }
+        }
     }
 
     void SetAttackBoxSize()
@@ -144,9 +184,9 @@ public class PlayerWeapon : Interactable
         }
 
         currentThrowTime += Time.deltaTime;
-
-        ThrowMovement(currentThrowTime / throwTime);
-        ThrowHitBox();
+        float timePercent = currentThrowTime / throwTime;
+        ThrowMovement(timePercent);
+        CheckHitbox(timePercent);
 
         if (currentThrowTime >= throwTime)
         {
@@ -226,6 +266,17 @@ public class PlayerWeapon : Interactable
             case ThrowDirection.Left:
                 throwDirection = ThrowDirection.Right;
                 break;
+        }
+    }
+
+    void CheckHitbox(float _timePercent)
+    {
+        float percent = speedEvolution.Evaluate(_timePercent);
+
+        if (percent > activeTimeMin && percent < activeTimeMax)
+        {
+            Debug.Log("ACTIVE");
+            ThrowHitBox();
         }
     }
 

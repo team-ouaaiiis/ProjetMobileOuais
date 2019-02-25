@@ -38,6 +38,7 @@ public class PlayerWeaponsList : Manager
         for (int i = 0; i < weapons.Length; i++)
         {
             GameObject weapon = Instantiate(weapons[i].weaponPrefab, this.transform);
+            weapon.transform.localPosition = Vector3.zero;
             playerWeaponInstances.Add(weapon);
             weapons[i].instance = weapon;
             weapons[i].GetPlayerWeaponInstance();
