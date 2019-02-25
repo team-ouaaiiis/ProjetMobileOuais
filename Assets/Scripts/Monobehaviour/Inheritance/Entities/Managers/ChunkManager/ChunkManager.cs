@@ -9,16 +9,16 @@ public class ChunkManager : Manager
     [Header("Dimensions")]
     [SerializeField] [Range(0,8)] private int rows = 5;
     [SerializeField] [Range(0,5)] private int columns = 3;
+    [SerializeField] private float chunkLength = 20f;
+    [SerializeField] private float chunkWidth = 5f;
 
     [Header("Components")]
     [SerializeField] private List<Chunk> chunkPool = new List<Chunk>();
-    [SerializeField] private ChunkPattern[] chunkPatterns;
+    [SerializeField] private ChunkPattern[] generalPatterns;
     [SerializeField] private ChunkEventsPool chunkEventsPool;
 
     [Header("Parameters")]    
     [SerializeField] private float scrollSpeed = 5f;
-    [SerializeField] private float chunkLength = 20f;
-    [SerializeField] private float chunkWidth = 5f;
 
     #endregion
 
@@ -37,9 +37,9 @@ public class ChunkManager : Manager
     public override void Start()
     {
         base.Start();
-        for (int i = 0; i < chunkPatterns.Length; i++)
+        for (int i = 0; i < generalPatterns.Length; i++)
         {
-            chunkPatterns[i].Initialize();
+            generalPatterns[i].Initialize();
         }
     }
 
@@ -50,7 +50,9 @@ public class ChunkManager : Manager
         Chunk newChunk = NewChunk();
         newChunk.gameObject.SetActive(true);
         newChunk.transform.localPosition = new Vector3(0, 0, GetFurthestChunkZ() + chunkLength);
-        newChunk.InitializeChunk(chunkPatterns[Random.Range(0,chunkPatterns.Length)]);
+        
+        if(GameManager.instance.BiomeManager.CurrentBiomeAsset.SpecificPatternRate >= Random.Range(0 , 1f)) // AAAH COMMENT ONF AIT DEJA
+        newChunk.InitializeChunk(generalPatterns[Random.Range(0,generalPatterns.Length)]);
     }
 
     private Chunk NewChunk()

@@ -7,7 +7,7 @@ public class Entity : MonoBehaviour, IDamageListener
     #region Fields
 
     [Header("Health")]
-    [SerializeField] private float healthPoints = 1;
+    private float healthPoints = 1;
     private bool isDead = false;
 
     private Transform holder;
