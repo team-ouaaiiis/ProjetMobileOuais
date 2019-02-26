@@ -30,8 +30,7 @@ public class ChunkPattern : ScriptableObject
 
     [SerializeField] private ChunkDifficulty chunkDifficulty;
     [SerializeField] private List<ChunkElement> chunkElements = new List<ChunkElement>();
-    [SerializeField] private bool isSaved = false;
-    [SerializeField] private List<ChunkElement> chunkElementsSave = new List<ChunkElement>();
+    [SerializeField] private List<ChunkElement> elemSave = new List<ChunkElement>(40);
 
     #endregion
 
@@ -48,25 +47,47 @@ public class ChunkPattern : ScriptableObject
 
     public void ChangeSize(int size)
     {
+        Debug.Log("Changed Size");
+        if(chunkElements.Count > 0)
+        {
+            for (int i = 0; i < chunkElements.Count; i++)
+            {
+                elemSave[i].Go = chunkElements[i].Go;
+            }
+        }
+
         chunkElements.Clear();
+
         for (int i = 0; i < size; i++)
         {
-            chunkElements.Add(chunkElementsSave[i]);
+            chunkElements.Add(new ChunkElement());
+        }
+
+        for (int i = 0; i < chunkElements.Count; i++)
+        {
+            chunkElements[i].Go = elemSave[i].Go;
+        }
+    }    
+
+    public void CheckElemSaveSize()
+    {
+        if(elemSave.Count != 40)
+        {
+            Debug.Log("Resized Save");
+            elemSave.Clear();
+            for (int i = 0; i < 40; i++)
+            {
+                elemSave.Add(new ChunkElement());
+            }
         }
     }
 
-    public void Save()
+    public void Clear()
     {
-        chunkElementsSave = chunkElements;
-        isSaved = true;
-        Debug.Log("Saved Pattern");
-    }
-
-    public void CheckIfSave()
-    {
-        if(chunkElementsSave != chunkElements && isSaved)
+        for (int i = 0; i < elemSave.Count; i++)
         {
-            isSaved = false;
+            chunkElements[i] = null;
+            elemSave[i] = null;
         }
     }
 
@@ -74,8 +95,6 @@ public class ChunkPattern : ScriptableObject
 
     public ChunkDifficulty ChunkDifficulty { get => chunkDifficulty; set => chunkDifficulty = value; }
     public List<ChunkElement> ChunkElements { get => chunkElements; set => chunkElements = value; }
-    public bool IsSaved { get => isSaved; set => isSaved = value; }
-    public List<ChunkElement> ChunkElementsSave { get => chunkElementsSave; set => chunkElementsSave = value; }
 
     #endregion
 }

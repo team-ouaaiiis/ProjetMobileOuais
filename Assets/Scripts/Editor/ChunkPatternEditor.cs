@@ -29,25 +29,12 @@ public class ChunkPatternEditor : Editor
         GetTarget.Update();
         DrawRects();
         Space(105);
-        chunkPattern.CheckIfSave();
-        if (!chunkPattern.IsSaved)
-        {
-            if (GUILayout.Button("Save"))
-            {
-                chunkPattern.Save();
-            }
-        }
-
-        else
-        {
-            EditorGUILayout.LabelField("The Chunk Pattern is Saved.");            
-        }
-
-        Space(2);
+        
         if (GUILayout.Button("Clear All"))
         {
-            chunkElements.ClearArray();
+            chunkPattern.Clear();
         }
+        chunkPattern.CheckElemSaveSize();
 
         GetTarget.ApplyModifiedProperties();
     }
@@ -60,11 +47,11 @@ public class ChunkPatternEditor : Editor
         }
 
         int z = 0;
-        for (int x = 0; x < ChunkManagerReferencer.instance.ChunkManager.Columns; x++)
+        for (int x = 0; x < ChunkManagerReferencer.instance.ChunkManager.Rows; x++)
         {
-            for (int y = 0; y < ChunkManagerReferencer.instance.ChunkManager.Rows; y++)
+            for (int y = 0; y < ChunkManagerReferencer.instance.ChunkManager.Columns; y++)
             {
-                var objectRect = new Rect(60 + x * 120, 100 + 120 * y, 100, 80);
+                var objectRect = new Rect(50 + y * 120, 550 - 120 * x, 100, 80);
                 if (z < chunkElements.arraySize)
                 {
                     SerializedProperty property = chunkElements.GetArrayElementAtIndex(z).FindPropertyRelative("go");   //Accessing the GameObject property of the chunk Elements
@@ -79,7 +66,7 @@ public class ChunkPatternEditor : Editor
                         GUIStyle bgColor = new GUIStyle();
                         bgColor.normal.background = EditorGUIUtility.whiteTexture;
                         Editor newGameObjectEditor = CreateEditor(GO);
-                        Rect preview = new Rect(60 + x * 120, 100 + 120 * y, 85, 80);
+                        Rect preview = new Rect(50 + y * 120, 550 - 120 * x, 85, 80);
                         newGameObjectEditor.OnPreviewGUI(preview, bgColor);
 
                         //Dont forget to Destroy the new Editor to avoid leaks
