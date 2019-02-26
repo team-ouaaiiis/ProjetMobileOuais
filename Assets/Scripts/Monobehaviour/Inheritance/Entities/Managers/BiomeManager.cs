@@ -6,31 +6,44 @@ using NaughtyAttributes;
 public class BiomeManager : Manager
 {
     [SerializeField] private List<BiomeAsset> biomes = new List<BiomeAsset>();
-
-    [Dropdown("biomeNames")]
-    [SerializeField] private string currentBiome;
+    
+    [SerializeField] private int currentBiome;
 
     private BiomeAsset currentBiomeAsset;
-    private List<string> biomeNames = new List<string>();
 
     public override void Awake()
     {
         GameManager.instance.BiomeManager = this;
     }
 
-    [Button]
-    private void Apply()
-    {        
-        biomeNames.Clear();
-        for (int i = 0; i < biomes.Count; i++)
+    public override void Start()
+    {
+        base.Start();        
+    }
+
+    [Button("Initialize Patterns")]
+    public void InitializePatterns()
+    {
+        Debug.Log("Initialized Patterns.");
+        for (int x = 0; x < biomes.Count; x++)
         {
-            biomeNames.Add(biomes[i].name);
+            for (int i = 0; i < biomes[x].BiomeSpecificPatterns.Length; i++)
+            {
+                biomes[x].BiomeSpecificPatterns[i].Initialize();
+            }
         }
+
+        ChunkManagerReferencer.instance.ChunkManager.InitializePatterns();
+    }
+
+    public override void Update()
+    {
+        CurrentBiomeUpdate();
     }
 
     public void CurrentBiomeUpdate()
     {
-        CurrentBiomeAsset = biomes[biomeNames.IndexOf(currentBiome)];
+        CurrentBiomeAsset = biomes[currentBiome];
     }
 
     #region Properties

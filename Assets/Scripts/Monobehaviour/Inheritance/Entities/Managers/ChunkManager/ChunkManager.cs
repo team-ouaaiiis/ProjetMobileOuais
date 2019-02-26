@@ -5,6 +5,8 @@ using UnityEngine;
 public class ChunkManager : Manager
 {
     #region Fields 
+    [Header("Patterns")]
+    [SerializeField] private ChunkPattern[] generalPatterns;
 
     [Header("Dimensions")]
     [SerializeField] [Range(0,8)] private int rows = 5;
@@ -14,7 +16,6 @@ public class ChunkManager : Manager
 
     [Header("Components")]
     [SerializeField] private List<Chunk> chunkPool = new List<Chunk>();
-    [SerializeField] private ChunkPattern[] generalPatterns;
     [SerializeField] private ChunkEventsPool chunkEventsPool;
 
     [Header("Parameters")]    
@@ -37,13 +38,17 @@ public class ChunkManager : Manager
     public override void Start()
     {
         base.Start();
-        for (int i = 0; i < generalPatterns.Length; i++)
-        {
-            generalPatterns[i].Initialize();
-        }
     }
 
     #endregion
+
+    public void InitializePatterns()
+    {
+        for (int i = 0; i < generalPatterns.Length; i++)
+        {
+            generalPatterns[i].Initialize();
+        }        
+    }
 
     public void SpawnNewChunk()
     {
@@ -51,8 +56,17 @@ public class ChunkManager : Manager
         newChunk.gameObject.SetActive(true);
         newChunk.transform.localPosition = new Vector3(0, 0, GetFurthestChunkZ() + chunkLength);
         
-      //  if(GameManager.instance.BiomeManager.CurrentBiomeAsset.SpecificPatternRate >= Random.Range(0 , 1f)) // AAAH COMMENT ONF AIT DEJA
-        newChunk.InitializeChunk(generalPatterns[Random.Range(0,generalPatterns.Length)]);
+        if(GameManager.instance.BiomeManager.CurrentBiomeAsset.SpecificPatternRate < Random.Range(0 , 1f)) //Chaque Biome possède des Chunks Patterns spécifiques, ainsi qu'une probabilité d'utiliser l'un de ces chunks patterns (entre 0 et 1)
+        {
+            Debug.Log("Spawning General Chunk");
+            newChunk.InitializeChunk(generalPatterns[Random.Range(0, generalPatterns.Length)]); //Si la variable est inférieure à un float random entre 0 et 1f, on choisit un pattern "Général".
+        }
+
+        else
+        {
+            Debug.Log("Spawning Biome Chunk");
+            newChunk.InitializeChunk(GameManager.instance.BiomeManager.CurrentBiomeAsset.BiomeSpecificPatterns[Random.Range(0, GameManager.instance.BiomeManager.CurrentBiomeAsset.BiomeSpecificPatterns.Length)]);
+        } //Sinon, on prend un des patterns spécifique au Biome.
 
     }
 

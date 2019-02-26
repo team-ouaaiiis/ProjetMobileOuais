@@ -8,7 +8,7 @@ public class Chunk : NonInteractable
     #region Fields
 
     [Header("Chunk")]
-    public ChunkManager chunkManager;
+    [HideInInspector] public ChunkManager chunkManager;
     private ChunkPattern chunkPattern;
     private List<Entity> chunkElements = new List<Entity>();
 
@@ -24,8 +24,6 @@ public class Chunk : NonInteractable
         {
             Debug.Log("C LA MERD");
         }
-
-        chunkManager = ChunkManagerReferencer.instance.ChunkManager;
     }
 
     public override void OnEnable()

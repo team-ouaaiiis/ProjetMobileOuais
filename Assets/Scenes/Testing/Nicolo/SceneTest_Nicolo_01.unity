@@ -161,53 +161,6 @@ MonoBehaviour:
   shadowColor: {r: 0.14818439, g: 0.15088776, b: 0.16981131, a: 1}
   lightIntensity: 0.1
   shadowStrength: 0.2
---- !u!1 &600684570
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 600684571}
-  - component: {fileID: 600684572}
-  m_Layer: 0
-  m_Name: BiomeManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &600684571
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 600684570}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &600684572
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 600684570}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd01f76f1846e52458eb81d96f10b79e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  biomes:
-  - {fileID: 11400000, guid: c377df8bb66a06d47a3be0f559d281d4, type: 2}
-  - {fileID: 11400000, guid: 31cee6f96e489844bad848b273d3e2c9, type: 2}
-  currentBiome: Biome_Jungle
 --- !u!1001 &1622585331
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -275,6 +228,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2260593791279057385, guid: e3fbb31d7ffda0347a3a7519cec0708f,
+        type: 3}
+      propertyPath: generalPatterns.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2260593791279057385, guid: e3fbb31d7ffda0347a3a7519cec0708f,
+        type: 3}
+      propertyPath: generalPatterns.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 43102d0840062a14ebf54e1819d608df,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3fbb31d7ffda0347a3a7519cec0708f, type: 3}
 --- !u!1 &1699784450
@@ -445,3 +409,83 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855d1b71f46a9874e846b20cccf9031c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &5618098176122223675
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5618098175614469153, guid: 6f80aea6ff791364dbe7bf18114a596e,
+        type: 3}
+      propertyPath: m_Name
+      value: BiomeManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5618098175614469152, guid: 6f80aea6ff791364dbe7bf18114a596e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5618098175614469152, guid: 6f80aea6ff791364dbe7bf18114a596e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5618098175614469152, guid: 6f80aea6ff791364dbe7bf18114a596e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5618098175614469152, guid: 6f80aea6ff791364dbe7bf18114a596e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5618098175614469152, guid: 6f80aea6ff791364dbe7bf18114a596e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5618098175614469152, guid: 6f80aea6ff791364dbe7bf18114a596e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5618098175614469152, guid: 6f80aea6ff791364dbe7bf18114a596e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5618098175614469152, guid: 6f80aea6ff791364dbe7bf18114a596e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5618098175614469152, guid: 6f80aea6ff791364dbe7bf18114a596e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5618098175614469152, guid: 6f80aea6ff791364dbe7bf18114a596e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5618098175614469152, guid: 6f80aea6ff791364dbe7bf18114a596e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5618098175614469159, guid: 6f80aea6ff791364dbe7bf18114a596e,
+        type: 3}
+      propertyPath: biomes.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5618098175614469159, guid: 6f80aea6ff791364dbe7bf18114a596e,
+        type: 3}
+      propertyPath: biomes.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 31cee6f96e489844bad848b273d3e2c9,
+        type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f80aea6ff791364dbe7bf18114a596e, type: 3}
