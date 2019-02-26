@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855d1b71f46a9874e846b20cccf9031c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  generalPatterns:
+  - {fileID: 11400000, guid: 075798b969da87549a4199c4e6ff6de8, type: 2}
+  - {fileID: 11400000, guid: 43102d0840062a14ebf54e1819d608df, type: 2}
   rows: 5
   columns: 3
   chunkLength: 20
@@ -25,8 +28,6 @@ MonoBehaviour:
   - {fileID: 2991306090999059160}
   - {fileID: 2991306091219565687}
   - {fileID: 2991306091550601658}
-  generalPatterns:
-  - {fileID: 11400000, guid: 075798b969da87549a4199c4e6ff6de8, type: 2}
   chunkEventsPool: {fileID: 4738416770414014947}
   scrollSpeed: 10
 --- !u!114 &4008566990191565692
@@ -2859,6 +2860,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3919007408676732524, guid: ddf36c1bd20622142873cf2d61afbf14,
+        type: 3}
+      propertyPath: m_Name
+      value: ChunkManager
+      objectReference: {fileID: 0}
     - target: {fileID: 3919007408676732527, guid: ddf36c1bd20622142873cf2d61afbf14,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2913,11 +2919,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3919007408676732524, guid: ddf36c1bd20622142873cf2d61afbf14,
-        type: 3}
-      propertyPath: m_Name
-      value: ChunkManager
       objectReference: {fileID: 0}
     - target: {fileID: 378484868360446341, guid: ddf36c1bd20622142873cf2d61afbf14,
         type: 3}

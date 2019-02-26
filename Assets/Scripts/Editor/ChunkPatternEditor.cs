@@ -12,7 +12,7 @@ public class ChunkPatternEditor : Editor
     [SerializeField] private SerializedProperty chunkElements;
 
     private void OnEnable()
-    {      
+    {
         chunkPattern = (ChunkPattern)target;
         GetTarget = new SerializedObject(chunkPattern);
         AssignProperties();
@@ -28,7 +28,22 @@ public class ChunkPatternEditor : Editor
         EditorGUI.BeginChangeCheck();
         GetTarget.Update();
         DrawRects();
-        Space(110);
+        Space(105);
+        chunkPattern.CheckIfSave();
+        if (!chunkPattern.IsSaved)
+        {
+            if (GUILayout.Button("Save"))
+            {
+                chunkPattern.Save();
+            }
+        }
+
+        else
+        {
+            EditorGUILayout.LabelField("The Chunk Pattern is Saved.");            
+        }
+
+        Space(2);
         if (GUILayout.Button("Clear All"))
         {
             chunkElements.ClearArray();
@@ -39,7 +54,7 @@ public class ChunkPatternEditor : Editor
 
     private void DrawRects()
     {
-        if(chunkPattern.ChunkElements.Count != ChunkManagerReferencer.instance.ChunkManager.Columns * ChunkManagerReferencer.instance.ChunkManager.Rows)
+        if (chunkPattern.ChunkElements.Count != ChunkManagerReferencer.instance.ChunkManager.Columns * ChunkManagerReferencer.instance.ChunkManager.Rows)
         {
             chunkPattern.ChangeSize(ChunkManagerReferencer.instance.ChunkManager.Columns * ChunkManagerReferencer.instance.ChunkManager.Rows);
         }
@@ -56,7 +71,7 @@ public class ChunkPatternEditor : Editor
                     property.objectReferenceValue = EditorGUI.ObjectField(objectRect, property.objectReferenceValue, typeof(GameObject), false);  //Creating an object field to assign it in the inspector
                     GameObject GO = (GameObject)property.objectReferenceValue;  //Casting the property as a GameObject.
                     chunkPattern.ChunkElements[z].XPos = x;
-                    chunkPattern.ChunkElements[z].ZPos = y;                  
+                    chunkPattern.ChunkElements[z].ZPos = y;
 
                     if (GO != null)
                     {
@@ -69,11 +84,11 @@ public class ChunkPatternEditor : Editor
 
                         //Dont forget to Destroy the new Editor to avoid leaks
                         DestroyImmediate(newGameObjectEditor);
-                    }                   
+                    }
 
                     z++;
                 }
-                    
+
             }
         }
     }

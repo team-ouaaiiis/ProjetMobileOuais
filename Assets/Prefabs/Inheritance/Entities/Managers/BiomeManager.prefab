@@ -46,4 +46,4 @@ MonoBehaviour:
   biomes:
   - {fileID: 11400000, guid: c377df8bb66a06d47a3be0f559d281d4, type: 2}
   - {fileID: 11400000, guid: 31cee6f96e489844bad848b273d3e2c9, type: 2}
-  currentBiome: Biome_Jungle
+  currentBiome: 0

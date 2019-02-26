@@ -16,7 +16,7 @@ public class ChunkElement
     [SerializeField] private GameObject go;
     [SerializeField] private int xPos;
     [SerializeField] private int zPos;
-    
+
     public Entity Entity { get => entity; set => entity = value; }
     public int XPos { get => xPos; set => xPos = value; }
     public int ZPos { get => zPos; set => zPos = value; }
@@ -30,9 +30,10 @@ public class ChunkPattern : ScriptableObject
 
     [SerializeField] private ChunkDifficulty chunkDifficulty;
     [SerializeField] private List<ChunkElement> chunkElements = new List<ChunkElement>();
+    [SerializeField] private bool isSaved = false;
+    [SerializeField] private List<ChunkElement> chunkElementsSave = new List<ChunkElement>();
 
-    #endregion    
-    
+    #endregion
 
     public void Initialize()
     {
@@ -41,7 +42,7 @@ public class ChunkPattern : ScriptableObject
             if (chunkElements[i].Go != null)
             {
                 chunkElements[i].Entity = chunkElements[i].Go.GetComponent<Entity>();
-            }            
+            }
         }
     }
 
@@ -50,7 +51,22 @@ public class ChunkPattern : ScriptableObject
         chunkElements.Clear();
         for (int i = 0; i < size; i++)
         {
-            chunkElements.Add(new ChunkElement());
+            chunkElements.Add(chunkElementsSave[i]);
+        }
+    }
+
+    public void Save()
+    {
+        chunkElementsSave = chunkElements;
+        isSaved = true;
+        Debug.Log("Saved Pattern");
+    }
+
+    public void CheckIfSave()
+    {
+        if(chunkElementsSave != chunkElements && isSaved)
+        {
+            isSaved = false;
         }
     }
 
@@ -58,6 +74,8 @@ public class ChunkPattern : ScriptableObject
 
     public ChunkDifficulty ChunkDifficulty { get => chunkDifficulty; set => chunkDifficulty = value; }
     public List<ChunkElement> ChunkElements { get => chunkElements; set => chunkElements = value; }
+    public bool IsSaved { get => isSaved; set => isSaved = value; }
+    public List<ChunkElement> ChunkElementsSave { get => chunkElementsSave; set => chunkElementsSave = value; }
 
     #endregion
 }
