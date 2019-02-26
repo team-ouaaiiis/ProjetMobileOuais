@@ -10,7 +10,12 @@ PrefabInstance:
     - target: {fileID: 747874032103184923, guid: 07e66bc0f7197da47baf8feb96009019,
         type: 3}
       propertyPath: m_Name
-      value: Interactable
+      value: Obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 747874032103184923, guid: 07e66bc0f7197da47baf8feb96009019,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 747874032103184920, guid: 07e66bc0f7197da47baf8feb96009019,
         type: 3}

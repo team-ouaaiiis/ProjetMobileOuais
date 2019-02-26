@@ -4,5 +4,21 @@ using UnityEngine;
 
 public class ObstacleTest : Obstacle
 {
-    
+    public override void TakeDamage(float dmg)
+    {
+        base.TakeDamage(dmg);
+
+        if(HealthPoints >= 0)
+        {
+            Player.playerInstance.weapon.SwitchDirection();
+            Debug.Log("Switch Direction");
+        }
+        
+    }
+
+    public override void OnEnable()
+    {
+        base.OnEnable();
+        HealthPoints = 1; //reset health
+    }
 }

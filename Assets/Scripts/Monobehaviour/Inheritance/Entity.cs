@@ -80,7 +80,7 @@ public class Entity : MonoBehaviour, IDamageListener
 
     #region Properties
 
-    public float HealthPoints { get => healthPoints; }
+    public float HealthPoints { get => healthPoints; set => healthPoints = value; }
     public Transform Holder { get => holder; set => holder = value; }
 
     #endregion

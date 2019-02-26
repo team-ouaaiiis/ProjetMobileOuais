@@ -256,7 +256,7 @@ public class PlayerWeapon : Interactable
         transform.position = trajectory.BezierCurvePoint(posT);
     }
 
-    void SwitchDirection()
+    public void SwitchDirection()
     {
         switch (throwDirection)
         {
