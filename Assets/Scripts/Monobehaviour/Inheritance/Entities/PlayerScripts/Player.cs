@@ -8,7 +8,7 @@ public class Player : Character
     #region Fields
 
     [Header("Player's weapon")]
-    public PlayerWeapon weapon;
+    [ReadOnly] public PlayerWeapon weapon;
     InputManager inputManager;
     PlayerWeaponsList weaponsList;
 
@@ -70,13 +70,19 @@ public class Player : Character
         }
     }
 
-    [Button]
+    [Button("Tap")]
     public void OnTap()
     {
         if (!weapon.IsThrown)
         {
             weapon.StartAttack();
         }
+    }
+
+    [Button("Swipe")]
+    void SwipeDebug()
+    {
+        OnSwipe(InputManager.SwipeDirection.Right);
     }
 
     #endregion
