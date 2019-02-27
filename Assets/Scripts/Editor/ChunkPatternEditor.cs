@@ -61,8 +61,8 @@ public class ChunkPatternEditor : Editor
                     if(property.objectReferenceValue != null)
                     {
                         GameObject GO = (GameObject)property.objectReferenceValue;  //Casting the property as a GameObject.
-                        chunkPattern.ChunkElements[z].XPos = x;
-                        chunkPattern.ChunkElements[z].ZPos = y;
+                        chunkPattern.ChunkElements[z].XPos = y;
+                        chunkPattern.ChunkElements[z].ZPos = x;
 
                         if (GO != null)
                         {
