@@ -84,7 +84,7 @@ public class ChunkPattern : ScriptableObject
 
     public void Clear()
     {
-        for (int i = 0; i < elemSave.Count; i++)
+        for (int i = 0; i < chunkElements.Count; i++)
         {
             chunkElements[i] = null;
             elemSave[i] = null;

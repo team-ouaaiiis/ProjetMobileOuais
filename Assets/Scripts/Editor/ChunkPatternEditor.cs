@@ -32,8 +32,10 @@ public class ChunkPatternEditor : Editor
         
         if (GUILayout.Button("Clear All"))
         {
+            Undo.RecordObject(chunkPattern, "Clear");
             chunkPattern.Clear();
         }
+
         chunkPattern.CheckElemSaveSize();
 
         GetTarget.ApplyModifiedProperties();
@@ -56,26 +58,28 @@ public class ChunkPatternEditor : Editor
                 {
                     SerializedProperty property = chunkElements.GetArrayElementAtIndex(z).FindPropertyRelative("go");   //Accessing the GameObject property of the chunk Elements
                     property.objectReferenceValue = EditorGUI.ObjectField(objectRect, property.objectReferenceValue, typeof(GameObject), false);  //Creating an object field to assign it in the inspector
-                    GameObject GO = (GameObject)property.objectReferenceValue;  //Casting the property as a GameObject.
-                    chunkPattern.ChunkElements[z].XPos = x;
-                    chunkPattern.ChunkElements[z].ZPos = y;
-
-                    if (GO != null)
+                    if(property.objectReferenceValue != null)
                     {
-                        //Drawing the Preview of the chosen GameObject
-                        GUIStyle bgColor = new GUIStyle();
-                        bgColor.normal.background = EditorGUIUtility.whiteTexture;
-                        Editor newGameObjectEditor = CreateEditor(GO);
-                        Rect preview = new Rect(50 + y * 120, 550 - 120 * x, 85, 80);
-                        newGameObjectEditor.OnPreviewGUI(preview, bgColor);
+                        GameObject GO = (GameObject)property.objectReferenceValue;  //Casting the property as a GameObject.
+                        chunkPattern.ChunkElements[z].XPos = x;
+                        chunkPattern.ChunkElements[z].ZPos = y;
 
-                        //Dont forget to Destroy the new Editor to avoid leaks
-                        DestroyImmediate(newGameObjectEditor);
-                    }
+                        if (GO != null)
+                        {
+                            //Drawing the Preview of the chosen GameObject
+                            GUIStyle bgColor = new GUIStyle();
+                            bgColor.normal.background = EditorGUIUtility.whiteTexture;
+                            Editor newGameObjectEditor = CreateEditor(GO);
+                            Rect preview = new Rect(50 + y * 120, 550 - 120 * x, 85, 80);
+                            newGameObjectEditor.OnPreviewGUI(preview, bgColor);
 
+                            //Dont forget to Destroy the new Editor to avoid leaks
+                            DestroyImmediate(newGameObjectEditor);
+                        }
+
+                    }                    
                     z++;
                 }
-
             }
         }
     }
