@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Map_Shaded
+  m_Shader: {fileID: 4800000, guid: 0af6da5ba49acba44aff0ccca8a4a776, type: 3}
+  m_ShaderKeywords: BOOLEAN_FB4E52AF_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_254BD0E7:
+        m_Texture: {fileID: 2800000, guid: 8db45aa31704f0c43b485b6d06dfa244, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_5E4854F0:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalFromTexture_143263C8_Texture:
+        m_Texture: {fileID: 8400000, guid: 5c0a1040efbfc56498e72afb3279f348, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2DLOD_9593DA26_Texture:
+        m_Texture: {fileID: 2800000, guid: 31c2301ccba737647a18a58a297d2542, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Tex:
+        m_Texture: {fileID: 2800000, guid: c523c7e85d40af74780c5ccf12e32be8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TreeTex:
+        m_Texture: {fileID: 2800000, guid: d578cb9c6d9a1c84c88e4b7391e50d3e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Boolean_D40E795B: 0
+    - Boolean_FB4E52AF: 1
+    - Vector1_1162946E: -0.02
+    - Vector1_179085B0: 0.005
+    - Vector1_5933F0A4: 0.14
+    - Vector1_A17C5EB5: 0.012
+    - Vector1_A6B69E80: 1.22
+    - Vector1_B38734A1: -0.27
+    m_Colors:
+    - Color_F2D8B33D: {r: 0.8018868, g: 0.7224546, b: 0.7224546, a: 0}
+    - Color_F9E39F2B: {r: 0.6981132, g: 0.68823427, b: 0.68956923, a: 0}
+    - Vector2_20CF90FF: {r: 0.1, g: 2.86, b: 0, a: 0}
+    - Vector3_BB98711F: {r: 50, g: 50, b: 50, a: 0}
+    - Vector4_49CFE1: {r: 0.01, g: 0.24, b: 0, a: 0}
+    - Vector4_A18EDF04: {r: -22.83, g: 0.005, b: 0, a: 0}
