@@ -14,6 +14,8 @@ public class Player : Character
 
     [Header("Player's power")]
     public PlayerPower power;
+    PlayerPowerList powerList;
+
 
     public static Player playerInstance;
 
@@ -40,6 +42,9 @@ public class Player : Character
         weapon = weaponsList.currentWeapon.playerWeapon;
 
         //Get Power
+        powerList = PlayerPowerList.powerListInstance;
+        power = powerList.GetCurrentPower();
+
         if(power != null)
         {
             power.ActivatePower();
