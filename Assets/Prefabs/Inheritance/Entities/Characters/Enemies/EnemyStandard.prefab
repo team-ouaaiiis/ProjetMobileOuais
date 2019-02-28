@@ -26,12 +26,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 000599dcf70802640b87f2645abcda6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthPoints: 1
   attackRange: 1
   hitboxSize: {x: 0.85, y: 2, z: 0.85}
   hitboxOffset: {x: 0, y: 1, z: 0}
   playerTargetLayer:
     serializedVersion: 2
     m_Bits: 1024
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  hitBackDistance: 3
+  movementCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  movementTime: 0.25
+  onDamageMovement: 0
   hitboxColor: {r: 1, g: 0.050477855, b: 0, a: 1}
 --- !u!1001 &6567305019181555363
 PrefabInstance:
@@ -53,17 +84,17 @@ PrefabInstance:
     - target: {fileID: 224692342214357213, guid: 2735dd363c3237a47901310d692b9ecb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.77
+      value: -2.48
       objectReference: {fileID: 0}
     - target: {fileID: 224692342214357213, guid: 2735dd363c3237a47901310d692b9ecb,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.386054e-19
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224692342214357213, guid: 2735dd363c3237a47901310d692b9ecb,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.51
+      value: -1.81
       objectReference: {fileID: 0}
     - target: {fileID: 224692342214357213, guid: 2735dd363c3237a47901310d692b9ecb,
         type: 3}
