@@ -170,7 +170,8 @@ public class PlayerWeapon : Interactable
     {
         if (!IsThrown)
         {
-            if(thrown > 0)
+
+            if (thrown > 0)
             {
                 powerDecreaseTimer += Time.deltaTime;
 
@@ -183,6 +184,22 @@ public class PlayerWeapon : Interactable
             return;
         }
 
+        if (weapon.reverse)
+        {
+            currentThrowTime -= Time.deltaTime;
+            float percent = currentThrowTime / throwTime;
+            ThrowMovement(percent);
+
+            if (currentThrowTime <= 0)
+            {
+                EndThrow();
+                weapon.reverse = false;
+                SwitchDirection();
+            }
+
+            return;
+        }
+
         currentThrowTime += Time.deltaTime;
         float timePercent = currentThrowTime / throwTime;
         ThrowMovement(timePercent);
@@ -190,11 +207,15 @@ public class PlayerWeapon : Interactable
 
         if (currentThrowTime >= throwTime)
         {
-            //end throw
-            IsThrown = false;
-            currentThrowTime = 0; //reset timer
-            SwitchDirection();
+            EndThrow();
         }
+    }
+
+    private void EndThrow()
+    {
+        IsThrown = false;
+        currentThrowTime = 0; //reset timer
+        SwitchDirection();
     }
 
     /// <summary>
@@ -244,9 +265,7 @@ public class PlayerWeapon : Interactable
 
     void ThrowMovement(float _timePercent)
     {
-        float posT = 0;
-
-        posT = speedEvolution.Evaluate(_timePercent);
+        float posT = speedEvolution.Evaluate(_timePercent);
 
         if (throwDirection == ThrowDirection.Left)
         {
@@ -256,7 +275,7 @@ public class PlayerWeapon : Interactable
         transform.position = trajectory.BezierCurvePoint(posT);
     }
 
-    public void SwitchDirection()
+    void SwitchDirection()
     {
         switch (throwDirection)
         {
@@ -322,6 +341,17 @@ public class PlayerWeapon : Interactable
         return power;
     }
 
+    public void HitObstacle()
+    {
+        if(weapon.reverseMovement) weapon.reverse = true;
+
+        if(weapon.cancelPower)
+        {
+            ResetThrownNumber();
+            UpdateDamage();
+        }
+    }
+
     #endregion
 
     #region Attack functions
@@ -335,11 +365,16 @@ public class PlayerWeapon : Interactable
             return;
         }
 
-        currentDamage = GetThrownDamagePower();
+        UpdateDamage();
         attack = Attacking();
         StartCoroutine(attack);
         isAttacking = true;
         ResetThrownNumber();
+    }
+
+    private void UpdateDamage()
+    {
+        currentDamage = GetThrownDamagePower();
     }
 
     public void CancelAttack()

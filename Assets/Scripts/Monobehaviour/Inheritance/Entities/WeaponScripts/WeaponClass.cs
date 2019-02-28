@@ -13,6 +13,12 @@ public class WeaponStats
     [Header("States")]
     public bool isEquipped;
     public bool isThrown;
+    [HideInInspector]
+    public bool reverse;
+
+    [Header("Hit obstacle behaviour")]
+    public bool reverseMovement;
+    public bool cancelPower;
 
     [Header("Attack Range")]
     public float range = 1;
