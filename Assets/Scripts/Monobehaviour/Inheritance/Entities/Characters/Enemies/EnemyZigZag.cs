@@ -20,6 +20,7 @@ public class EnemyZigZag : Enemy
     [Header("ZigZag Movement")]
     public Side currentSide;
     public float lineChangeFrequency = 0.5f;
+    [Range(0.0f,1.0f)]
     public float lineChangeChance = 0.5f;
     float tick;
     [SerializeField] float smoothTime = 0.25f;
@@ -75,7 +76,7 @@ public class EnemyZigZag : Enemy
                 break;
             default:
                 currentSide = Side.Middle;
-                Debug.LogError("Incorrect position for " + gameObject.name);
+                Debug.LogError("Incorrect position for " + gameObject.name + ", position =  " + transform.localPosition.x);
                 break;
         }
     }
@@ -88,7 +89,13 @@ public class EnemyZigZag : Enemy
 
         if(tick >= lineChangeFrequency)
         {
-            ChangeLine();
+            float ran = Random.Range(0.0f, 1.0f);
+
+            if(ran <= lineChangeChance)
+            {
+                ChangeLine();
+            }
+
             tick = 0;
         }
     }

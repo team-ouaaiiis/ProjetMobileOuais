@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   biomeSpecificPatterns:
   - {fileID: 11400000, guid: 94fef2436204c1041aa3793e285643c1, type: 2}
-  specificPatternRate: 0.791
+  specificPatternRate: 0
