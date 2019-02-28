@@ -25,6 +25,12 @@ public class ChunkManager : Manager
 
     #region Monobehaviour Callbacks
 
+    public override void Awake()
+    {
+        base.Awake();
+        GameManager.instance.ChunkManager = this;
+    }
+
     public override void Update()
     {
         base.Update();
