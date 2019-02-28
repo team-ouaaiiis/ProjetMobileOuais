@@ -110,6 +110,9 @@ MonoBehaviour:
     maxDamagePoints: 5
     isEquipped: 0
     isThrown: 0
+    reverse: 0
+    reverseMovement: 0
+    cancelPower: 1
     range: 2
     throwRadiusRange: 0.6
   trajectory: {fileID: 7380211930189869098}
