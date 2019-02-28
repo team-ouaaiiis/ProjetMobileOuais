@@ -15,4 +15,4 @@ MonoBehaviour:
   biomeSpecificPatterns:
   - {fileID: 11400000, guid: 887cee7c8bb99444280a18e73eab0483, type: 2}
   - {fileID: 11400000, guid: f204242581f6e404f8515440e41847de, type: 2}
-  specificPatternRate: 0.5
+  specificPatternRate: 0
