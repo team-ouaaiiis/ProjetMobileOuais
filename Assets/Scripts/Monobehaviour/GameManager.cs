@@ -8,7 +8,8 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance;
     private List<Entity> entities = new List<Entity>();
-    private BiomeManager biomeManager;    
+    private BiomeManager biomeManager;
+    private ChunkManager chunkManager;
 
     #endregion
 
@@ -54,6 +55,7 @@ public class GameManager : MonoBehaviour
 
     public List<Entity> Entities { get => entities; }
     public BiomeManager BiomeManager { get => biomeManager; set => biomeManager = value; }
+    public ChunkManager ChunkManager { get => chunkManager; set => chunkManager = value; }
 
     #endregion
 }
