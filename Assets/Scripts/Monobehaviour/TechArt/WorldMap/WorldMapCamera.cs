@@ -17,7 +17,7 @@ public class WorldMapCamera : MonoBehaviour
     {        
         if(isMoving)
         {
-            transform.position += new Vector3(ConvertedTouchPos().x, 0, ConvertedTouchPos().z) - new Vector3(initialPos.x, 0, initialPos.y);
+            transform.position += new Vector3(ConvertedMousePos().x, 0, ConvertedMousePos().z) - new Vector3(initialPos.x, 0, initialPos.y);
         }
     }
 
@@ -25,16 +25,16 @@ public class WorldMapCamera : MonoBehaviour
     {
         #if UNITY_ANDROID
 
-        if (Input.GetTouch(0).phase == TouchPhase.Began)
-        {
-            isMoving = true;
-            initialPos = ConvertedTouchPos();
-        }
+        //if (Input.GetTouch(0).phase == TouchPhase.Began)
+        //{
+        //    isMoving = true;
+        //    initialPos = ConvertedTouchPos();
+        //}
 
-        if (Input.GetTouch(0).phase == TouchPhase.Ended)
-        {
-            isMoving = false;
-        }
+        //if (Input.GetTouch(0).phase == TouchPhase.Ended)
+        //{
+        //    isMoving = false;
+        //}
 
         #endif
 
@@ -51,8 +51,7 @@ public class WorldMapCamera : MonoBehaviour
             isMoving = false;
         }
 
-#endif
-
+        #endif
     }
 
     private Vector3 ConvertedTouchPos()
