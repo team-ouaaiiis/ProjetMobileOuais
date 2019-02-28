@@ -10,8 +10,8 @@ public class ObstacleTest : Obstacle
 
         if(HealthPoints >= 0)
         {
-            Player.playerInstance.weapon.SwitchDirection();
-            Debug.Log("Switch Direction");
+            Player.playerInstance.weapon.HitObstacle();
+            Debug.Log("Reverse Direction");
         }
         
     }
