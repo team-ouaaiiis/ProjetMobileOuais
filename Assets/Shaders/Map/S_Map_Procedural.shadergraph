@@ -56,12 +56,6 @@
         },
         {
             "typeInfo": {
-                "fullName": "UnityEditor.ShaderGraph.Vector1ShaderProperty"
-            },
-            "JSONnodeData": "{\n    \"m_Value\": 0.0,\n    \"m_Name\": \"Displacement\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"9ff62a22-d13a-4f9d-a21b-f7bb51397945\"\n    },\n    \"m_OverrideReferenceName\": \"_Displacement\",\n    \"m_FloatType\": 0,\n    \"m_RangeValues\": {\n        \"x\": 0.0,\n        \"y\": 1.0\n    }\n}"
-        },
-        {
-            "typeInfo": {
                 "fullName": "UnityEditor.ShaderGraph.Vector3ShaderProperty"
             },
             "JSONnodeData": "{\n    \"m_Value\": {\n        \"x\": 80.0,\n        \"y\": 80.0,\n        \"z\": 80.0,\n        \"w\": 0.0\n    },\n    \"m_Name\": \"Light\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"ec2a9d5e-d0d4-4eb6-9a14-21df3b24c402\"\n    },\n    \"m_OverrideReferenceName\": \"_LightDir\"\n}"
