@@ -38,6 +38,12 @@ public class Player : Character
         weaponsList = PlayerWeaponsList.playerWeaponsList;
         weaponsList.LoadCurrentWeapon();
         weapon = weaponsList.currentWeapon.playerWeapon;
+
+        //Get Power
+        if(power != null)
+        {
+            power.ActivatePower();
+        }
     }
 
     public override void Update()
