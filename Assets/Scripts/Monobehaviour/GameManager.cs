@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     private void Initialize()
     {
         instance = this;
+        Application.targetFrameRate = 60;
     }
 
     #endregion

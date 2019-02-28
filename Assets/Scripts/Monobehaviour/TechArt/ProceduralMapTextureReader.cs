@@ -11,6 +11,17 @@ public class ProceduralMapTextureReader : MonoBehaviour
     [SerializeField] private float range = 0.05f;
     private Texture2D tex2D;
 
+    private void Start()
+    {
+        StartCoroutine(Deactivate());
+    }
+
+    private IEnumerator Deactivate()
+    {
+        yield return new WaitForSeconds(1f);
+        gameObject.SetActive(false);
+    }
+
     [Button]
     private void Check()
     {
