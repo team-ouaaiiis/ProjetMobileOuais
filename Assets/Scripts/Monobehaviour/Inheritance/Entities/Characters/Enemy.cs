@@ -137,6 +137,6 @@ public class Enemy : Character, IDamageListener, IRepulseListener
         base.Death();
 
         //DEBUG TEST
-        //gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 }

@@ -12,6 +12,9 @@ public class Player : Character
     InputManager inputManager;
     PlayerWeaponsList weaponsList;
 
+    [Header("Player's power")]
+    public PlayerPower power;
+
     public static Player playerInstance;
 
     #endregion

@@ -27,6 +27,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoints: 1
+  enemyCollider: {fileID: 0}
   attackRange: 1
   hitboxSize: {x: 0.85, y: 2, z: 0.85}
   hitboxOffset: {x: 0, y: 1, z: 0}
@@ -36,7 +37,7 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 512
-  hitBackDistance: 3
+  hitBackDistance: 4.25
   movementCurve:
     serializedVersion: 2
     m_Curve:
