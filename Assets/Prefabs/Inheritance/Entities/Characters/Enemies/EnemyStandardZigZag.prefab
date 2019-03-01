@@ -55,6 +55,8 @@ MonoBehaviour:
   lineChangeFrequency: 1.5
   lineChangeChance: 0.5
   smoothTime: 0.25
+  stopLineChangingDistance: 15
+  canChangeLine: 1
   leftX: 0
   rightX: 0
   targetX: 0

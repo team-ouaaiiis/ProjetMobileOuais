@@ -24,8 +24,11 @@ public class EnemyZigZag : Enemy
     public float lineChangeChance = 0.5f;
     float tick;
     [SerializeField] float smoothTime = 0.25f;
+    [SerializeField] float stopLineChangingDistance = 5;
+    [ReadOnly] public bool canChangeLine = true;
     bool changingLine;
     Vector3 velocityRef;
+    float playerZ;
 
 
     [ReadOnly]
@@ -50,13 +53,23 @@ public class EnemyZigZag : Enemy
 
         leftX = -chunkManager.ChunkWidth / 2;
         rightX = chunkManager.ChunkWidth / 2;
+
+        playerZ = Player.playerInstance.transform.position.z;
     }
 
     public override void Update()
     {
         base.Update();
-        ChangeTick();
-        ChangingLine();
+
+
+
+        if (canChangeLine)
+        {
+            CheckPlayerDistance();
+            ChangeTick();
+            ChangingLine();
+        }
+
     }
 
     public override void OnEnable()
@@ -79,6 +92,8 @@ public class EnemyZigZag : Enemy
                 Debug.LogError("Incorrect position for " + gameObject.name + ", position =  " + transform.localPosition.x);
                 break;
         }
+
+        canChangeLine = true;
     }
 
     #endregion
@@ -133,6 +148,20 @@ public class EnemyZigZag : Enemy
         if (CustomMethod.AlmostEqualOnOneAxis(transform.localPosition, targetPos, 0.001f, CustomMethod.Axis.X))
         {
             changingLine = false;
+        }
+    }
+
+    void CheckPlayerDistance()
+    {
+        if (changingLine) return;
+
+        Vector3 playerPos = new Vector3(transform.position.x, transform.position.y, playerZ);
+        float distance = Vector3.Distance(transform.position, playerPos);
+
+        if(distance < stopLineChangingDistance)
+        {
+            canChangeLine = false;
+            Debug.Log("STOP CHANGEING LINE");
         }
     }
 }

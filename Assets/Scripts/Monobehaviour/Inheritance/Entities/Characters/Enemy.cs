@@ -26,12 +26,14 @@ public class Enemy : Character, IDamageListener, IRepulseListener
 
     [BoxGroup("Debug"), SerializeField] Color hitboxColor = Color.cyan;
 
+    
 
     public override void Start()
     {
         base.Start();
         IniTouchedColliders();
     }
+
     public override void Update()
     {
         base.Update();
