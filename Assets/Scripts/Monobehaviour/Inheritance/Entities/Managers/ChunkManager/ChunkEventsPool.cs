@@ -43,11 +43,8 @@ public class ChunkEventsPool : MonoBehaviour
             }
         }
 
-
-
         return null;
     }
-
 
     #region Properties
 
