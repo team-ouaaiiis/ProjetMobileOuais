@@ -19,10 +19,17 @@ public class ProceduralMapTextureReader : MonoBehaviour
     [SerializeField] [Range(0,1)] private float cityRate = 0.1f;
     [SerializeField] private City[] cities;
     [SerializeField] private List<City> generatedCities = new List<City>();
+
+    [Header("City Position")]
     [SerializeField] private float minPosOffset = 2f;
     [SerializeField] private float maxPosOffset = 5f;
+    [SerializeField] private float edgeOffset = 20f;
+    [SerializeField] private float cityNameOffset = 4f;
+    
+    [Header("City Size")]
     [SerializeField] private float minSize = 1f;
     [SerializeField] private float maxSize = 2f;
+    [SerializeField] private float nameSize = 2f;
 
     [Header("City Names")]
     [SerializeField] private int maxSyllables = 3;
@@ -58,8 +65,8 @@ public class ProceduralMapTextureReader : MonoBehaviour
                 float b = tex2D.GetPixel(x, y).b;
                 if(IsInRange(groundColor.r, range, r) && IsInRange(groundColor.g, range, g) && IsInRange(groundColor.b, range, b))
                 {
-                    float xPos = CustomMethod.Interpolate(-map.MapSize / 2, map.MapSize / 2, 0, rt.width, x);
-                    float yPos = CustomMethod.Interpolate(-map.MapSize / 2, map.MapSize / 2, 0, rt.height, y);
+                    float xPos = CustomMethod.Interpolate(-map.MapSize / 2 + edgeOffset, map.MapSize / 2 - edgeOffset, 0, rt.width, x);
+                    float yPos = CustomMethod.Interpolate(-map.MapSize / 2 + edgeOffset, map.MapSize / 2 - edgeOffset, 0, rt.height, y);
                     GenerateCities(xPos, yPos);
                 }
             }
@@ -79,7 +86,7 @@ public class ProceduralMapTextureReader : MonoBehaviour
             float offsetY = y + Random.Range(minPosOffset, maxPosOffset) * Mathf.Sign(Random.Range(-1, 1));
             Vector2 pos = new Vector3(offsetX, offsetY);
             float scale = Random.Range(minSize, maxSize);
-            newCity.InitializeCity(CityName(), pos, scale);
+            newCity.InitializeCity(CityName(), pos, scale, nameSize);
             generatedCities.Add(newCity);
         }
     }

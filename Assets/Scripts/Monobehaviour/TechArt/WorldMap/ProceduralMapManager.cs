@@ -53,6 +53,7 @@ public class ProceduralMapManager : Manager
         for (int i = 0; i < maps.Length; i++)
         {
             maps[i].transform.localScale = new Vector3(MapSize, MapSize, MapSize);
+            maps[i].transform.localPosition = new Vector3(0, -MapSize * i - 1, 0);
         }
 
         for (int i = 0; i < cams.Length; i++)
