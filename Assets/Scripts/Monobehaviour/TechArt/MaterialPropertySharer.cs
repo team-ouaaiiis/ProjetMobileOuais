@@ -36,6 +36,7 @@ public struct MaterialProperty
     #endregion
 }
 
+[ExecuteInEditMode]
 public class MaterialPropertySharer : MonoBehaviour
 {
     [Header("Materials")]
@@ -49,13 +50,21 @@ public class MaterialPropertySharer : MonoBehaviour
     [Range(0,0.015f)] [SerializeField] private float voronoiDensity = 5f;
     [SerializeField] private Vector2 earthWaterRatio;
     [SerializeField] private Vector2 smoothstepWater;
+    [SerializeField] private Vector4 biomes;
 
     public MaterialProperty[] Properties { get => properties; set => properties = value; }
 
     public void Update()
     {
-        if(mats.Length > 0 && Properties.Length > 0)
-            ShareProperties();
+        for (int i = 0; i < mats.Length; i++)
+        {
+            mats[i].SetVector("_Voronoi", new Vector4(seed, 0.008f, 0, 0));
+            mats[i].SetVector("_Levels", new Vector4(earthWaterRatio.x, earthWaterRatio.y, 0, 0));
+            mats[i].SetVector("_VoronoiBiomes", biomes);
+            mats[i].SetFloat("_NormalStrength", normalStrength);
+        }
+        //if(mats.Length > 0 && Properties.Length > 0)
+            //ShareProperties();
     }
 
     private void ShareProperties()

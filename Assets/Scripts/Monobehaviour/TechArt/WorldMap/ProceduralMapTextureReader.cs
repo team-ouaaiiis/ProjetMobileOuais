@@ -37,8 +37,8 @@ public class ProceduralMapTextureReader : MonoBehaviour
     [SerializeField] private string[] syllables;
     [SerializeField] private string[] suffixes;
 
-    [Button("Generate Cities")]
-    private void Check()
+    [Button("Disable Cities")]
+    private void DisableCities()
     {
         for (int i = 0; i < generatedCities.Count; i++)
         {
@@ -46,6 +46,12 @@ public class ProceduralMapTextureReader : MonoBehaviour
         }
 
         generatedCities.Clear();
+    }
+
+    [Button("Generate Cities")]
+    private void Check()
+    {
+        DisableCities();
 
         tex2D = new Texture2D(rt.width, rt.height, TextureFormat.RGB24, false);
         Rect rectReadPicture = new Rect(0, 0, rt.width, rt.height);

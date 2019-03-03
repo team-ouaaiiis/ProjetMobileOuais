@@ -11,17 +11,19 @@ public class ProceduralMapManager : Manager
     [SerializeField] private GameObject[] maps;
 
     [Header("Map Generation")]
+    [SerializeField] private bool shouldDeactivate;
     [SerializeField] private GameObject[] toDeactivate;
 
     public override void Start()
     {
         base.Start();
-        StartCoroutine(Deactivating());
+        if (shouldDeactivate)
+            StartCoroutine(Deactivating());
     }
 
     private IEnumerator Deactivating()
     {
-        yield return new WaitForSecondsRealtime(.5f);
+        yield return new WaitForSecondsRealtime(2f);
         DeactivateRealtimeMap();
     }
 

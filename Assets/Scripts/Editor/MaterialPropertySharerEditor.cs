@@ -21,7 +21,7 @@ public class MaterialPropertySharerEditor : Editor
 
     public override void OnInspectorGUI()
     {
-        //base.OnInspectorGUI();
+        base.OnInspectorGUI();
         EditorGUI.BeginChangeCheck();
 
         GetTarget.Update();

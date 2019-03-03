@@ -156,7 +156,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 21218111777111938, guid: 02d794fc178271e429ff0b32bcb9854c, type: 2}
+  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -214,9 +214,8 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: City Name
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 02d794fc178271e429ff0b32bcb9854c, type: 2}
-  m_sharedMaterial: {fileID: 21218111777111938, guid: 02d794fc178271e429ff0b32bcb9854c,
-    type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -266,7 +265,7 @@ MonoBehaviour:
   m_enableKerning: 1
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
-  m_isRichText: 1
+  m_isRichText: 0
   m_parseCtrlCharacters: 1
   m_isOrthographic: 0
   m_isCullingEnabled: 0
@@ -315,11 +314,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6644323344474915949, guid: 39705e31386007642a87b1003e6d206c,
-        type: 3}
-      propertyPath: m_Name
-      value: City
-      objectReference: {fileID: 0}
     - target: {fileID: 6644323344474915946, guid: 39705e31386007642a87b1003e6d206c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -424,6 +418,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644323344474915949, guid: 39705e31386007642a87b1003e6d206c,
+        type: 3}
+      propertyPath: m_Name
+      value: City
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39705e31386007642a87b1003e6d206c, type: 3}

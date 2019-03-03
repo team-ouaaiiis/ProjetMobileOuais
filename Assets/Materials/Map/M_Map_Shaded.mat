@@ -73,7 +73,7 @@ Material:
     - _GradientNoiseScale: 0.008
     - _NoiseAmount: 0.74
     - _NormalOffset: 0.16
-    - _NormalStrength: 10
+    - _NormalStrength: 20
     - _Shaded: 0
     - _SimpleNoiseScale: 0.33
     m_Colors:
@@ -88,6 +88,7 @@ Material:
     - _CityColor: {r: 0.4245283, g: 0, b: 0.06943541, a: 0}
     - _CloudColor: {r: 0.6037736, g: 0.5496618, b: 0.5496618, a: 1}
     - _ColorOverlay: {r: 0.9339623, g: 0.8557313, b: 0.76214844, a: 1}
-    - _Levels: {r: -0.02, g: 0.35, b: 0, a: 0}
+    - _Levels: {r: -0.03, g: 0.3, b: 0, a: 0}
     - _LightDir: {r: 0.9669981, g: 0.22603816, b: 0.11756544, a: 0}
-    - _Voronoi: {r: 30.06, g: 0.008, b: 0, a: 0}
+    - _Voronoi: {r: -23.2, g: 0.008, b: 0, a: 0}
+    - _VoronoiBiomes: {r: 55.4, g: 0, b: -0.2, a: 0.8}
