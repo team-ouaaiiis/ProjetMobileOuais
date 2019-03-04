@@ -571,6 +571,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MapCam_Holder
       objectReference: {fileID: 0}
+    - target: {fileID: 3113278166976289958, guid: 22e2c082fe890e34b97f59ad60e5f9a0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3113278166976289957, guid: 22e2c082fe890e34b97f59ad60e5f9a0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -644,6 +649,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Map_Holder
+      objectReference: {fileID: 0}
+    - target: {fileID: 4072073688708200065, guid: bc85d062e4620fd45990e5164cc9ae1b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7229320300058249, guid: bc85d062e4620fd45990e5164cc9ae1b, type: 3}
       propertyPath: m_IsActive

@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Testing/Nicolo/SceneTest_Nicolo_Map.unity
+    path: Assets/_Scenes/Testing/Nicolo/SceneTest_Nicolo_Map.unity
     guid: 0ab205df4cb15af479cb4751fb844a52
   m_configObjects: {}
