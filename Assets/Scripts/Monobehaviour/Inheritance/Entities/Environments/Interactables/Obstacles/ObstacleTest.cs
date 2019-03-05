@@ -1,9 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ObstacleTest : Obstacle
 {
+
+    public UnityEvent onDestroy;
+
     public override void TakeDamage(float dmg)
     {
         base.TakeDamage(dmg);
@@ -12,6 +16,7 @@ public class ObstacleTest : Obstacle
         {
             Player.playerInstance.weapon.HitObstacle();
             Debug.Log("Reverse Direction");
+            onDestroy.Invoke();
         }
         
     }

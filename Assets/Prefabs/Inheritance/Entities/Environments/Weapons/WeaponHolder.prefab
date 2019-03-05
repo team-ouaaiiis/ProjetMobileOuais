@@ -112,7 +112,7 @@ MonoBehaviour:
     isEquipped: 0
     isThrown: 0
     reverse: 0
-    reverseMovement: 0
+    reverseMovement: 1
     cancelPower: 1
     range: 2
     throwRadiusRange: 0.6
