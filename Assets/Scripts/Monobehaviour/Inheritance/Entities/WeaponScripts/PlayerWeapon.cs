@@ -50,6 +50,7 @@ public class PlayerWeapon : Interactable
     public UnityEvent onAttackStart;
     public UnityEvent onAttackEnd;
     IEnumerator attack;
+    bool attackLaunched;
 
     //[Header("Debugs")]
 
@@ -86,6 +87,11 @@ public class PlayerWeapon : Interactable
     {
         base.Update();
         ThrowTimer();
+
+        if (isAttacking)
+        {
+            Attack();
+        }
     }
 
     private void OnDrawGizmosSelected()
@@ -371,7 +377,6 @@ public class PlayerWeapon : Interactable
         UpdateDamage();
         attack = Attacking();
         StartCoroutine(attack);
-        isAttacking = true;
         ResetThrownNumber();
     }
 
@@ -409,13 +414,14 @@ public class PlayerWeapon : Interactable
             }
         }
 
-        onAttackStart.Invoke();
+        
     }
 
     IEnumerator Attacking()
     {
         yield return new WaitForSeconds(attackDelay);
-        Attack();
+        isAttacking = true;
+        onAttackStart.Invoke();
         yield return new WaitForSeconds(attackDuration);
         isAttacking = false;
         onAttackEnd.Invoke();
