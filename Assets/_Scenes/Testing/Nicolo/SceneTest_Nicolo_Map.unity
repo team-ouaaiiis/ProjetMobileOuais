@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -31832,7 +31832,7 @@ PrefabInstance:
     - target: {fileID: 6322465511568191344, guid: bc85d062e4620fd45990e5164cc9ae1b,
         type: 3}
       propertyPath: normalStrength
-      value: 20
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6322465511568191344, guid: bc85d062e4620fd45990e5164cc9ae1b,
         type: 3}
@@ -31847,17 +31847,17 @@ PrefabInstance:
     - target: {fileID: 6322465511568191344, guid: bc85d062e4620fd45990e5164cc9ae1b,
         type: 3}
       propertyPath: seed
-      value: -23.2
+      value: 163.8
       objectReference: {fileID: 0}
     - target: {fileID: 6322465511568191344, guid: bc85d062e4620fd45990e5164cc9ae1b,
         type: 3}
       propertyPath: biomes.x
-      value: 55.4
+      value: 66.3
       objectReference: {fileID: 0}
     - target: {fileID: 6322465511568191344, guid: bc85d062e4620fd45990e5164cc9ae1b,
         type: 3}
       propertyPath: biomes.y
-      value: 0
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6322465511568191344, guid: bc85d062e4620fd45990e5164cc9ae1b,
         type: 3}
