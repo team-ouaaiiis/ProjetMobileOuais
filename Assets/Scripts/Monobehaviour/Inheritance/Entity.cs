@@ -8,7 +8,7 @@ public class Entity : MonoBehaviour, IDamageListener
 
     [Header("Health")]
     [SerializeField] float healthPoints = 1;
-    private bool isDead = false;
+    [HideInInspector] public bool isDead = false;
 
     private Transform holder;
 

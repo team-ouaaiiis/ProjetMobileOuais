@@ -77,7 +77,9 @@ public class Player : Character
     public override void Death()
     {
         base.Death();
-        Debug.Log("Game over");
+        //PLACEHOLDER
+        GameManager.instance.PLACEHOLDER_GameOver();
+
     }
 
     #region Inputs Methods

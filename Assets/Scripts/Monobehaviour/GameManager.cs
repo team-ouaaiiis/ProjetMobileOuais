@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -49,7 +50,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void PLACEHOLDER_GameOver()
+    {
+        Invoke("ResetLevel", 3);
+    }
+
     #endregion
+
+    void ResetLevel()
+    {
+        int index = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(index);
+    }
 
     #region Properties
 
