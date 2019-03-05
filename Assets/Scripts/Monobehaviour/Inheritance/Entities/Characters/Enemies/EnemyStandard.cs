@@ -9,7 +9,7 @@ public class EnemyStandard : Enemy
         base.Attack();
     }
 
-    public override void Update()
+    public override void LateUpdate()
     {
         base.Update();
         Attack();

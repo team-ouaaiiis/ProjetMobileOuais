@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -725,11 +725,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4286039085304217270, guid: 693030583d1dda64f853ef5c8d8cd9d2,
         type: 3}
-      propertyPath: power
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4286039085304217270, guid: 693030583d1dda64f853ef5c8d8cd9d2,
-        type: 3}
       propertyPath: debugWithKeyboard
       value: 1
       objectReference: {fileID: 0}
@@ -743,6 +738,31 @@ PrefabInstance:
       propertyPath: swipeKey
       value: 273
       objectReference: {fileID: 0}
+    - target: {fileID: 4286039085304217270, guid: 693030583d1dda64f853ef5c8d8cd9d2,
+        type: 3}
+      propertyPath: onTakeDamage.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_enabled
+      objectReference: {fileID: 0}
+    - target: {fileID: 4286039085304217270, guid: 693030583d1dda64f853ef5c8d8cd9d2,
+        type: 3}
+      propertyPath: onTakeDamage.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4286039085304217270, guid: 693030583d1dda64f853ef5c8d8cd9d2,
+        type: 3}
+      propertyPath: onTakeDamage.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4286039085304217270, guid: 693030583d1dda64f853ef5c8d8cd9d2,
+        type: 3}
+      propertyPath: onTakeDamage.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2144847099}
+    - target: {fileID: 4286039085304217270, guid: 693030583d1dda64f853ef5c8d8cd9d2,
+        type: 3}
+      propertyPath: onTakeDamage.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5173533794258693264, guid: 693030583d1dda64f853ef5c8d8cd9d2,
         type: 3}
       propertyPath: weapon.cancelPower
@@ -752,6 +772,11 @@ PrefabInstance:
         type: 3}
       propertyPath: weapon.damagePoint
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569963797663928650, guid: 693030583d1dda64f853ef5c8d8cd9d2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 693030583d1dda64f853ef5c8d8cd9d2, type: 3}
@@ -1144,6 +1169,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4752899481946215083, guid: 1efe1767fc71ae3498a37a20e6f47b22,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4752899481946215083, guid: 1efe1767fc71ae3498a37a20e6f47b22,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4752899481946215083, guid: 1efe1767fc71ae3498a37a20e6f47b22,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7755271994564097487, guid: 1efe1767fc71ae3498a37a20e6f47b22,
         type: 3}
       propertyPath: curveActiveColor.r
@@ -1163,21 +1203,6 @@ PrefabInstance:
         type: 3}
       propertyPath: curveColor.a
       value: 0.5647059
-      objectReference: {fileID: 0}
-    - target: {fileID: 4752899481946215083, guid: 1efe1767fc71ae3498a37a20e6f47b22,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4752899481946215083, guid: 1efe1767fc71ae3498a37a20e6f47b22,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4752899481946215083, guid: 1efe1767fc71ae3498a37a20e6f47b22,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1efe1767fc71ae3498a37a20e6f47b22, type: 3}
@@ -1367,6 +1392,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 51.096, y: 0, z: 0}
+--- !u!114 &2144847099 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3569963797663928650, guid: 693030583d1dda64f853ef5c8d8cd9d2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1292107069}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebbb56a881852964ca8e7b205329b803, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1625730202217013699
 PrefabInstance:
   m_ObjectHideFlags: 0

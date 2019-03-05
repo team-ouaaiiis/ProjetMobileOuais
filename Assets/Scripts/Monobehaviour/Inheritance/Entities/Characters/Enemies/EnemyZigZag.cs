@@ -141,7 +141,7 @@ public class EnemyZigZag : Enemy
     {
         if (!changingLine) return;
 
-        Debug.Log("Move !!!");
+
         Vector3 targetPos = new Vector3(targetX, transform.localPosition.y, transform.localPosition.z);
         transform.localPosition = Vector3.SmoothDamp(transform.localPosition, targetPos, ref velocityRef, smoothTime);
 
@@ -161,7 +161,6 @@ public class EnemyZigZag : Enemy
         if(distance < stopLineChangingDistance)
         {
             canChangeLine = false;
-            Debug.Log("STOP CHANGEING LINE");
         }
     }
 }

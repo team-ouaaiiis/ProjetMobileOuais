@@ -26,6 +26,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoints: 1
+  isDead: 0
   onDestroy:
     m_PersistentCalls:
       m_Calls:
@@ -119,6 +120,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 8520984150266581860, guid: 55e78480b35552040ba69985e6369648,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bdea9715f9125364faa2204760450dbd, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55e78480b35552040ba69985e6369648, type: 3}
 --- !u!1 &8540149819113000119 stripped

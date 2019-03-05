@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Entity : MonoBehaviour, IDamageListener
 {
@@ -9,6 +10,11 @@ public class Entity : MonoBehaviour, IDamageListener
     [Header("Health")]
     [SerializeField] float healthPoints = 1;
     [HideInInspector] public bool isDead = false;
+    float iniHealthPoints;
+
+    [Header("Events")]
+    public UnityEvent onTakeDamage;
+    public UnityEvent onDeath;
 
     private Transform holder;
 
@@ -18,7 +24,7 @@ public class Entity : MonoBehaviour, IDamageListener
 
     public virtual void Awake()
     {
-
+        iniHealthPoints = healthPoints;
     }
 
     public virtual void Start()
@@ -27,6 +33,11 @@ public class Entity : MonoBehaviour, IDamageListener
     }
 
     public virtual void Update()
+    {
+
+    }
+
+    public virtual void LateUpdate()
     {
 
     }
@@ -60,7 +71,8 @@ public class Entity : MonoBehaviour, IDamageListener
     public virtual void Death()
     {
         isDead = true;
-    }
+        onDeath.Invoke();
+;    }
 
     /// <summary>
     /// Takes a certain amount of damage.
@@ -69,11 +81,17 @@ public class Entity : MonoBehaviour, IDamageListener
     public virtual void TakeDamage(float dmg)
     {
         healthPoints -= dmg;
+        onTakeDamage.Invoke();
     }
 
     public virtual void LaunchedSword()
     {
 
+    }
+
+    public virtual void ResetHealth()
+    {
+        HealthPoints = iniHealthPoints;
     }
 
     #endregion

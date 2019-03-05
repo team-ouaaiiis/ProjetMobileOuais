@@ -6,18 +6,18 @@ public class PlayerHealthPower : PlayerPower
 {
     [Header("Health power")]
     public float playerHealthPoints = 2;
-    float iniHealthPoints = 1;
+    float iniPlayerHealth = 1;
 
     public override void ActivatePower()
     {
         base.ActivatePower();
-        iniHealthPoints = player.HealthPoints;
+        iniPlayerHealth = player.HealthPoints;
         player.HealthPoints = playerHealthPoints;
     }
 
     public override void DesactivatePower()
     {
         base.DesactivatePower();
-        player.HealthPoints = iniHealthPoints;
+        player.HealthPoints = iniPlayerHealth;
     }
 }

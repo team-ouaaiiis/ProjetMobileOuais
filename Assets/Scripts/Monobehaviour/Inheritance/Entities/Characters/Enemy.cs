@@ -9,10 +9,11 @@ public class Enemy : Character, IDamageListener, IRepulseListener
 
     [Header("Enemy values")]
     public float attackRange = 1;
-    [SerializeField] Vector3 hitboxSize = Vector3.one;
-    [SerializeField] public Vector3 hitboxOffset;
+    [SerializeField] Vector3 damageBoxSize = Vector3.one;
+    [SerializeField] public Vector3 damageBoxOffset;
     [SerializeField] LayerMask playerTargetLayer;
     [SerializeField] LayerMask enemyLayer;
+    [ReadOnly] public bool canAttack = true;
 
     [Header("Receive damage movement")]
     [SerializeField] float hitBackDistance = 1;
@@ -24,9 +25,9 @@ public class Enemy : Character, IDamageListener, IRepulseListener
     Vector3 targetPos;
     List<Collider> touchedColliders = new List<Collider>();
 
-    [BoxGroup("Debug"), SerializeField] Color hitboxColor = Color.cyan;
+    [BoxGroup("Debug"), SerializeField] Color damageBoxColor = Color.cyan;
 
-    
+    #region Monobehaviour callbacks
 
     public override void Start()
     {
@@ -40,9 +41,30 @@ public class Enemy : Character, IDamageListener, IRepulseListener
         ReceiveDamageMovement();
     }
 
+    public override void OnEnable()
+    {
+        base.OnEnable();
+        canAttack = true;
+        ResetHealth();
+    }
+
+    #endregion
+
+    public void OnDrawGizmos()
+    {
+        Gizmos.color = damageBoxColor;
+        Gizmos.DrawWireCube(transform.position + damageBoxOffset, damageBoxSize);
+        Gizmos.color = new Color(damageBoxColor.r, damageBoxColor.g, damageBoxColor.b, 0.25f);
+        Gizmos.DrawCube(transform.position + damageBoxOffset, damageBoxSize);
+    }
+
+    #region Public Methods
+
     public virtual void Attack()
     {
-        Collider[] colliders = Physics.OverlapBox(transform.position + hitboxOffset, hitboxSize / 2, Quaternion.identity, playerTargetLayer, QueryTriggerInteraction.Collide);
+        if (!canAttack) return;
+
+        Collider[] colliders = Physics.OverlapBox(transform.position + damageBoxOffset, damageBoxSize / 2, Quaternion.identity, playerTargetLayer, QueryTriggerInteraction.Collide);
 
         if (colliders.Length > 0)
         {
@@ -53,7 +75,8 @@ public class Enemy : Character, IDamageListener, IRepulseListener
                 if (damageListener != null)
                 {
                     damageListener.TakeDamage(1);
-                    Debug.Log("Damaging something");
+                    canAttack = false;
+                    Debug.LogError("ENEMY ATTACKED PLAYER " + gameObject.name);
                 }
             }
         }
@@ -61,7 +84,7 @@ public class Enemy : Character, IDamageListener, IRepulseListener
 
     public void Repulsion()
     {
-        Collider[] colliders = Physics.OverlapBox(transform.position + hitboxOffset, hitboxSize / 2, Quaternion.identity, enemyLayer, QueryTriggerInteraction.Collide);
+        Collider[] colliders = Physics.OverlapBox(transform.position + damageBoxOffset, damageBoxSize / 2, Quaternion.identity, enemyLayer, QueryTriggerInteraction.Collide);
 
         if (colliders.Length > 0)
         {
@@ -86,7 +109,6 @@ public class Enemy : Character, IDamageListener, IRepulseListener
         StartHitMovement();
     }
 
-    
     public override void TakeDamage(float dmg)
     {
         base.TakeDamage(dmg);
@@ -126,19 +148,14 @@ public class Enemy : Character, IDamageListener, IRepulseListener
         touchedColliders.Add(enemyCollider);
     }
 
-    public void OnDrawGizmos()
-    {
-        Gizmos.color = hitboxColor;
-        Gizmos.DrawWireCube(transform.position + hitboxOffset, hitboxSize);
-        Gizmos.color = new Color(hitboxColor.r, hitboxColor.g, hitboxColor.b, 0.25f);
-        Gizmos.DrawCube(transform.position + hitboxOffset, hitboxSize);
-    }
-
     public override void Death()
     {
         base.Death();
-
+        canAttack = false;
+        Debug.LogError("ENEMY DIE");
         //DEBUG TEST
         gameObject.SetActive(false);
     }
+
+    #endregion
 }

@@ -13,16 +13,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoints: 1
+  isDead: 0
+  onTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   enemyCollider: {fileID: 4686252584504743784}
   attackRange: 1
-  hitboxSize: {x: 0.85, y: 2, z: 0.85}
-  hitboxOffset: {x: 0, y: 1, z: 0}
+  damageBoxSize: {x: 1, y: 2, z: 1}
+  damageBoxOffset: {x: 0, y: 1, z: 0}
   playerTargetLayer:
     serializedVersion: 2
     m_Bits: 1024
   enemyLayer:
     serializedVersion: 2
     m_Bits: 512
+  canAttack: 1
   hitBackDistance: 1
   movementCurve:
     serializedVersion: 2
@@ -50,7 +62,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   movementTime: 0.25
   onDamageMovement: 0
-  hitboxColor: {r: 0, g: 1, b: 0.95917225, a: 1}
+  damageBoxColor: {r: 0, g: 1, b: 1, a: 1}
   currentSide: 0
   lineChangeFrequency: 1.5
   lineChangeChance: 0.5
