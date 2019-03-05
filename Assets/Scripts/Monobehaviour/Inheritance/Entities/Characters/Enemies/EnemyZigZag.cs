@@ -89,7 +89,7 @@ public class EnemyZigZag : Enemy
                 break;
             default:
                 currentSide = Side.Middle;
-                Debug.LogError("Incorrect position for " + gameObject.name + ", position =  " + transform.localPosition.x);
+                Debug.LogWarning("Incorrect position for " + gameObject.name + ", position =  " + transform.localPosition.x);
                 break;
         }
 

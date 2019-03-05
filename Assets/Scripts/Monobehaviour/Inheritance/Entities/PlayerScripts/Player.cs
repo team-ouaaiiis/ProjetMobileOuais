@@ -19,6 +19,11 @@ public class Player : Character
 
     public static Player playerInstance;
 
+    [Header("Debug")]
+    [SerializeField] bool debugWithKeyboard;
+    [SerializeField, ShowIf("debugWithKeyboard")] KeyCode tapKey;
+    [SerializeField, ShowIf("debugWithKeyboard")] KeyCode swipeKey;
+
     #endregion
 
     #region Monobehaviour Callbacks
@@ -54,6 +59,7 @@ public class Player : Character
     public override void Update()
     {
         base.Update();
+        KeyboardDebug();
     }
 
     public override void OnEnable()
@@ -71,7 +77,9 @@ public class Player : Character
     public override void Death()
     {
         base.Death();
-        Debug.Log("Game over");
+        //PLACEHOLDER
+        GameManager.instance.PLACEHOLDER_GameOver();
+
     }
 
     #region Inputs Methods
@@ -97,6 +105,21 @@ public class Player : Character
     void SwipeDebug()
     {
         OnSwipe(InputManager.SwipeDirection.Right);
+    }
+
+    void KeyboardDebug()
+    {
+        if (!debugWithKeyboard) return;
+
+        if (Input.GetKeyDown(tapKey))
+        {
+            OnTap();
+        }
+
+        if (Input.GetKeyDown(swipeKey))
+        {
+            SwipeDebug();
+        }
     }
 
     #endregion

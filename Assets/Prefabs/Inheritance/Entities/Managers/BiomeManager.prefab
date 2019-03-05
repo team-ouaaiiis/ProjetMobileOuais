@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd01f76f1846e52458eb81d96f10b79e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthPoints: 1
   biomes:
-  - {fileID: 11400000, guid: 31cee6f96e489844bad848b273d3e2c9, type: 2}
+  - {fileID: 11400000, guid: 574ab86296935b242a73dcfe93365f2c, type: 2}
   currentBiome: 0

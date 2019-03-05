@@ -8,7 +8,7 @@ public class Character : Entity
     {
         base.TakeDamage(dmg);
 
-        if (HealthPoints <= 0)
+        if (HealthPoints <= 0 && !isDead)
         {
             Death();
         }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
+using UnityEngine.Events;
 
 public class PlayerWeapon : Interactable
 {
@@ -46,7 +47,10 @@ public class PlayerWeapon : Interactable
     [SerializeField] LayerMask attackTargetLayer;
     [ReadOnly] public float currentDamage;
     [ReadOnly] public bool isAttacking;
+    public UnityEvent onAttackStart;
+    public UnityEvent onAttackEnd;
     IEnumerator attack;
+    bool attackLaunched;
 
     //[Header("Debugs")]
 
@@ -83,6 +87,11 @@ public class PlayerWeapon : Interactable
     {
         base.Update();
         ThrowTimer();
+
+        if (isAttacking)
+        {
+            Attack();
+        }
     }
 
     private void OnDrawGizmosSelected()
@@ -368,7 +377,6 @@ public class PlayerWeapon : Interactable
         UpdateDamage();
         attack = Attacking();
         StartCoroutine(attack);
-        isAttacking = true;
         ResetThrownNumber();
     }
 
@@ -405,14 +413,18 @@ public class PlayerWeapon : Interactable
                 }
             }
         }
+
+        
     }
 
     IEnumerator Attacking()
     {
         yield return new WaitForSeconds(attackDelay);
-        Attack();
+        isAttacking = true;
+        onAttackStart.Invoke();
         yield return new WaitForSeconds(attackDuration);
         isAttacking = false;
+        onAttackEnd.Invoke();
     }
 
     #endregion
