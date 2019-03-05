@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -336,6 +336,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3554721698345074821, guid: 901d1d86e3f538b4ea41819de6799848,
+        type: 3}
+      propertyPath: healthPoints
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6358384896391196285, guid: 901d1d86e3f538b4ea41819de6799848,
         type: 3}
       propertyPath: m_Name
@@ -395,11 +400,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3554721698345074821, guid: 901d1d86e3f538b4ea41819de6799848,
-        type: 3}
-      propertyPath: healthPoints
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 901d1d86e3f538b4ea41819de6799848, type: 3}
@@ -670,6 +670,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3554721698345074821, guid: 901d1d86e3f538b4ea41819de6799848,
+        type: 3}
+      propertyPath: healthPoints
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6358384896391196285, guid: 901d1d86e3f538b4ea41819de6799848,
         type: 3}
       propertyPath: m_Name
@@ -729,11 +734,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3554721698345074821, guid: 901d1d86e3f538b4ea41819de6799848,
-        type: 3}
-      propertyPath: healthPoints
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 901d1d86e3f538b4ea41819de6799848, type: 3}
@@ -1223,6 +1223,21 @@ PrefabInstance:
         type: 3}
       propertyPath: curveColor.a
       value: 0.5647059
+      objectReference: {fileID: 0}
+    - target: {fileID: 4752899481946215083, guid: 1efe1767fc71ae3498a37a20e6f47b22,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4752899481946215083, guid: 1efe1767fc71ae3498a37a20e6f47b22,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4752899481946215083, guid: 1efe1767fc71ae3498a37a20e6f47b22,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1efe1767fc71ae3498a37a20e6f47b22, type: 3}
