@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
 
     public void PLACEHOLDER_GameOver()
     {
-        Invoke("ResetLevel", 3);
+        Invoke("ResetLevel", 2);
     }
 
     #endregion
