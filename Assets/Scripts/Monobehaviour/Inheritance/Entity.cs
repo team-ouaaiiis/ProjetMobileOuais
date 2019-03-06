@@ -53,6 +53,20 @@ public class Entity : MonoBehaviour, IDamageListener
         GameManager.instance.UnregisterEntity(this);
     }
 
+    public virtual void SwapCharacter()
+    {
+
+    }
+
+    public virtual void ShopBubbleSpawn()
+    {
+
+    }
+    public virtual void ShopBubbleDespawn()
+    {
+
+    }
+
     #endregion
 
     #region Private Methods
