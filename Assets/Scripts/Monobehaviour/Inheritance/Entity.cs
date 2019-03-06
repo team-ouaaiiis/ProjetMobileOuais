@@ -45,6 +45,7 @@ public class Entity : MonoBehaviour, IDamageListener
     public virtual void OnEnable()
     {
         GameManager.instance.RegisterEntity(this);
+        isDead = false;
     }
 
     public virtual void OnDisable()
