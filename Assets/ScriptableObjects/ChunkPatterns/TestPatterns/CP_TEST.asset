@@ -21,7 +21,7 @@ MonoBehaviour:
     zPos: 0
   - entity: {fileID: 3554721698345074821, guid: 901d1d86e3f538b4ea41819de6799848,
       type: 3}
-    go: {fileID: 6358384896391196285, guid: 901d1d86e3f538b4ea41819de6799848, type: 3}
+    go: {fileID: 3396134595530686121, guid: beda603b978da78489b4071dbe82207d, type: 3}
     xPos: 1
     zPos: 0
   - entity: {fileID: 0}
