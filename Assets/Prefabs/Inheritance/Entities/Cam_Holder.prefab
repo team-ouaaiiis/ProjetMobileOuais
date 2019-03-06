@@ -237,7 +237,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 7091358403051245285}
-  zooms: []
+  zooms:
+  - name: 'Default : Do Not Remove! '
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    speed: 0
+    shouldStay: 0
   debugBind: 103
   debugIndex: 0
 --- !u!114 &7091358403150234754

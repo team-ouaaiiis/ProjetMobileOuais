@@ -172,6 +172,11 @@ public class Entity : MonoBehaviour, IDamageListener
     {
 
     }
+    
+    public virtual void Blink(Color col, Material mat, int count, float delay, float time)
+    {
+
+    }
 
     #endregion
 

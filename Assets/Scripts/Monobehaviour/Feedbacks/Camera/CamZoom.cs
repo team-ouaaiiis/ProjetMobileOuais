@@ -8,7 +8,7 @@ public struct Zooms
     #region Zoom Class Fields
 
     [SerializeField] private string name;
-    [SerializeField] private AnimationCurve curve;
+    private AnimationCurve curve;
     [SerializeField] private float speed;
     [SerializeField] private bool shouldStay;
 
@@ -96,7 +96,7 @@ public class CamZoom : MonoBehaviour
 
     private void Start()
     {
-        camZoomMultiplier = cam.orthographicSize;
+        camZoomMultiplier = cam.fieldOfView;
     }
 
     private void Update()
@@ -109,14 +109,14 @@ public class CamZoom : MonoBehaviour
     {
         if (isZooming)
         {
-            cam.orthographicSize = zooms[currentZoomIndex].Curve.Evaluate(camZoomCompletion) * camZoomMultiplier;
+            cam.fieldOfView = zooms[currentZoomIndex].Curve.Evaluate(camZoomCompletion) * camZoomMultiplier;
             camZoomCompletion += zooms[currentZoomIndex].Speed * Time.unscaledDeltaTime;
             if (camZoomCompletion >= 1)
             {
                 isZooming = false;
                 if (!zooms[currentZoomIndex].ShouldStay)
                 {
-                    cam.orthographicSize = camZoomMultiplier;
+                    cam.fieldOfView = camZoomMultiplier;
                 }
             }
         }
@@ -164,7 +164,8 @@ public class CamZoom : MonoBehaviour
 
     private void StartZoom()
     {
-        camZoomMultiplier = cam.orthographicSize;
+        Debug.Log("Start Zoom");
+        camZoomMultiplier = cam.fieldOfView;
         isZooming = true;
         camZoomCompletion = 0f;
     }

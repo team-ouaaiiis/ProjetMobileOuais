@@ -40,5 +40,13 @@ public class FeedbackManager : Manager
         }
     }
 
+    public void CallBlink(Color col, Material mat, int count, float delay, float time)
+    {
+        for (int i = 0; i < entities.Count; i++)
+        {
+            entities[i].Blink(col, mat, count, delay, time);
+        }
+    }
+
     #endregion
 }

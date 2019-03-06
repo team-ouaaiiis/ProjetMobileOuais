@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_Outline
-  m_Shader: {fileID: 4800000, guid: 57a9630eb576f4343b08f5611e2fe672, type: 3}
+  m_Name: M_PlayerTest
+  m_Shader: {fileID: 4800000, guid: 8f1cb12cfab1cfd488d584e404b3eb23, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -31,8 +31,16 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _MainTexture:
+        m_Texture: {fileID: 2800000, guid: 9b7099ac61ec73747a96de6726069455, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalTex:
+        m_Texture: {fileID: 2800000, guid: 6b8b9ff52041600479c8e0feab67a890, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -44,7 +52,9 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_A39916FD: 0.01
+    - Vector1_71C1C764: 2
+    - Vector1_A2782188: 10
+    - _AddedStrength: 2
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -55,9 +65,10 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Metallic: 0
+    - _NormalStrength: 0
     - _OcclusionStrength: 1
-    - _Outline: 0.0024
     - _ReceiveShadows: 1
+    - _ShadowSharp: 0.487
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -65,7 +76,14 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_3BC2EE8: {r: 0.8962264, g: 0.21754399, b: 0.1986917, a: 0}
-    - _Color: {r: 0.13741545, g: 0.14097543, b: 0.1509434, a: 1}
+    - Color_CFCE4A3A: {r: 0, g: 0, b: 0, a: 0}
+    - Vector4_7D8D2AFA: {r: 0, g: 1, b: 0.7, a: 0.8}
+    - _AddColor: {r: 1, g: 0.8872549, b: 0.75, a: 1}
+    - _BlinkCol: {r: 0, g: 0, b: 0, a: 1}
+    - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Fresnel: {r: 0.5, g: 0.8, b: 0.7, a: 0.8}
+    - _LightDir: {r: -0.32139423, g: -0.9247311, b: -0.20390753, a: 0}
+    - _MainColor: {r: 1, g: 1, b: 1, a: 0}
+    - _ShadowColor: {r: 0.18565324, g: 0.19494003, b: 0.26415092, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}

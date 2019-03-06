@@ -6,6 +6,8 @@ using UnityEditor;
 [CustomEditor(typeof(Feedback))]
 public class FeedbackEditor : Editor
 {
+    #region Fields
+
     [SerializeField] private Feedback feedback;
     [SerializeField] private SerializedObject GetTarget;
 
@@ -35,6 +37,16 @@ public class FeedbackEditor : Editor
     [SerializeField] private SerializedProperty useSound;
     [SerializeField] private SerializedProperty sound;
 
+    [Header("Blink")]
+    [SerializeField] private SerializedProperty useBlink;
+    [SerializeField] private SerializedProperty blinkMat;
+    [SerializeField] private SerializedProperty blinkCount;
+    [SerializeField] private SerializedProperty blinkDelay;
+    [SerializeField] private SerializedProperty blinkTime;
+    [SerializeField] private SerializedProperty blinkColor;
+
+    #endregion
+
     private void OnEnable()
     {
         feedback = (Feedback)target;
@@ -63,11 +75,17 @@ public class FeedbackEditor : Editor
 
         useSound = GetTarget.FindProperty("playSound");
         sound = GetTarget.FindProperty("sound");
+
+        useBlink = GetTarget.FindProperty("useBlink");
+        blinkCount = GetTarget.FindProperty("blinkCount");
+        blinkMat = GetTarget.FindProperty("blinkMat");
+        blinkTime = GetTarget.FindProperty("blinkTime");
+        blinkDelay = GetTarget.FindProperty("blinkDelay");
+        blinkColor = GetTarget.FindProperty("blinkCol");
     }
 
     public override void OnInspectorGUI()
     {
-        //base.OnInspectorGUI();
         EditorGUI.BeginChangeCheck();
         GetTarget.Update();
         EditorGUILayout.PropertyField(feedbackName);
@@ -76,6 +94,7 @@ public class FeedbackEditor : Editor
         FreezeFrameEditor();
         ParticleSystemEditor();
         SoundEditor();
+        BlinkEditor();
         GetTarget.ApplyModifiedProperties();
     }
 
@@ -129,6 +148,20 @@ public class FeedbackEditor : Editor
         if (feedback.UseSound)
         {
             EditorGUILayout.PropertyField(sound);
+        }
+    }
+
+    private void BlinkEditor()
+    {
+        EditorGUILayout.PropertyField(useBlink);
+
+        if (feedback.UseBlink)
+        {
+            EditorGUILayout.PropertyField(blinkMat);
+            EditorGUILayout.PropertyField(blinkColor);
+            EditorGUILayout.PropertyField(blinkCount);
+            EditorGUILayout.PropertyField(blinkDelay);
+            EditorGUILayout.PropertyField(blinkTime);
         }
     }
 }

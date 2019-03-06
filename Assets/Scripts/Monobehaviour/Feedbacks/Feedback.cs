@@ -31,9 +31,16 @@ public class Feedback : MonoBehaviour
     [SerializeField] private bool playSound = false;
     [SerializeField] private AudioClip sound;
 
+    [Header("Blink")]
+    [SerializeField] private bool useBlink = false;
+    [SerializeField] private Material blinkMat;
+    [SerializeField] private Color blinkCol;
+    [SerializeField] private int blinkCount = 3;
+    [SerializeField] private float blinkDelay = 0.1f;
+    [SerializeField] private float blinkTime = 0.4f;
+
     public void PlayFeedback()
-    {
-        
+    {        
         if(UseCamShake)
         {
             FeedbackManager.instance.CallShake(shakeAmount, shakeDuration);
@@ -58,6 +65,11 @@ public class Feedback : MonoBehaviour
         {
             FeedbackManager.instance.CallFreezeFrame(curveFreeze, speedFreeze);
         }
+
+        if(UseBlink)
+        {
+            FeedbackManager.instance.CallBlink(blinkCol, blinkMat, blinkCount, blinkDelay, blinkTime);
+        }
     }
 
     #region Properties
@@ -68,6 +80,7 @@ public class Feedback : MonoBehaviour
     public bool UseFreezeFrame { get => playFreezeFrame; set => playFreezeFrame = value; }
     public bool UseSound { get => playSound; set => playSound = value; }
     public string FeedbackName { get => feedbackName; set => feedbackName = value; }
+    public bool UseBlink { get => useBlink; set => useBlink = value; }
 
     #endregion
 }
