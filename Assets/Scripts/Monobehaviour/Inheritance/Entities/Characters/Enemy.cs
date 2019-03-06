@@ -41,6 +41,12 @@ public class Enemy : Character, IDamageListener, IRepulseListener
         ReceiveDamageMovement();
     }
 
+    public override void LateUpdate()
+    {
+        base.LateUpdate();
+        Attack();
+    }
+
     public override void OnEnable()
     {
         base.OnEnable();
@@ -68,7 +74,6 @@ public class Enemy : Character, IDamageListener, IRepulseListener
 
         if (colliders.Length > 0)
         {
-            Debug.Log("Enemy touched something");
             for (int i = 0; i < colliders.Length; i++)
             {
                 IDamageListener damageListener = colliders[i].GetComponent<IDamageListener>();
@@ -76,7 +81,6 @@ public class Enemy : Character, IDamageListener, IRepulseListener
                 {
                     damageListener.TakeDamage(1);
                     canAttack = false;
-                    Debug.LogError("ENEMY ATTACKED PLAYER " + gameObject.name);
                 }
             }
         }
@@ -97,7 +101,6 @@ public class Enemy : Character, IDamageListener, IRepulseListener
                     if (repulseListener != null)
                     {
                         repulseListener.Repulse();
-                        Debug.Log("Repulse something");
                     }
                 }
             }
@@ -152,7 +155,7 @@ public class Enemy : Character, IDamageListener, IRepulseListener
     {
         base.Death();
         canAttack = false;
-        Debug.LogError("ENEMY DIE");
+        Debug.Log("ENEMY DIE");
         //DEBUG TEST
         gameObject.SetActive(false);
     }

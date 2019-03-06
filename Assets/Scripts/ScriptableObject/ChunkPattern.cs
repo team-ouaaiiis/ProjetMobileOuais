@@ -42,6 +42,10 @@ public class ChunkPattern : ScriptableObject
             {
                 chunkElements[i].Entity = chunkElements[i].Go.GetComponent<Entity>();
             }
+            else
+            {
+                chunkElements[i].Entity = null;
+            }
         }
     }
 

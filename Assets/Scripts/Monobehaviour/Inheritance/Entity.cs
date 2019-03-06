@@ -52,11 +52,26 @@ public class Entity : MonoBehaviour, IDamageListener
     public virtual void OnEnable()
     {
         GameManager.instance.RegisterEntity(this);
+        isDead = false;
     }
 
     public virtual void OnDisable()
     {
         GameManager.instance.UnregisterEntity(this);
+    }
+
+    public virtual void SwapCharacter()
+    {
+
+    }
+
+    public virtual void ShopBubbleSpawn()
+    {
+
+    }
+    public virtual void ShopBubbleDespawn()
+    {
+
     }
 
     #endregion
@@ -153,9 +168,9 @@ public class Entity : MonoBehaviour, IDamageListener
 
     }
 
-    public virtual void FreezeFrame(AnimationCurve curve, float speed)
+    public virtual void ResetHealth()
     {
-
+        HealthPoints = iniHealthPoints;
     }
 
     #endregion
@@ -164,7 +179,6 @@ public class Entity : MonoBehaviour, IDamageListener
 
     public float HealthPoints { get => healthPoints; set => healthPoints = value; }
     public Transform Holder { get => holder; set => holder = value; }
-    public List<Feedback> Feedbacks { get => feedbacks; set => feedbacks = value; }
 
     #endregion
 }
@@ -174,3 +188,11 @@ public interface IDamageListener
     void TakeDamage(float dmg);
 }
 
+
+    public virtual void FreezeFrame(AnimationCurve curve, float speed)
+    {
+
+    public float HealthPoints { get => healthPoints; set => healthPoints = value; }
+    public Transform Holder { get => holder; set => holder = value; }
+    public List<Feedback> Feedbacks { get => feedbacks; set => feedbacks = value; }
+

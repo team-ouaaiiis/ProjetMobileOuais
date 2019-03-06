@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShopCharacterRotator : UIButton
+public class ShopCharacterRotator : Entity
 {
     [Header("Components")]
     [SerializeField] private Animator CharacterRotatorAnimator;
 
-    public override void OnClick()
+    public override void SwapCharacter()
     {
-        base.OnClick();
+        base.SwapCharacter();
         CharacterRotatorAnimator.SetBool("isSwitch1", !CharacterRotatorAnimator.GetBool("isSwitch1"));
     }
 }
