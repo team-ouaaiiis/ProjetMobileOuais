@@ -129,7 +129,7 @@ public class Entity : MonoBehaviour, IDamageListener
 
     public virtual void PlayFeedback()
     {
-        Debug.Log("Feedback");
+
         Feedbacks[0].PlayFeedback();
     }
 

@@ -19,8 +19,10 @@ public class FreezeFrameManager : Manager
     /// <summary>
     /// Slows down time for a short period.
     /// </summary>
-    public void StartFreezeFrame(AnimationCurve curve, float speed)
+    public override void FreezeFrame(AnimationCurve curve, float speed)
     {
+        Debug.Log("Freeze");
+        base.FreezeFrame(curve, speed);
         if(!isFreezeFraming)
         {
             freezeFrameCompletion = 0f;
@@ -34,7 +36,6 @@ public class FreezeFrameManager : Manager
     {
         if(isFreezeFraming)
         {
-            //Debug.Log("FreezeFrame!");
             freezeFrameCompletion += freezeFrameSpeed * Time.unscaledDeltaTime;
             Time.timeScale = freezeFrameCurve.Evaluate(freezeFrameCompletion);
 

@@ -33,6 +33,7 @@ public class Feedback : MonoBehaviour
 
     public void PlayFeedback()
     {
+        
         if(UseCamShake)
         {
             FeedbackManager.instance.CallShake(shakeAmount, shakeDuration);
@@ -51,6 +52,11 @@ public class Feedback : MonoBehaviour
         if (UseZoom)
         {
             FeedbackManager.instance.CallZoom(curveZoom, speedZoom, shouldStay);
+        }
+
+        if(UseFreezeFrame)
+        {
+            FeedbackManager.instance.CallFreezeFrame(curveFreeze, speedFreeze);
         }
     }
 
