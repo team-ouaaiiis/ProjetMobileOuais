@@ -19,10 +19,8 @@ public class FreezeFrameManager : Manager
     /// <summary>
     /// Slows down time for a short period.
     /// </summary>
-    public override void FreezeFrame(AnimationCurve curve, float speed)
+    public void StartFreezeFrame(AnimationCurve curve, float speed)
     {
-        base.FreezeFrame(curve, speed);
-
         if(!isFreezeFraming)
         {
             freezeFrameCompletion = 0f;

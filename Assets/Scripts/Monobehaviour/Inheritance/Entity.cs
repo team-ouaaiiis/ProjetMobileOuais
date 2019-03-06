@@ -168,9 +168,9 @@ public class Entity : MonoBehaviour, IDamageListener
 
     }
 
-    public virtual void ResetHealth()
+    public virtual void FreezeFrame(AnimationCurve curve, float speed)
     {
-        HealthPoints = iniHealthPoints;
+
     }
 
     #endregion
@@ -179,6 +179,7 @@ public class Entity : MonoBehaviour, IDamageListener
 
     public float HealthPoints { get => healthPoints; set => healthPoints = value; }
     public Transform Holder { get => holder; set => holder = value; }
+    public List<Feedback> Feedbacks { get => feedbacks; set => feedbacks = value; }
 
     #endregion
 }
@@ -187,12 +188,3 @@ public interface IDamageListener
 {
     void TakeDamage(float dmg);
 }
-
-
-    public virtual void FreezeFrame(AnimationCurve curve, float speed)
-    {
-
-    public float HealthPoints { get => healthPoints; set => healthPoints = value; }
-    public Transform Holder { get => holder; set => holder = value; }
-    public List<Feedback> Feedbacks { get => feedbacks; set => feedbacks = value; }
-
