@@ -78,7 +78,7 @@ MonoBehaviour:
   onDamageMovement: 0
   damageBoxColor: {r: 0, g: 1, b: 1, a: 1}
   canMove: 1
-  speed: 2.5
+  speed: 1.25
 --- !u!1001 &747314481176762373
 PrefabInstance:
   m_ObjectHideFlags: 0
