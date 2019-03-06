@@ -4,5 +4,40 @@ using UnityEngine;
 
 public class UIManager : Manager
 {
-    
+    public static UIManager instance;
+    private List<Entity> entities = new List<Entity>();
+
+    public override void Awake()
+    {
+        base.Awake();
+        Initialize();
+    }
+
+    [ContextMenu("Initialize")]
+    private void Initialize()
+    {
+        entities = GameManager.instance.Entities;
+        instance = this;
+    }
+
+    public void CallSwapCharacter()
+    {
+        for (int i = 0; i < entities.Count; i++)
+        {
+            entities[i].SwapCharacter();
+        }
+    }
+
+    public void CallShopBubbleSpawn(bool isOn)
+    {
+        for (int i = 0; i < entities.Count; i++)
+        {
+            if (isOn)
+                entities[i].ShopBubbleSpawn();
+            else
+                entities[i].ShopBubbleDespawn();
+        }
+    }
+
+    public List<Entity> Entities { get => entities; }
 }
