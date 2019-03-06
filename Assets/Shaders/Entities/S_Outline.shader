@@ -3,7 +3,7 @@
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
-		_Outline ("Outline Width", float) = 0.001
+		_Outline ("Outline Width", Range(0,0.02)) = 0.001
 		_Color ("Outline Color", Color) = (1,1,1,1)
     }
     SubShader

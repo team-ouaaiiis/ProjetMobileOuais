@@ -41,19 +41,11 @@ public class GameManager : MonoBehaviour
     {
         Entities.Remove(entity);
     }
-
-    public void LaunchedSword()
-    {
-        for (int i = 0; i < entities.Count; i++)
-        {
-            entities[i].LaunchedSword();
-        }
-    }
-
+    
     public void PLACEHOLDER_GameOver()
     {
         Invoke("ResetLevel", 3);
-    }
+    }    
 
     #endregion
 

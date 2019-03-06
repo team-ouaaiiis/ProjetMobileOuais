@@ -2,20 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using NaughtyAttributes;
 
 public class Entity : MonoBehaviour, IDamageListener
 {
     #region Fields
 
-    [Header("Health")]
+    [SerializeField] private bool hasHealth = false;
+    
+    [ShowIf("hasHealth")]
     [SerializeField] float healthPoints = 1;
     [HideInInspector] public bool isDead = false;
     float iniHealthPoints;
 
     [Header("Events")]
+
+    [ShowIf("hasHealth")]
     public UnityEvent onTakeDamage;
+    [ShowIf("hasHealth")]
     public UnityEvent onDeath;
 
+    [HideInInspector][SerializeField] private List<Feedback> feedbacks = new List<Feedback>();
     private Transform holder;
 
     #endregion
@@ -60,7 +67,9 @@ public class Entity : MonoBehaviour, IDamageListener
     {
         if(healthPoints <= 0 && !isDead)
         {
-            
+            Debug.Log("Dead");
+            isDead = true;
+            healthPoints = 0;
         }
     }
 
@@ -68,11 +77,52 @@ public class Entity : MonoBehaviour, IDamageListener
 
     #region Public Methods
 
+
+    [Button("Add Feedback")]
+    public virtual void AddFeedback()
+    {
+        Feedback newFeedback = gameObject.AddComponent<Feedback>();
+        Feedbacks.Add(newFeedback);
+    }
+
+    [Button("Remove all Feedbacks")]
+    public virtual void RemoveAllFeedbacks()
+    {
+        if(feedbacks.Count > 0)
+        {
+            for (int i = 0; i < feedbacks.Count; i++)
+            {
+                DestroyImmediate(feedbacks[i]);
+            }
+
+            feedbacks.Clear();
+        }
+    }
+
+    public virtual void PlayFeedback(string name)
+    {
+        Debug.Log("Feedback");
+        for (int i = 0; i < Feedbacks.Count; i++)
+        {
+            if (Feedbacks[i].FeedbackName == name)
+            {
+                Feedbacks[i].PlayFeedback();
+                break;
+            }
+        }
+    }
+
+    public virtual void PlayFeedback()
+    {
+        Debug.Log("Feedback");
+        Feedbacks[0].PlayFeedback();
+    }
+
     public virtual void Death()
     {
         isDead = true;
         onDeath.Invoke();
-;    }
+    }
 
     /// <summary>
     /// Takes a certain amount of damage.
@@ -84,14 +134,28 @@ public class Entity : MonoBehaviour, IDamageListener
         onTakeDamage.Invoke();
     }
 
-    public virtual void LaunchedSword()
-    {
+    #endregion
 
-    }
+    #region Callbacks
 
     public virtual void ResetHealth()
     {
         HealthPoints = iniHealthPoints;
+    }
+
+    public virtual void Shake(float amnt, float dur)
+    {
+        
+    }
+
+    public virtual void Zoom(AnimationCurve curve, float speed, bool shouldStay)
+    {
+
+    }
+
+    public virtual void FreezeFrame(AnimationCurve curve, float speed)
+    {
+
     }
 
     #endregion
@@ -100,6 +164,7 @@ public class Entity : MonoBehaviour, IDamageListener
 
     public float HealthPoints { get => healthPoints; set => healthPoints = value; }
     public Transform Holder { get => holder; set => holder = value; }
+    public List<Feedback> Feedbacks { get => feedbacks; set => feedbacks = value; }
 
     #endregion
 }
