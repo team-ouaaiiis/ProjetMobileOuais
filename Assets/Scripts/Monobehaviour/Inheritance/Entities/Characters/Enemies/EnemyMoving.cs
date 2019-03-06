@@ -23,6 +23,6 @@ public class EnemyMoving : Enemy
     {
         if (!canMove) return;
 
-        transform.Translate(Vector3.back * speed * Time.deltaTime);
+        transform.Translate(Vector3.back * speed * Time.deltaTime, UnityEngine.Space.Self);
     }
 }

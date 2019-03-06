@@ -41,6 +41,12 @@ public class Enemy : Character, IDamageListener, IRepulseListener
         ReceiveDamageMovement();
     }
 
+    public override void LateUpdate()
+    {
+        base.LateUpdate();
+        Attack();
+    }
+
     public override void OnEnable()
     {
         base.OnEnable();
