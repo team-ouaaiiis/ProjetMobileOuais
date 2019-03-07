@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using NaughtyAttributes;
 
 public class PlayerTravelledDistance : Entity
 {
 
     public float travelledDistance = 0;
     ChunkManager chunkManager;
+
+    [BoxGroup("DEBUG PLACEHOLDER"), SerializeField] TextMeshProUGUI textMesh;
 
     public override void Awake()
     {
@@ -24,6 +28,7 @@ public class PlayerTravelledDistance : Entity
     {
         base.Update();
         AddDistance();
+        PLACEHOLDER_DistanceText();
     }
 
     public override void OnGameOver()
@@ -40,5 +45,13 @@ public class PlayerTravelledDistance : Entity
     public void SaveDistanceData()
     {
         //SAVE DATA
+    }
+
+    void PLACEHOLDER_DistanceText()
+    {
+        if (textMesh == null) return;
+
+        int dis = Mathf.RoundToInt(travelledDistance);
+        textMesh.text = dis.ToString();
     }
 }

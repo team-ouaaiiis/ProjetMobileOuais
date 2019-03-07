@@ -105,8 +105,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77eb204744fbc7149a7e2437a4865b8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasHealth: 0
   healthPoints: 1
   isDead: 0
+  onTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  feedbacks: []
   weapon:
     damagePoint: 1
     maxDamagePoints: 5
@@ -118,7 +130,7 @@ MonoBehaviour:
     range: 2
     throwRadiusRange: 0.6
   trajectory: {fileID: 7380211930189869098}
-  throwTime: 0.25
+  throwTime: 0.15
   throwDirection: 0
   speedEvolution:
     serializedVersion: 2
@@ -538,6 +550,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 747874032103184923, guid: 07e66bc0f7197da47baf8feb96009019,
+        type: 3}
+      propertyPath: m_Name
+      value: WeaponHolder
+      objectReference: {fileID: 0}
     - target: {fileID: 747874032103184920, guid: 07e66bc0f7197da47baf8feb96009019,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -592,11 +609,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 747874032103184923, guid: 07e66bc0f7197da47baf8feb96009019,
-        type: 3}
-      propertyPath: m_Name
-      value: WeaponHolder
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07e66bc0f7197da47baf8feb96009019, type: 3}
