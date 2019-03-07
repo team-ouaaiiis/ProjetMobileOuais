@@ -99,7 +99,6 @@ public class Entity : MonoBehaviour, IDamageListener
         Feedback newFeedback = gameObject.AddComponent<Feedback>();
         Feedbacks.Add(newFeedback);
     }
-
     [Button("Remove all Feedbacks")]
     public virtual void RemoveAllFeedbacks()
     {
@@ -173,7 +172,7 @@ public class Entity : MonoBehaviour, IDamageListener
 
     }
     
-    public virtual void Blink(Color col, Material mat, int count, float delay, float time)
+    public virtual void Blink(Color col, Renderer mat, int count, float delay, float time)
     {
 
     }

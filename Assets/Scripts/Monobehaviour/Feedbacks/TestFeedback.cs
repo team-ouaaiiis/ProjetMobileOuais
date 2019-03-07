@@ -8,7 +8,12 @@ public class TestFeedback : Entity
     {
         if(Input.GetKeyDown(KeyCode.A))
         {
-            PlayFeedback();
+            PlayFeedback("Death");
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            PlayFeedback("Kill");
         }
     }
 }

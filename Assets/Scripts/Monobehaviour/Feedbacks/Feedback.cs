@@ -33,11 +33,11 @@ public class Feedback : MonoBehaviour
 
     [Header("Blink")]
     [SerializeField] private bool useBlink = false;
-    [SerializeField] private Material blinkMat;
+    [SerializeField] private Renderer blinkMat;
     [SerializeField] private Color blinkCol;
     [SerializeField] private int blinkCount = 3;
-    [SerializeField] private float blinkDelay = 0.1f;
-    [SerializeField] private float blinkTime = 0.4f;
+    [SerializeField] private float blinkDelay = 0.01f;
+    [SerializeField] private float blinkTime = 0.02f;
 
     public void PlayFeedback()
     {        
