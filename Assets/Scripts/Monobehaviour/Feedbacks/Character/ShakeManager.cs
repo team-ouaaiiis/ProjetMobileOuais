@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public struct ObjectShake
+[System.Serializable]
+public class ObjectShake
 {
     #region Fields
 
-    [Header("Test Shake")]
+    [Header("Shake")]
     [SerializeField] private GameObject objectToShake;
     [SerializeField] private AnimationCurve curveShake;
     [SerializeField] private float intensityShake;
     [SerializeField] private float speedShake;
+    [SerializeField] private Space space;
+    [SerializeField] private Vector3 axes;
     private float shakeProgress;
     private bool isShaking;
     private Vector3 initialPos;
@@ -26,13 +29,14 @@ public struct ObjectShake
     public bool IsShaking { get => isShaking; set => isShaking = value; }
     public Vector3 InitialPos { get => initialPos; set => initialPos = value; }
     public float ShakeProgress { get => shakeProgress; set => shakeProgress = value; }
+    public Space Space { get => space; set => space = value; }
+    public Vector3 Axes { get => axes; set => axes = value; }
 
     #endregion
 }
 
 public class ShakeManager : Manager
 {
-    
     #region Fields
 
     [SerializeField] private List<ObjectShake> shakes = new List<ObjectShake>();
@@ -45,17 +49,48 @@ public class ShakeManager : Manager
         ShakeUpdate();
         DestroyShakes();
     }
-
-    public void ShakeObject(GameObject toShake, AnimationCurve curve, float intensity, float speed)
+   
+    public override void ShakeObject(GameObject toShake, AnimationCurve curve, float intensity, float speed, Space space, Vector3 shakeAxes)
     {
-        ObjectShake newObjectShake = new ObjectShake();
+        base.ShakeObject(toShake, curve, intensity, speed, space, shakeAxes);
+        bool canShake = true;
 
-        newObjectShake.IsShaking = true;
-        newObjectShake.ShakeProgress = 0f;
-        newObjectShake.ObjectToShake = toShake;
-        newObjectShake.CurveShake = curve;
-        newObjectShake.IntensityShake = intensity;
-        newObjectShake.SpeedShake = speed;
+        for (int i = 0; i < shakes.Count; i++)
+        {
+            if(shakes[i].ObjectToShake == toShake)
+            {
+                Debug.Log("Already Shaking this object");
+                canShake = false;
+                break;
+            }
+        }
+
+        if(canShake)
+        {
+            ObjectShake newObjectShake = new ObjectShake();
+
+            newObjectShake.IsShaking = true;
+            newObjectShake.ShakeProgress = 0f;
+            newObjectShake.ObjectToShake = toShake;
+            newObjectShake.CurveShake = curve;
+            newObjectShake.IntensityShake = intensity;
+            newObjectShake.SpeedShake = speed;
+            newObjectShake.Space = space;
+            newObjectShake.Axes = shakeAxes;
+
+            switch (space)
+            {
+                case Space.Local:
+                    newObjectShake.InitialPos = newObjectShake.ObjectToShake.transform.localPosition;
+                    break;
+
+                case Space.World:
+                    newObjectShake.InitialPos = newObjectShake.ObjectToShake.transform.position;
+                    break;
+            }
+
+            shakes.Add(newObjectShake);
+        }
     }
 
     private void ShakeUpdate()
@@ -69,13 +104,33 @@ public class ShakeManager : Manager
                 {
                     shk.ShakeProgress += shk.SpeedShake * Time.deltaTime;
                     float mul = shk.CurveShake.Evaluate(shk.ShakeProgress) * shakes[i].IntensityShake;
-                    shk.ObjectToShake.transform.position = shk.InitialPos + Random.insideUnitSphere * mul;
+
+                    switch (shk.Space)
+                    {
+                        case Space.Local:
+                            shk.ObjectToShake.transform.localPosition = shk.InitialPos + CustomMethod.MultiplyTwoVectors(Random.insideUnitSphere, shk.Axes) * mul;
+                            break;
+
+                        case Space.World:
+                            shk.ObjectToShake.transform.position = shk.InitialPos + CustomMethod.MultiplyTwoVectors(Random.insideUnitSphere, shk.Axes) * mul;
+                            break;
+                    }
                 }
 
-                if(shk.ShakeProgress >= 1f)
+                if (shk.ShakeProgress >= 1f)
                 {
-                    shk.ObjectToShake.transform.position = shk.InitialPos;
-                    shk.IsShaking = false;                    
+                    switch (shk.Space)
+                    {
+                        case Space.Local:
+                            shk.ObjectToShake.transform.localPosition = shk.InitialPos;
+                            break;
+
+                        case Space.World:
+                            shk.ObjectToShake.transform.position = shk.InitialPos;
+                            break;
+                    }
+
+                    shk.IsShaking = false;
                 }
             }
 
@@ -87,11 +142,10 @@ public class ShakeManager : Manager
     {
         for (int i = 0; i < shakes.Count; i++)
         {
-            if(!shakes[i].IsShaking)
+            if (!shakes[i].IsShaking)
             {
                 shakes.RemoveAt(i);
             }
         }
     }
-    
 }

@@ -82,7 +82,8 @@ public class CamZoom : MonoBehaviour
     [SerializeField] private Zooms[] zooms;
     [Space(10)]
     [Header("Debug")]
-    [SerializeField] private KeyCode debugBind = KeyCode.G;
+    [SerializeField] private bool enableDebug = false;
+    [SerializeField] private KeyCode debugBind = KeyCode.K;
     [SerializeField] private int debugIndex = 0;
 
     private int currentZoomIndex = 0;
@@ -124,7 +125,7 @@ public class CamZoom : MonoBehaviour
 
     private void CheatCode()
     {
-        if (Input.GetKeyDown(debugBind))
+        if (Input.GetKeyDown(debugBind) && enableDebug)
         {
             TriggerCamZoom(debugIndex);
         }

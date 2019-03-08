@@ -12,7 +12,7 @@ public enum Space
 
 #endregion
 
-public class Shake : MonoBehaviour
+public class Shake : Entity
 {
     #region Fields
     [Header("Components")]
@@ -28,8 +28,9 @@ public class Shake : MonoBehaviour
 
     #endregion
 
-    private void Start()
+    public override void Start()
     {
+        base.Start();
         if(objectToShake == null)
         {
             objectToShake = this.gameObject;

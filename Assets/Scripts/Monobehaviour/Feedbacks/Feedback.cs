@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Feedback : MonoBehaviour
 {
     [Header("Feedback")]
     [SerializeField] private string feedbackName = "";
+    [SerializeField] private KeyCode debugKey = KeyCode.G;
 
     [Header("Particle System")]
     [SerializeField] private bool playParticleSystem = false;
@@ -24,6 +26,7 @@ public class Feedback : MonoBehaviour
 
     [Header("Freeze Frame")]
     [SerializeField] private bool playFreezeFrame = false;
+
     [SerializeField] private AnimationCurve curveFreeze = new AnimationCurve(new Keyframe[2] { new Keyframe(0, 1), new Keyframe(1, 1) });
     [SerializeField] private float speedFreeze = 5f;
 
@@ -38,6 +41,29 @@ public class Feedback : MonoBehaviour
     [SerializeField] private int blinkCount = 3;
     [SerializeField] private float blinkDelay = 0.01f;
     [SerializeField] private float blinkTime = 0.02f;
+
+    [Header("Object Shake")]
+    [SerializeField] private bool playObjectShake = false;
+    [SerializeField] private GameObject objectToShake;
+    [SerializeField] private AnimationCurve curveObjectToShake = new AnimationCurve(new Keyframe[2] { new Keyframe(0, 1), new Keyframe(1, 0) });
+    [SerializeField] private float intensityShake = 0.08f;
+    [SerializeField] private float speedShake = 2f;
+    [SerializeField] private Space spaceShake = Space.Local;
+    [SerializeField] private Vector3 shakeAxes = new Vector3(1, 1, 1);
+
+    [Header("Animation")]
+    [SerializeField] private bool playAnim = false;
+    [SerializeField] private Animator animator;
+    [SerializeField] private string trigger = "In";
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(debugKey))
+        {
+            PlayFeedback();
+        }
+        
+    }
 
     public void PlayFeedback()
     {        
@@ -70,6 +96,16 @@ public class Feedback : MonoBehaviour
         {
             FeedbackManager.instance.CallBlink(blinkCol, blinkMat, blinkCount, blinkDelay, blinkTime);
         }
+
+        if(playObjectShake)
+        {
+            FeedbackManager.instance.CallShakeObject(objectToShake, curveObjectToShake, intensityShake, speedShake, spaceShake, shakeAxes);
+        }
+
+        if(PlayAnim)
+        {
+            animator.SetTrigger(trigger);
+        }
     }
 
     #region Properties
@@ -81,6 +117,8 @@ public class Feedback : MonoBehaviour
     public bool UseSound { get => playSound; set => playSound = value; }
     public string FeedbackName { get => feedbackName; set => feedbackName = value; }
     public bool UseBlink { get => useBlink; set => useBlink = value; }
+    public bool PlayObjectShake { get => playObjectShake; set => playObjectShake = value; }
+    public bool PlayAnim { get => playAnim; set => playAnim = value; }
 
     #endregion
 }
