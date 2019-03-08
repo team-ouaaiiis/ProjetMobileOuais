@@ -69,7 +69,13 @@ public class Entity : MonoBehaviour, IDamageListener
     {
 
     }
+
     public virtual void ShopBubbleDespawn()
+    {
+
+    }
+
+    public virtual void OnGameOver()
     {
 
     }

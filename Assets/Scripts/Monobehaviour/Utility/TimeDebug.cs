@@ -6,8 +6,8 @@ public class TimeDebug : MonoBehaviour
 {
     [Range(0.1f,2.0f)]
     public float timeScale = 1;
-    public bool debugTime;
-    public KeyCode increase, decrease;
+    public bool debugTime = true;
+    public KeyCode increase = KeyCode.RightArrow, decrease = KeyCode.LeftArrow;
 
 
     public void Update()

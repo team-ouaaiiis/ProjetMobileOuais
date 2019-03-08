@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8596a7abfd3a6e49ae1b6cd9e1273fd, type: 3}
-  m_Name: CP_TEST
+  m_Name: CP_TEST_04
   m_EditorClassIdentifier: 
   chunkDifficulty: 0
   chunkElements:
@@ -18,33 +18,32 @@ MonoBehaviour:
     go: {fileID: 0}
     xPos: 0
     zPos: 0
-  - entity: {fileID: 5004915053718983638, guid: beda603b978da78489b4071dbe82207d,
+  - entity: {fileID: 8313939105815613155, guid: efb19bc9b9261364aae38bae3db9b5b3,
       type: 3}
     go: {fileID: 0}
     xPos: 1
     zPos: 0
   - entity: {fileID: 0}
-    go: {fileID: 0}
-    xPos: 0
-    zPos: 2
+    go: {fileID: 6358384896391196285, guid: 901d1d86e3f538b4ea41819de6799848, type: 3}
+    xPos: 2
+    zPos: 0
   - entity: {fileID: 0}
     go: {fileID: 0}
     xPos: 0
-    zPos: 3
-  - entity: {fileID: 0}
-    go: {fileID: 3396134595530686121, guid: beda603b978da78489b4071dbe82207d, type: 3}
-    xPos: 1
     zPos: 1
   - entity: {fileID: 0}
     go: {fileID: 0}
+    xPos: 1
+    zPos: 1
+  - entity: {fileID: 0}
+    go: {fileID: 6358384896391196285, guid: 901d1d86e3f538b4ea41819de6799848, type: 3}
     xPos: 2
     zPos: 1
   - entity: {fileID: 0}
     go: {fileID: 0}
-    xPos: 1
-    zPos: 1
-  - entity: {fileID: 8313939105815613155, guid: efb19bc9b9261364aae38bae3db9b5b3,
-      type: 3}
+    xPos: 0
+    zPos: 2
+  - entity: {fileID: 0}
     go: {fileID: 0}
     xPos: 1
     zPos: 2
@@ -56,24 +55,26 @@ MonoBehaviour:
     go: {fileID: 6358384896391196285, guid: 901d1d86e3f538b4ea41819de6799848, type: 3}
     xPos: 0
     zPos: 3
-  - entity: {fileID: 8313939105815613155, guid: efb19bc9b9261364aae38bae3db9b5b3,
-      type: 3}
-    go: {fileID: 0}
-    xPos: 1
-    zPos: 3
   - entity: {fileID: 0}
     go: {fileID: 0}
-    xPos: 2
+    xPos: 1
     zPos: 3
   - entity: {fileID: 0}
     go: {fileID: 0}
     xPos: 0
+    zPos: 0
+  - entity: {fileID: 9129267468150769804, guid: e0ad3ecb6e8342c42a31ce39b3926562,
+      type: 3}
+    go: {fileID: 6358384896391196285, guid: 901d1d86e3f538b4ea41819de6799848, type: 3}
+    xPos: 0
     zPos: 4
-  - entity: {fileID: 0}
+  - entity: {fileID: 8313939105815613155, guid: efb19bc9b9261364aae38bae3db9b5b3,
+      type: 3}
     go: {fileID: 0}
     xPos: 1
     zPos: 4
-  - entity: {fileID: 0}
+  - entity: {fileID: 9129267468150769804, guid: e0ad3ecb6e8342c42a31ce39b3926562,
+      type: 3}
     go: {fileID: 0}
     xPos: 2
     zPos: 4
