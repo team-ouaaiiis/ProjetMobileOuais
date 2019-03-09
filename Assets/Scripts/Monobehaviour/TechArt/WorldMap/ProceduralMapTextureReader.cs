@@ -49,8 +49,10 @@ public class ProceduralMapTextureReader : MonoBehaviour
     }
 
     [Button("Generate Cities")]
-    private void Check()
+    private void GenerateAllCities()
     {
+        StartCoroutine(GeneratingAllCities());
+        /*
         DisableCities();
 
         tex2D = new Texture2D(rt.width, rt.height, TextureFormat.RGB24, false);
@@ -73,7 +75,41 @@ public class ProceduralMapTextureReader : MonoBehaviour
                 {
                     float xPos = CustomMethod.Interpolate(-map.MapSize / 2 + edgeOffset, map.MapSize / 2 - edgeOffset, 0, rt.width, x);
                     float yPos = CustomMethod.Interpolate(-map.MapSize / 2 + edgeOffset, map.MapSize / 2 - edgeOffset, 0, rt.height, y);
-                    GenerateCities(xPos, yPos);
+                    GenerateCity(xPos, yPos);
+                }
+            }
+        }
+
+        RenderTexture.active = null; // added to avoid errors 
+        */
+    }
+
+    private IEnumerator GeneratingAllCities()
+    {
+        DisableCities();
+
+        tex2D = new Texture2D(rt.width, rt.height, TextureFormat.RGB24, false);
+        Rect rectReadPicture = new Rect(0, 0, rt.width, rt.height);
+        RenderTexture.active = rt;
+
+        // Read pixels
+        tex2D.ReadPixels(rectReadPicture, 0, 0);
+        tex2D.Apply();
+
+        for (int x = 0; x < tex2D.width; x++)
+        {
+            for (int y = 0; y < tex2D.height; y++)
+            {
+                Debug.Log("Analysing");
+                float r = tex2D.GetPixel(x, y).r;
+                float g = tex2D.GetPixel(x, y).g;
+                float b = tex2D.GetPixel(x, y).b;
+                if (IsInRange(groundColor.r, range, r) && IsInRange(groundColor.g, range, g) && IsInRange(groundColor.b, range, b))
+                {
+                    float xPos = CustomMethod.Interpolate(-map.MapSize / 2 + edgeOffset, map.MapSize / 2 - edgeOffset, 0, rt.width, x);
+                    float yPos = CustomMethod.Interpolate(-map.MapSize / 2 + edgeOffset, map.MapSize / 2 - edgeOffset, 0, rt.height, y);
+                    GenerateCity(xPos, yPos);
+                    yield return new WaitForSeconds(0.005f);
                 }
             }
         }
@@ -81,7 +117,7 @@ public class ProceduralMapTextureReader : MonoBehaviour
         RenderTexture.active = null; // added to avoid errors 
     }
     
-    private void GenerateCities(float x, float y)
+    private void GenerateCity(float x, float y)
     {      
         if(Random.Range(0f,1f) < cityRate)
         {
