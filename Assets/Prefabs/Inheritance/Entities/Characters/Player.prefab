@@ -2019,7 +2019,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55119a7dcc934014ea221e64579b40e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasHealth: 0
+  hasHealth: 1
   healthPoints: 1
   isDead: 0
   onTakeDamage:
