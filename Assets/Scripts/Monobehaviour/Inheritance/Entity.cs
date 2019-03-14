@@ -62,7 +62,18 @@ public class Entity : MonoBehaviour, IDamageListener
     {
 
     }
+
     public virtual void ShopBubbleDespawn()
+    {
+
+    }
+
+    public virtual void ShopBubbleSelection(int iD)
+    {
+
+    }
+
+    public virtual void ShopRackMove(bool isRight)
     {
 
     }

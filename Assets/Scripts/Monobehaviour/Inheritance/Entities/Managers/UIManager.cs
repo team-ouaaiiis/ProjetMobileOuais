@@ -28,6 +28,14 @@ public class UIManager : Manager
         }
     }
 
+    public void CallShopBubbleSelection(int iD)
+    {
+        for (int i = 0; i < entities.Count; i++)
+        {
+            entities[i].ShopBubbleSelection(iD);
+        }
+    }
+
     public void CallShopBubbleSpawn(bool isOn)
     {
         for (int i = 0; i < entities.Count; i++)
@@ -36,6 +44,14 @@ public class UIManager : Manager
                 entities[i].ShopBubbleSpawn();
             else
                 entities[i].ShopBubbleDespawn();
+        }
+    }
+
+    public void CallShopRackMove(bool isRight)
+    {
+        for (int i = 0; i < entities.Count; i++)
+        {
+            entities[i].ShopRackMove(isRight);
         }
     }
 

@@ -9,6 +9,15 @@ public class ShopItemCharacterBubble : UIButton
 
     [Header("Settings")]
     [SerializeField] private float delaySpawn;
+    [SerializeField] private int iD;
+
+    private bool isSelected;
+
+    public override void OnClick()
+    {
+        base.OnClick();
+        UIManager.instance.CallShopBubbleSelection(iD);
+    }
 
     public override void ShopBubbleSpawn()
     {
@@ -22,6 +31,24 @@ public class ShopItemCharacterBubble : UIButton
         base.SwapCharacter();
         StopAllCoroutines();
         StartCoroutine(WaitAndDespawn());
+        isSelected = false;
+    }
+
+    public override void ShopBubbleSelection(int ID)
+    {
+        base.ShopBubbleSelection(ID);
+
+        if (iD == ID && !isSelected)
+        {
+            isSelected = true;
+            ItemCharacterBubbleAnimator.SetTrigger("Selection");
+        }
+
+        if (iD != ID && isSelected)
+        {
+            isSelected = false;
+            ItemCharacterBubbleAnimator.SetTrigger("Deselection");
+        }
     }
 
     private IEnumerator WaitAndSpawn()
