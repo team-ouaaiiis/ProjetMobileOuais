@@ -137,6 +137,11 @@ public class Entity : MonoBehaviour, IDamageListener
         onDeath.Invoke();
     }
 
+    public virtual void OnGameOver()
+    {
+
+    }
+
     /// <summary>
     /// Takes a certain amount of damage.
     /// </summary>
@@ -181,6 +186,15 @@ public class Entity : MonoBehaviour, IDamageListener
 
     }
 
+    public virtual void ShopBubbleSelection(int iD)
+    {
+
+    }
+
+    public virtual void ShopRackMove(bool isRight)
+    {
+
+    }
     #endregion
 
     #region Properties
@@ -196,17 +210,4 @@ public interface IDamageListener
 {
     void TakeDamage(float dmg);
 }
-    public virtual void OnGameOver()
-    {
 
-    }
-
-    public virtual void ShopBubbleSelection(int iD)
-    {
-
-    }
-
-    public virtual void ShopRackMove(bool isRight)
-    {
-
-    }

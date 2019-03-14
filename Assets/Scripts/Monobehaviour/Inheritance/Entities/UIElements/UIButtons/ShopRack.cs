@@ -21,19 +21,19 @@ public class ShopRack : Entity
 
         for (int i = 0; i < helmetList.Length; i++)
         {
-            helmetList[i].position = new Vector3(i * 64 + 79, -35, 0);
+            helmetList[i].position = new Vector3(i * 64 + 83, -35, 0);
         }
         for (int i = 0; i < medalList.Length; i++)
         {
-            medalList[i].position = new Vector3(i * 64 + 79, -35, 0);
+            medalList[i].position = new Vector3(i * 64 + 83, -35, 0);
         }
         for (int i = 0; i < armorList.Length; i++)
         {
-            armorList[i].position = new Vector3(i * 64 + 79, -35, 0);
+            armorList[i].position = new Vector3(i * 64 + 83, -35, 0);
         }
         for (int i = 0; i < weaponList.Length; i++)
         {
-            weaponList[i].position = new Vector3(i * 64 + 79, -35, 0);
+            weaponList[i].position = new Vector3(i * 64 + 83, -35, 0);
         }
 
         targetPos = Vector3.zero;
