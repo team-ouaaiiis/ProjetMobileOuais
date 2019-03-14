@@ -65,9 +65,8 @@ MonoBehaviour:
     go: {fileID: 0}
     xPos: 0
     zPos: 0
-  - entity: {fileID: 9129267468150769804, guid: e0ad3ecb6e8342c42a31ce39b3926562,
-      type: 3}
-    go: {fileID: 666738289157613787, guid: e0ad3ecb6e8342c42a31ce39b3926562, type: 3}
+  - entity: {fileID: 0}
+    go: {fileID: 0}
     xPos: 0
     zPos: 4
   - entity: {fileID: 0}

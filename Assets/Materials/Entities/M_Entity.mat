@@ -75,7 +75,7 @@ Material:
     - Vector1_9D73627F: 0.17
     - Vector1_A2782188: 10
     - Vector1_BB2A2B98: 200
-    - _AddedStrength: 2.01
+    - _AddedStrength: 0.1
     - _AlphaClip: 0
     - _Blend: 0
     - _BlinkStrength: 0
@@ -91,7 +91,7 @@ Material:
     - _NormalStrength: 0
     - _OcclusionStrength: 1
     - _ReceiveShadows: 1
-    - _ShadowSharp: 0.495
+    - _ShadowSharp: 0.1
     - _ShadowStrength: 0.2
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -107,13 +107,15 @@ Material:
     - Vector2_3516D235: {r: 0, g: 1, b: 0, a: 0}
     - Vector4_7D8D2AFA: {r: 0, g: 1, b: 0.5, a: 0.48}
     - _AddColor: {r: 1, g: 0.9466156, b: 0.8156863, a: 1}
+    - _BlinkCol: {r: 0, g: 0, b: 0, a: 0}
     - _BlinkColor: {r: 1, g: 1, b: 1, a: 0}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Fresnel: {r: 0, g: 1, b: 0.7, a: 0.8}
     - _FresnelColor: {r: 1, g: 0.6556604, b: 0.6556604, a: 0}
     - _LightCol: {r: 1, g: 0.8495766, b: 0.6462264, a: 0}
     - _LightColor: {r: 1, g: 0.8495766, b: 0.6462264, a: 0}
-    - _LightDir: {r: 0.58692074, g: -0.8001049, b: -0.12392084, a: 0}
-    - _MainColor: {r: 1, g: 0.2783019, b: 0.2783019, a: 0}
+    - _LightDir: {r: 0.9669981, g: 0.22603816, b: 0.11756544, a: 0}
+    - _MainColor: {r: 0.21698111, g: 0.21698111, b: 0.21698111, a: 0}
     - _ShadowColor: {r: 0.14818439, g: 0.15088776, b: 0.16981131, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}

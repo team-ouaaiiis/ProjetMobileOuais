@@ -48,5 +48,13 @@ public class FeedbackManager : Manager
         }
     }
 
+    public virtual void CallShakeObject(GameObject toShake, AnimationCurve curve, float intensity, float speed, Space space, Vector3 axes)
+    {
+        for (int i = 0; i < entities.Count; i++)
+        {
+            entities[i].ShakeObject(toShake, curve, intensity, speed, space, axes);
+        }
+    }
+
     #endregion
 }

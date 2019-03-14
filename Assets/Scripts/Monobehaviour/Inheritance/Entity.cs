@@ -98,7 +98,6 @@ public class Entity : MonoBehaviour, IDamageListener
 
     #region Public Methods
 
-
     [Button("Add Feedback")]
     public virtual void AddFeedback()
     {
@@ -134,7 +133,6 @@ public class Entity : MonoBehaviour, IDamageListener
 
     public virtual void PlayFeedback()
     {
-
         Feedbacks[0].PlayFeedback();
     }
 
@@ -179,6 +177,11 @@ public class Entity : MonoBehaviour, IDamageListener
     }
     
     public virtual void Blink(Color col, Renderer mat, int count, float delay, float time)
+    {
+
+    }
+
+    public virtual void ShakeObject(GameObject toShake, AnimationCurve curve, float intensity, float speed, Space space, Vector3 shakeAxes)
     {
 
     }

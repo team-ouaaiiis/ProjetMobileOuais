@@ -12,6 +12,7 @@ public class FeedbackEditor : Editor
     [SerializeField] private SerializedObject GetTarget;
 
     [SerializeField] private SerializedProperty feedbackName;
+    [SerializeField] private SerializedProperty feedbackKey;
 
     [Header("Particle System")]
     [SerializeField] private SerializedProperty useParticleSystem;
@@ -45,6 +46,20 @@ public class FeedbackEditor : Editor
     [SerializeField] private SerializedProperty blinkTime;
     [SerializeField] private SerializedProperty blinkColor;
 
+    [Header("Object Shake")]
+    [SerializeField] private SerializedProperty playObjectShake;
+    [SerializeField] private SerializedProperty objectToShake;
+    [SerializeField] private SerializedProperty curveObjectToShake;
+    [SerializeField] private SerializedProperty intensityShake;
+    [SerializeField] private SerializedProperty speedShake;
+    [SerializeField] private SerializedProperty spaceShake;
+    [SerializeField] private SerializedProperty axesShake;
+
+    [Header("Animator")]
+    [SerializeField] private SerializedProperty playAnim;
+    [SerializeField] private SerializedProperty anim;
+    [SerializeField] private SerializedProperty trigger;
+
     #endregion
 
     private void OnEnable()
@@ -57,6 +72,8 @@ public class FeedbackEditor : Editor
     private void AssignProperties()
     {
         feedbackName = GetTarget.FindProperty("feedbackName");
+        feedbackKey = GetTarget.FindProperty("debugKey");
+
         useParticleSystem = GetTarget.FindProperty("playParticleSystem");
         ps = GetTarget.FindProperty("particle");
 
@@ -82,6 +99,18 @@ public class FeedbackEditor : Editor
         blinkTime = GetTarget.FindProperty("blinkTime");
         blinkDelay = GetTarget.FindProperty("blinkDelay");
         blinkColor = GetTarget.FindProperty("blinkCol");
+
+        playObjectShake = GetTarget.FindProperty("playObjectShake");
+        objectToShake = GetTarget.FindProperty("objectToShake");
+        curveObjectToShake = GetTarget.FindProperty("curveObjectToShake");
+        intensityShake = GetTarget.FindProperty("intensityShake");
+        speedShake = GetTarget.FindProperty("speedShake");
+        spaceShake = GetTarget.FindProperty("spaceShake");
+        axesShake = GetTarget.FindProperty("shakeAxes");
+
+        playAnim = GetTarget.FindProperty("playAnim");
+        anim = GetTarget.FindProperty("animator");
+        trigger = GetTarget.FindProperty("trigger");
     }
 
     public override void OnInspectorGUI()
@@ -89,12 +118,15 @@ public class FeedbackEditor : Editor
         EditorGUI.BeginChangeCheck();
         GetTarget.Update();
         EditorGUILayout.PropertyField(feedbackName);
+        EditorGUILayout.PropertyField(feedbackKey);
         CamShakeEditor();
         CamZoomEditor();
         FreezeFrameEditor();
+        AnimationEditor();
         ParticleSystemEditor();
         SoundEditor();
         BlinkEditor();
+        ObjectShakeEditor();
         GetTarget.ApplyModifiedProperties();
     }
 
@@ -162,6 +194,32 @@ public class FeedbackEditor : Editor
             EditorGUILayout.PropertyField(blinkCount);
             EditorGUILayout.PropertyField(blinkDelay);
             EditorGUILayout.PropertyField(blinkTime);
+        }
+    }
+
+    private void ObjectShakeEditor()
+    {
+        EditorGUILayout.PropertyField(playObjectShake);
+
+        if (feedback.PlayObjectShake)
+        {
+            EditorGUILayout.PropertyField(objectToShake);
+            EditorGUILayout.PropertyField(spaceShake);
+            EditorGUILayout.PropertyField(curveObjectToShake);
+            EditorGUILayout.PropertyField(speedShake);
+            EditorGUILayout.PropertyField(intensityShake);
+            EditorGUILayout.PropertyField(axesShake);
+        }
+    }
+
+    private void AnimationEditor()
+    {
+        EditorGUILayout.PropertyField(playAnim);
+
+        if (feedback.PlayAnim)
+        {
+            EditorGUILayout.PropertyField(anim);
+            EditorGUILayout.PropertyField(trigger);
         }
     }
 }

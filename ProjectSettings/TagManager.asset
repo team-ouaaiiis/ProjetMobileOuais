@@ -17,11 +17,11 @@ TagManager:
   - Interactable
   - Player
   - MapHeight
-  - MapShaded
-  - MapGrayScale
-  - MapBlackWhite
+  - Map/Shaded
+  - Map/GrayScale
+  - Map/BlackWhite
   - Interactable/Trap
-  - 
+  - HasShadow
   - 
   - 
   - 
