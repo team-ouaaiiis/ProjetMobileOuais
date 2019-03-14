@@ -205,9 +205,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e0309abee93ea347a32d38ebbe11726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasHealth: 0
   healthPoints: 1
   isDead: 0
+  onTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  feedbacks: []
   cam: {fileID: 7091358403051245285}
+  camShake: {fileID: 7091358403150234754}
+  zoom: {fileID: 7091358403150234756}
   xTilt: 80
   yPos: 30
 --- !u!114 &7091358403150234756
@@ -223,7 +237,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 7091358403051245285}
-  zooms: []
+  zooms:
+  - name: 'Default : Do Not Remove! '
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    speed: 0
+    shouldStay: 0
   debugBind: 103
   debugIndex: 0
 --- !u!114 &7091358403150234754

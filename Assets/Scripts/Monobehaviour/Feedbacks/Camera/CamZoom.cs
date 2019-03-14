@@ -2,165 +2,175 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace GRP08.Cafolo
+[System.Serializable]
+public struct Zooms
 {
-    [System.Serializable]
-    public struct Zooms
+    #region Zoom Class Fields
+
+    [SerializeField] private string name;
+    private AnimationCurve curve;
+    [SerializeField] private float speed;
+    [SerializeField] private bool shouldStay;
+
+    #endregion
+
+    #region Zoom Class Properties
+
+    public AnimationCurve Curve
     {
-        #region Zoom Class Fields
-
-        [SerializeField] private string name;
-        [SerializeField] private AnimationCurve curve;
-        [SerializeField] private float speed;
-        [SerializeField] private bool shouldStay;
-
-        #endregion
-
-        #region Zoom Class Properties
-
-        public AnimationCurve Curve
+        get
         {
-            get
-            {
-                return curve;
-            }
-
-            set
-            {
-                curve = value;
-            }
+            return curve;
         }
 
-        public string Name
+        set
         {
-            get
-            {
-                return name;
-            }
-
-            set
-            {
-                name = value;
-            }
+            curve = value;
         }
-
-        public float Speed
-        {
-            get
-            {
-                return speed;
-            }
-
-            set
-            {
-                speed = value;
-            }
-        }
-
-        public bool ShouldStay
-        {
-            get
-            {
-                return shouldStay;
-            }
-
-            set
-            {
-                shouldStay = value;
-            }
-        }
-
-        #endregion
     }
 
-    public class CamZoom : MonoBehaviour
+    public string Name
     {
-        #region Private Variables
-
-        [Header("Camera")]
-        [SerializeField] private Camera cam;
-
-        [Space(10)]
-        [SerializeField] private Zooms[] zooms;
-        [Space(10)]
-        [Header("Debug")]
-        [SerializeField] private KeyCode debugBind = KeyCode.G;
-        [SerializeField] private int debugIndex = 0;
-
-        private int currentZoomIndex = 0;
-        private float camZoomMultiplier = 1f;
-        private float camZoomCompletion = 0f;
-        private bool isZooming = false;
-
-        #endregion
-
-        #region Private Methods
-
-        private void Start()
+        get
         {
-            camZoomMultiplier = cam.orthographicSize;
+            return name;
         }
 
-        private void Update()
+        set
         {
-            ZoomManager();
-            CheatCode();
+            name = value;
         }
-
-        private void ZoomManager()
-        {
-            if (isZooming)
-            {
-                cam.orthographicSize = zooms[currentZoomIndex].Curve.Evaluate(camZoomCompletion) * camZoomMultiplier;
-                camZoomCompletion += zooms[currentZoomIndex].Speed * Time.unscaledDeltaTime;
-                if (camZoomCompletion >= 1)
-                {
-                    isZooming = false;
-                    if(!zooms[currentZoomIndex].ShouldStay)
-                    {
-                        cam.orthographicSize = camZoomMultiplier;
-                    }
-                }
-            }
-        }
-
-        private void CheatCode()
-        {
-            if (Input.GetKeyDown(debugBind))
-            {
-                TriggerCamZoom(debugIndex);
-            }
-        }
-
-        #endregion
-
-        #region Public Methods
-
-        public virtual void TriggerCamZoom(int index)
-        {
-            currentZoomIndex = index;
-            camZoomMultiplier = cam.orthographicSize;
-            isZooming = true;
-            camZoomCompletion = 0f;
-
-        }
-
-        public virtual void TriggerCamZoom(string name)
-        {
-            for (int i = 0; i < zooms.Length; i++)
-            {
-                if(zooms[i].Name == name)
-                {
-                    currentZoomIndex = i;
-                }
-            }
-
-            camZoomMultiplier = cam.orthographicSize;
-            isZooming = true;
-
-            camZoomCompletion = 0f;
-        }
-
-        #endregion
     }
+
+    public float Speed
+    {
+        get
+        {
+            return speed;
+        }
+
+        set
+        {
+            speed = value;
+        }
+    }
+
+    public bool ShouldStay
+    {
+        get
+        {
+            return shouldStay;
+        }
+
+        set
+        {
+            shouldStay = value;
+        }
+    }
+
+    #endregion
 }
+
+public class CamZoom : MonoBehaviour
+{
+    #region Private Variables
+
+    [Header("Camera")]
+    [SerializeField] private Camera cam;
+
+    [Space(10)]
+    [SerializeField] private Zooms[] zooms;
+    [Space(10)]
+    [Header("Debug")]
+    [SerializeField] private bool enableDebug = false;
+    [SerializeField] private KeyCode debugBind = KeyCode.K;
+    [SerializeField] private int debugIndex = 0;
+
+    private int currentZoomIndex = 0;
+    private float camZoomMultiplier = 1f;
+    private float camZoomCompletion = 0f;
+    private bool isZooming = false;
+
+    #endregion
+
+    #region Private Methods
+
+    private void Start()
+    {
+        camZoomMultiplier = cam.fieldOfView;
+    }
+
+    private void Update()
+    {
+        ZoomManager();
+        CheatCode();
+    }
+
+    private void ZoomManager()
+    {
+        if (isZooming)
+        {
+            cam.fieldOfView = zooms[currentZoomIndex].Curve.Evaluate(camZoomCompletion) * camZoomMultiplier;
+            camZoomCompletion += zooms[currentZoomIndex].Speed * Time.unscaledDeltaTime;
+            if (camZoomCompletion >= 1)
+            {
+                isZooming = false;
+                if (!zooms[currentZoomIndex].ShouldStay)
+                {
+                    cam.fieldOfView = camZoomMultiplier;
+                }
+            }
+        }
+    }
+
+    private void CheatCode()
+    {
+        if (Input.GetKeyDown(debugBind) && enableDebug)
+        {
+            TriggerCamZoom(debugIndex);
+        }
+    }
+
+    #endregion
+
+    #region Public Methods
+
+    public virtual void TriggerCamZoom(int index)
+    {
+        currentZoomIndex = index;
+        StartZoom();
+    }
+
+    public virtual void TriggerCamZoom(string name)
+    {
+        for (int i = 0; i < zooms.Length; i++)
+        {
+            if (zooms[i].Name == name)
+            {
+                currentZoomIndex = i;
+            }
+        }
+
+        StartZoom();
+    }
+
+    public virtual void TriggerCamZoom(AnimationCurve curve, float speed, bool shouldStay)
+    {
+        zooms[0].Curve = curve;
+        zooms[0].Speed = speed;
+        zooms[0].ShouldStay = shouldStay;
+        currentZoomIndex = 0;
+        StartZoom();
+    }
+
+    private void StartZoom()
+    {
+        Debug.Log("Start Zoom");
+        camZoomMultiplier = cam.fieldOfView;
+        isZooming = true;
+        camZoomCompletion = 0f;
+    }
+
+    #endregion
+}
+

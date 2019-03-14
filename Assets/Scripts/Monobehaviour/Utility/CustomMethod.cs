@@ -142,5 +142,14 @@ public static class CustomMethod
         float y = Mathf.Lerp(minValueReturn.y, maxValueReturn.y, Mathf.InverseLerp(minValueToCheck.y, maxValueToCheck.y, valueToCheck.y));
         return new Vector2(x, y);
     }
+
+    public static Vector3 MultiplyTwoVectors(Vector3 a, Vector3 b)
+    {
+        float x = a.x * b.x;
+        float y = a.y * b.y;
+        float z = a.z * b.z;
+
+        return new Vector3(x, y, z);
+    }
 }
 

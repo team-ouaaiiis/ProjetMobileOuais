@@ -5,7 +5,6 @@ using UnityEngine.Events;
 
 public class ObstacleTest : Obstacle
 {
-
     public UnityEvent onDestroy;
 
     public override void TakeDamage(float dmg)

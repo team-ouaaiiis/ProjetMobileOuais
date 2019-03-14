@@ -14,14 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chunkDifficulty: 0
   chunkElements:
-  - entity: {fileID: 6673490529397884854, guid: f3c1e5b6c35816243bf9a1003475d7b9,
-      type: 3}
+  - entity: {fileID: 0}
     go: {fileID: 0}
     xPos: 0
     zPos: 0
-  - entity: {fileID: 3554721698345074821, guid: 901d1d86e3f538b4ea41819de6799848,
+  - entity: {fileID: 5004915053718983638, guid: beda603b978da78489b4071dbe82207d,
       type: 3}
-    go: {fileID: 6358384896391196285, guid: 901d1d86e3f538b4ea41819de6799848, type: 3}
+    go: {fileID: 0}
     xPos: 1
     zPos: 0
   - entity: {fileID: 0}
@@ -33,12 +32,11 @@ MonoBehaviour:
     xPos: 0
     zPos: 3
   - entity: {fileID: 0}
-    go: {fileID: 0}
+    go: {fileID: 3396134595530686121, guid: beda603b978da78489b4071dbe82207d, type: 3}
     xPos: 1
     zPos: 1
-  - entity: {fileID: 3554721698345074821, guid: 901d1d86e3f538b4ea41819de6799848,
-      type: 3}
-    go: {fileID: 6358384896391196285, guid: 901d1d86e3f538b4ea41819de6799848, type: 3}
+  - entity: {fileID: 0}
+    go: {fileID: 0}
     xPos: 2
     zPos: 1
   - entity: {fileID: 0}
@@ -47,40 +45,36 @@ MonoBehaviour:
     zPos: 1
   - entity: {fileID: 8313939105815613155, guid: efb19bc9b9261364aae38bae3db9b5b3,
       type: 3}
-    go: {fileID: 8540149819113000119, guid: efb19bc9b9261364aae38bae3db9b5b3, type: 3}
+    go: {fileID: 0}
     xPos: 1
     zPos: 2
-  - entity: {fileID: 8313939105815613155, guid: efb19bc9b9261364aae38bae3db9b5b3,
-      type: 3}
+  - entity: {fileID: 0}
     go: {fileID: 0}
     xPos: 2
     zPos: 2
-  - entity: {fileID: 6673490529397884854, guid: f3c1e5b6c35816243bf9a1003475d7b9,
-      type: 3}
-    go: {fileID: 0}
+  - entity: {fileID: 0}
+    go: {fileID: 6358384896391196285, guid: 901d1d86e3f538b4ea41819de6799848, type: 3}
     xPos: 0
     zPos: 3
   - entity: {fileID: 8313939105815613155, guid: efb19bc9b9261364aae38bae3db9b5b3,
       type: 3}
-    go: {fileID: 8540149819113000119, guid: efb19bc9b9261364aae38bae3db9b5b3, type: 3}
+    go: {fileID: 0}
     xPos: 1
     zPos: 3
-  - entity: {fileID: 6673490529397884854, guid: f3c1e5b6c35816243bf9a1003475d7b9,
-      type: 3}
+  - entity: {fileID: 0}
     go: {fileID: 0}
     xPos: 2
     zPos: 3
   - entity: {fileID: 0}
     go: {fileID: 0}
-    xPos: 2
-    zPos: 2
+    xPos: 0
+    zPos: 4
   - entity: {fileID: 0}
     go: {fileID: 0}
-    xPos: 2
-    zPos: 3
-  - entity: {fileID: 6673490529397884854, guid: f3c1e5b6c35816243bf9a1003475d7b9,
-      type: 3}
-    go: {fileID: 1816477346061924310, guid: f3c1e5b6c35816243bf9a1003475d7b9, type: 3}
+    xPos: 1
+    zPos: 4
+  - entity: {fileID: 0}
+    go: {fileID: 0}
     xPos: 2
     zPos: 4
   elemSave:
