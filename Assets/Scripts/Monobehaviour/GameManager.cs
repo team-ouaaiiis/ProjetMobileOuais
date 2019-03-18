@@ -45,7 +45,19 @@ public class GameManager : MonoBehaviour
     public void PLACEHOLDER_GameOver()
     {
         Invoke("ResetLevel", 3);
-    }    
+    }
+
+    #endregion
+
+    #region Entity Callbacks
+
+    public void CallPlayerWeaponHitEntity()
+    {
+        for (int i = 0; i < entities.Count; i++)
+        {
+            entities[i].PlayerWeaponHitEntity();
+        }
+    }
 
     #endregion
 

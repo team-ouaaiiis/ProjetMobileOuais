@@ -6,7 +6,6 @@ using UnityEngine.Events;
 
 public class PlayerWeapon : Interactable
 {
-
     #region Fields
 
     [Space(20)]
@@ -410,12 +409,11 @@ public class PlayerWeapon : Interactable
                 if (damageListener != null)
                 {
                     damageListener.TakeDamage(weapon.damagePoint);
+                    GameManager.instance.CallPlayerWeaponHitEntity();
                     Debug.Log("Damaging something");
                 }
             }
-        }
-
-        
+        }        
     }
 
     IEnumerator Attacking()

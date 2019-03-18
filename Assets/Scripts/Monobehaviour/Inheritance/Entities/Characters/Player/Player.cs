@@ -59,7 +59,7 @@ public class Player : Character
 
     public override void Update()
     {
-        base.Update();
+        base.Update();        
         KeyboardDebug();
     }
 
@@ -75,11 +75,22 @@ public class Player : Character
 
     #endregion
 
+    #region Entity Callbacks
+
+    public override void PlayerWeaponHitEntity()
+    {
+        base.PlayerWeaponHitEntity();
+        PlayFeedback("HitEntity");
+    }
+
+    #endregion
+
     public override void Death()
     {
         base.Death();
         //PLACEHOLDER
-        GameManager.instance.PLACEHOLDER_GameOver();
+        if(HasHealth)
+            GameManager.instance.PLACEHOLDER_GameOver();
 
     }
 

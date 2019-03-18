@@ -157,10 +157,21 @@ public class Entity : MonoBehaviour, IDamageListener
 
     #region Callbacks
 
+    #region Gameplay
+
     public virtual void ResetHealth()
     {
         HealthPoints = iniHealthPoints;
     }
+
+    public virtual void PlayerWeaponHitEntity()
+    {
+
+    }
+
+    #endregion
+
+    #region Feedbacks
 
     public virtual void Shake(float amnt, float dur)
     {
@@ -187,6 +198,10 @@ public class Entity : MonoBehaviour, IDamageListener
 
     }
 
+    #endregion
+
+    #region UI
+
     public virtual void ShopBubbleSelection(int iD)
     {
 
@@ -196,6 +211,9 @@ public class Entity : MonoBehaviour, IDamageListener
     {
 
     }
+
+    #endregion
+
     #endregion
 
     #region Properties
@@ -203,6 +221,7 @@ public class Entity : MonoBehaviour, IDamageListener
     public float HealthPoints { get => healthPoints; set => healthPoints = value; }
     public Transform Holder { get => holder; set => holder = value; }
     public List<Feedback> Feedbacks { get => feedbacks; set => feedbacks = value; }
+    public bool HasHealth { get => hasHealth; }
 
     #endregion
 }
