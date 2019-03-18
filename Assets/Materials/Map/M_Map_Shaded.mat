@@ -73,7 +73,7 @@ Material:
     - _GradientNoiseScale: 0.008
     - _NoiseAmount: 0.74
     - _NormalOffset: 0.16
-    - _NormalStrength: 5
+    - _NormalStrength: 80
     - _Shaded: 0
     - _SimpleNoiseScale: 0.33
     m_Colors:

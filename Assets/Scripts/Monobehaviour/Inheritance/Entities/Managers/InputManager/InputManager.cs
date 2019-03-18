@@ -22,6 +22,7 @@ public class InputManager : Manager
     private bool detectTapOnlyAfterRelease = false;
 
     public float detectTapTime = 0.5f;
+    public float detectHoldTime = 0.3f;
 
     [SerializeField]
     private float minDistanceForSwipe = 20f;
@@ -35,6 +36,7 @@ public class InputManager : Manager
     //Delegates
     public event Action<SwipeDirection> OnSwipe = delegate { };
     public event Action OnTap = delegate { };
+    public event Action OnHold = delegate { };
 
     public enum SwipeDirection
     {
@@ -129,6 +131,11 @@ public class InputManager : Manager
                 DetectTap();
             }
 
+            if(touch.phase == TouchPhase.Stationary)
+            {
+                DetectHold();
+            }
+
             if (touch.phase == TouchPhase.Ended)
             {
                 fingerDownPosition = touch.position;
@@ -147,6 +154,15 @@ public class InputManager : Manager
         else if(FingerOnScreen)
         {
             FingerOnScreen = false;
+        }
+    }
+
+    private void DetectHold()
+    {
+        if (timeOnScreen >= detectHoldTime)
+        {
+            Debug.Log("HOLD FINGER ON SCREEN");
+            OnHold();
         }
     }
 

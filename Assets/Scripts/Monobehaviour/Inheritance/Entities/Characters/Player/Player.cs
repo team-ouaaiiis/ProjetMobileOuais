@@ -40,6 +40,7 @@ public class Player : Character
         inputManager = InputManager.inputManager;
         inputManager.OnSwipe += OnSwipe;
         inputManager.OnTap += OnTap;
+        inputManager.OnHold += OnTap;
 
         //Get Weapon
         weaponsList = PlayerWeaponsList.playerWeaponsList;
