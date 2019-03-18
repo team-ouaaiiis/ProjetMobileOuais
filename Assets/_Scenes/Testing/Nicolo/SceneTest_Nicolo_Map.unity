@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -310,10 +310,12 @@ MonoBehaviour:
   - {fileID: 2100000, guid: d59c82e9951512d4e96009be47850964, type: 2}
   - {fileID: 2100000, guid: d5fa9e8d9ec280c4dad36b6cfdd1d403, type: 2}
   - {fileID: 2100000, guid: 5051d61892ecff54c86cfe37c44e4dfe, type: 2}
+  camShadows: {fileID: 0}
+  shadowPlane: {fileID: 0}
   lightCol: {r: 1, g: 0.9466156, b: 0.8156863, a: 1}
   shadowColor: {r: 0.14818439, g: 0.15088776, b: 0.16981131, a: 1}
   lightIntensity: 0.1
-  shadowStrength: 0.2
+  shadowSharpness: 0.2
 --- !u!1 &576236929 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 642858689, guid: bc85d062e4620fd45990e5164cc9ae1b,
@@ -431,7 +433,7 @@ PrefabInstance:
     - target: {fileID: 184247976057937537, guid: e3fbb31d7ffda0347a3a7519cec0708f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 184247976057937537, guid: e3fbb31d7ffda0347a3a7519cec0708f,
         type: 3}
@@ -2057,7 +2059,7 @@ PrefabInstance:
     - target: {fileID: 4072073688708200066, guid: bc85d062e4620fd45990e5164cc9ae1b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1424
       objectReference: {fileID: 0}
     - target: {fileID: 4072073688708200066, guid: bc85d062e4620fd45990e5164cc9ae1b,
         type: 3}
