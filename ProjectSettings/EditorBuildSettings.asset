@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/_Scenes/Testing/Vincent/SceneTest_Vincent_01.unity
     guid: f453acdcee258084095cfb2d24fe9c92
   - enabled: 1
-    path: Assets/_Scenes/Testing/Nicolo/SceneTest_Nicolo_Gameplay.unity
+    path: Assets/_Scenes/Testing/Nicolo/SceneTest_Nicolo_TechArt.unity
     guid: d88da5a052b051e47bb1dae1cbf1ddce
   m_configObjects: {}

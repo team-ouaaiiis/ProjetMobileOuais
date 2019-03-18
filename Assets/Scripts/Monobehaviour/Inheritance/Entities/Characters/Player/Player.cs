@@ -100,6 +100,8 @@ public class Player : Character
         {
             weapon.StartAttack();
         }
+
+        PlayFeedback("Attack");
     }
 
     [Button("Swipe")]
