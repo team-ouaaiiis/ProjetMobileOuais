@@ -93,13 +93,14 @@ public class Entity : MonoBehaviour, IDamageListener
 
     #region Public Methods
 
-    [Button("Add Feedback")]
+    [ContextMenu("Add Feedback")]
     public virtual void AddFeedback()
     {
         Feedback newFeedback = gameObject.AddComponent<Feedback>();
         Feedbacks.Add(newFeedback);
     }
-    [Button("Remove all Feedbacks")]
+
+    [ContextMenu("Remove all Feedbacks")]
     public virtual void RemoveAllFeedbacks()
     {
         if(feedbacks.Count > 0)

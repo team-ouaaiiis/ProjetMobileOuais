@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -10269,7 +10269,7 @@ PrefabInstance:
     - target: {fileID: 8576616257665961169, guid: d45c3e66b0f12dc4589033cd7faca80a,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8576616257665961170, guid: d45c3e66b0f12dc4589033cd7faca80a,
         type: 3}
@@ -13140,7 +13140,7 @@ PrefabInstance:
     - target: {fileID: 4568592526789921934, guid: 693030583d1dda64f853ef5c8d8cd9d2,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4568592526789921933, guid: 693030583d1dda64f853ef5c8d8cd9d2,
         type: 3}
@@ -14767,7 +14767,7 @@ PrefabInstance:
     - target: {fileID: 184247976057937538, guid: e3fbb31d7ffda0347a3a7519cec0708f,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 184247976057937537, guid: e3fbb31d7ffda0347a3a7519cec0708f,
         type: 3}
@@ -17342,7 +17342,7 @@ PrefabInstance:
     - target: {fileID: 7565235781154729960, guid: c00a7083d022cda48a94936a6d6b1373,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7565235781154729963, guid: c00a7083d022cda48a94936a6d6b1373,
         type: 3}
@@ -18784,7 +18784,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1992050676
 Transform:
   m_ObjectHideFlags: 0
@@ -19712,6 +19712,31 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2946535839408777793, guid: 1a67e1aa0c36218419051d37ab57a303,
+        type: 3}
+      propertyPath: orthographic size
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2946535839408777793, guid: 1a67e1aa0c36218419051d37ab57a303,
+        type: 3}
+      propertyPath: orthographic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2946535839408777793, guid: 1a67e1aa0c36218419051d37ab57a303,
+        type: 3}
+      propertyPath: field of view
+      value: 95.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2946535839408777793, guid: 1a67e1aa0c36218419051d37ab57a303,
+        type: 3}
+      propertyPath: near clip plane
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2946535839408777793, guid: 1a67e1aa0c36218419051d37ab57a303,
+        type: 3}
+      propertyPath: far clip plane
+      value: 15.6
+      objectReference: {fileID: 0}
     - target: {fileID: 2388764093254087568, guid: 1a67e1aa0c36218419051d37ab57a303,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -19951,31 +19976,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 2946535839408777793, guid: 1a67e1aa0c36218419051d37ab57a303,
-        type: 3}
-      propertyPath: orthographic size
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2946535839408777793, guid: 1a67e1aa0c36218419051d37ab57a303,
-        type: 3}
-      propertyPath: orthographic
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2946535839408777793, guid: 1a67e1aa0c36218419051d37ab57a303,
-        type: 3}
-      propertyPath: field of view
-      value: 95.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2946535839408777793, guid: 1a67e1aa0c36218419051d37ab57a303,
-        type: 3}
-      propertyPath: near clip plane
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 2946535839408777793, guid: 1a67e1aa0c36218419051d37ab57a303,
-        type: 3}
-      propertyPath: far clip plane
-      value: 15.6
       objectReference: {fileID: 0}
     - target: {fileID: 5649158512114891395, guid: 1a67e1aa0c36218419051d37ab57a303,
         type: 3}
