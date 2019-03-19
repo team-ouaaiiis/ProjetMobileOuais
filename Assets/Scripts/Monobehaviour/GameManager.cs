@@ -59,6 +59,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void CallPlayerDead()
+    {
+
+    }
+
     #endregion
 
     void ResetLevel()

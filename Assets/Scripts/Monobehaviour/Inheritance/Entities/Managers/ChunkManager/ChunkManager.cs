@@ -12,6 +12,7 @@ public class ChunkManager : Manager
     [SerializeField] [Range(0,8)] private int rows = 5;
     [SerializeField] [Range(0,5)] private int columns = 3;
     [SerializeField] private float chunkLength = 20f;
+    [SerializeField] private float spawnZoneLength = 18f;
     [SerializeField] private float chunkWidth = 5f;
 
     [Header("Components")]
@@ -132,8 +133,8 @@ public class ChunkManager : Manager
             chunkWidth = value;
         }
     }
-
     public ChunkEventsPool ChunkEventsPool { get => chunkEventsPool; set => chunkEventsPool = value; }
+    public float SpawnZoneLength { get => spawnZoneLength; set => spawnZoneLength = value; }
 
     #endregion
 }

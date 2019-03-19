@@ -89,7 +89,7 @@ public class Chunk : NonInteractable
                 newEntity.gameObject.SetActive(true);
                 newEntity.transform.parent = transform;
                 float x = CustomMethod.Interpolate(-chunkManager.ChunkWidth / 2, chunkManager.ChunkWidth / 2, 0, chunkManager.Columns - 1, chunkPattern.ChunkElements[i].XPos);
-                float z = CustomMethod.Interpolate(-chunkManager.ChunkLength / 2, chunkManager.ChunkLength / 2, 0, chunkManager.Rows - 1, chunkPattern.ChunkElements[i].ZPos);
+                float z = CustomMethod.Interpolate(-chunkManager.SpawnZoneLength / 2, chunkManager.SpawnZoneLength / 2, 0, chunkManager.Rows - 1, chunkPattern.ChunkElements[i].ZPos);
                 newEntity.gameObject.transform.localPosition = new Vector3(x, 0, z);
                 chunkElements.Add(newEntity);
             }
