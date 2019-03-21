@@ -61,9 +61,7 @@ public class EnemyZigZag : Enemy
     {
         base.Update();
 
-
-
-        if (canChangeLine)
+        if (canChangeLine && IsInitialized)
         {
             CheckPlayerDistance();
             ChangeTick();
@@ -143,7 +141,7 @@ public class EnemyZigZag : Enemy
 
 
         Vector3 targetPos = new Vector3(targetX, transform.localPosition.y, transform.localPosition.z);
-        transform.localPosition = Vector3.SmoothDamp(transform.localPosition, targetPos, ref velocityRef, smoothTime);
+        //transform.localPosition = Vector3.SmoothDamp(transform.localPosition, targetPos, ref velocityRef, smoothTime);
 
         if (CustomMethod.AlmostEqualOnOneAxis(transform.localPosition, targetPos, 0.001f, CustomMethod.Axis.X))
         {

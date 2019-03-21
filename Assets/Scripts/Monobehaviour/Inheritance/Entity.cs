@@ -24,6 +24,7 @@ public class Entity : MonoBehaviour, IDamageListener
 
     [HideInInspector][SerializeField] private List<Feedback> feedbacks = new List<Feedback>();
     private Transform holder;
+    private bool isInitialized = false;
 
     #endregion
 
@@ -92,6 +93,11 @@ public class Entity : MonoBehaviour, IDamageListener
     #endregion
 
     #region Public Methods
+
+    public virtual void Initialize()
+    {
+        IsInitialized = true;
+    }
 
     [ContextMenu("Add Feedback")]
     public virtual void AddFeedback()
@@ -222,6 +228,7 @@ public class Entity : MonoBehaviour, IDamageListener
     public Transform Holder { get => holder; set => holder = value; }
     public List<Feedback> Feedbacks { get => feedbacks; set => feedbacks = value; }
     public bool HasHealth { get => hasHealth; }
+    public bool IsInitialized { get => isInitialized; set => isInitialized = value; }
 
     #endregion
 }

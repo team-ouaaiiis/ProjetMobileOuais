@@ -14,7 +14,8 @@ public class EnemyMoving : Enemy
     public override void Update()
     {
         base.Update();
-        EnemyMove();
+        if(IsInitialized)
+            EnemyMove();
     }
 
     #endregion
@@ -23,6 +24,6 @@ public class EnemyMoving : Enemy
     {
         if (!canMove) return;
 
-        transform.Translate(Vector3.forward * speed * Time.deltaTime, UnityEngine.Space.Self);
+        //transform.Translate(Vector3.forward * speed * Time.deltaTime, UnityEngine.Space.Self);
     }
 }

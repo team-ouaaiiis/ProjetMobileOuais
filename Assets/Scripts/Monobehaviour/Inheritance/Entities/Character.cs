@@ -9,7 +9,7 @@ public class Character : Entity
     public override void OnDisable()
     {
         base.OnDisable();
-        Debug.Log(gameObject.name + " was Disabled", gameObject);
+        //Debug.Log(gameObject.name + " was Disabled", gameObject);
     }
 
     public override void TakeDamage(float dmg)

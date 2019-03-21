@@ -68,6 +68,7 @@ public class Chunk : NonInteractable
         }
 
         chunkManager.SpawnNewChunk();
+        Debug.Log(gameObject.name + " Chunk was disabled", gameObject);
         gameObject.SetActive(false);
     }
 
@@ -91,8 +92,10 @@ public class Chunk : NonInteractable
                 newEntity.transform.localEulerAngles = new Vector3(0, 180, 0);
                 float x = CustomMethod.Interpolate(-chunkManager.ChunkWidth / 2, chunkManager.ChunkWidth / 2, 0, chunkManager.Columns - 1, chunkPattern.ChunkElements[i].XPos);
                 float z = CustomMethod.Interpolate(-chunkManager.SpawnZoneLength / 2, chunkManager.SpawnZoneLength / 2, 0, chunkManager.Rows - 1, chunkPattern.ChunkElements[i].ZPos);
+                //Debug.Log("x = " + x, ", z = " + z);
                 newEntity.gameObject.transform.localPosition = new Vector3(x, 0, z);
                 chunkElements.Add(newEntity);
+                newEntity.Initialize();
             }
         }
     }

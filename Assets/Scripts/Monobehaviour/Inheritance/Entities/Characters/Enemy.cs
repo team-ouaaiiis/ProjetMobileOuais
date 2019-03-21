@@ -155,7 +155,7 @@ public class Enemy : Character, IDamageListener, IRepulseListener
     {
         base.Death();
         canAttack = false;
-        Debug.Log(gameObject.name + " DIED", gameObject);
+        //Debug.Log(gameObject.name + " DIED", gameObject);
         //DEBUG TEST
         gameObject.SetActive(false);
         GameManager.instance.DebugParticle();
