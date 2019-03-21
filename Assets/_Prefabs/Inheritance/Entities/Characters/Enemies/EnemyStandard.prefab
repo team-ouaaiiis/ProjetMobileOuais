@@ -40,7 +40,9 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   feedbacks: []
+  anim: {fileID: 0}
   enemyCollider: {fileID: 0}
+  deathFx: {fileID: 9204879105579526286}
   attackRange: 1
   damageBoxSize: {x: 1, y: 2, z: 1}
   damageBoxOffset: {x: 0, y: 1, z: 0}
@@ -176,6 +178,12 @@ PrefabInstance:
 --- !u!1 &6358384896391196285 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 224692342214357214, guid: 2735dd363c3237a47901310d692b9ecb,
+    type: 3}
+  m_PrefabInstance: {fileID: 6567305019181555363}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &9204879105579526286 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2638420916762015277, guid: 2735dd363c3237a47901310d692b9ecb,
     type: 3}
   m_PrefabInstance: {fileID: 6567305019181555363}
   m_PrefabAsset: {fileID: 0}

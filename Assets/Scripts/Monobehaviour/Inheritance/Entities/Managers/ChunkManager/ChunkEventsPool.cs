@@ -32,11 +32,11 @@ public class ChunkEventsPool : MonoBehaviour
         {
             if (eventPools[i].EventEntities[0].name == entity.name)
             {
-
                 for (int x = 0; x < eventPools[i].EventEntities.Count; x++)
                 {
                     if(!eventPools[i].EventEntities[x].gameObject.activeInHierarchy)
                     {
+                        eventPools[i].EventEntities[x].Holder = eventPools[i].EventEntities[x].transform.parent;
                         return eventPools[i].EventEntities[x];
                     }
                 }

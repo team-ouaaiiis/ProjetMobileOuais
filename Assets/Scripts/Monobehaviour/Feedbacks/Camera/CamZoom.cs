@@ -165,7 +165,6 @@ public class CamZoom : MonoBehaviour
 
     private void StartZoom()
     {
-        Debug.Log("Start Zoom");
         camZoomMultiplier = cam.fieldOfView;
         isZooming = true;
         camZoomCompletion = 0f;

@@ -79,15 +79,15 @@ public class Entity : MonoBehaviour, IDamageListener
 
     #region Private Methods
 
-    private void HealthManager()
-    {
-        if(healthPoints <= 0 && !isDead)
-        {
-            Debug.Log("Dead");
-            isDead = true;
-            healthPoints = 0;
-        }
-    }
+    //private void HealthManager()
+    //{
+    //    if(healthPoints <= 0 && !isDead)
+    //    {
+    //        Debug.Log("Dead");
+    //        isDead = true;
+    //        healthPoints = 0;
+    //    }
+    //}
 
     #endregion
 
@@ -116,7 +116,7 @@ public class Entity : MonoBehaviour, IDamageListener
 
     public virtual void PlayFeedback(string name)
     {
-        Debug.Log("Feedback");
+
         for (int i = 0; i < Feedbacks.Count; i++)
         {
             if (Feedbacks[i].FeedbackName == name)

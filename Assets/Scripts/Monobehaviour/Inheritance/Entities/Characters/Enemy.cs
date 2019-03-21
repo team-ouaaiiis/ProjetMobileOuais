@@ -155,10 +155,12 @@ public class Enemy : Character, IDamageListener, IRepulseListener
     {
         base.Death();
         canAttack = false;
-        Debug.Log("ENEMY DIE");
+        Debug.Log(gameObject.name + " DIED", gameObject);
         //DEBUG TEST
         gameObject.SetActive(false);
-    }
+        GameManager.instance.DebugParticle();
+        transform.parent = Holder;
+    }    
 
     #endregion
 }

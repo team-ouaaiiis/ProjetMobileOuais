@@ -40,7 +40,9 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   feedbacks: []
+  anim: {fileID: 0}
   enemyCollider: {fileID: 0}
+  deathFx: {fileID: 3369663767687507496}
   attackRange: 1
   damageBoxSize: {x: 1, y: 1, z: 1}
   damageBoxOffset: {x: 0, y: 1, z: 0}
@@ -158,6 +160,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 1d5f5965232aafd4992caae2bb95ed53, type: 2}
+    - target: {fileID: 2105182713451802270, guid: 2735dd363c3237a47901310d692b9ecb,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4717492061548329337, guid: 2735dd363c3237a47901310d692b9ecb,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7623180852814772541, guid: 2735dd363c3237a47901310d692b9ecb,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -178,6 +190,12 @@ PrefabInstance:
 --- !u!1 &666738289157613787 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 224692342214357214, guid: 2735dd363c3237a47901310d692b9ecb,
+    type: 3}
+  m_PrefabInstance: {fileID: 747314481176762373}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &3369663767687507496 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2638420916762015277, guid: 2735dd363c3237a47901310d692b9ecb,
     type: 3}
   m_PrefabInstance: {fileID: 747314481176762373}
   m_PrefabAsset: {fileID: 0}

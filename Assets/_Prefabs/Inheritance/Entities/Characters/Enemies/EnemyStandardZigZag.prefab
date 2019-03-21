@@ -26,7 +26,9 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   feedbacks: []
+  anim: {fileID: 0}
   enemyCollider: {fileID: 4686252584504743784}
+  deathFx: {fileID: 4518980847003513125}
   attackRange: 1
   damageBoxSize: {x: 1, y: 2, z: 1}
   damageBoxOffset: {x: 0, y: 1, z: 0}
@@ -173,6 +175,12 @@ GameObject:
 --- !u!136 &4686252584504743784 stripped
 CapsuleCollider:
   m_CorrespondingSourceObject: {fileID: 1059245763, guid: 901d1d86e3f538b4ea41819de6799848,
+    type: 3}
+  m_PrefabInstance: {fileID: 4686252584922225067}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &4518980847003513125 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 9204879105579526286, guid: 901d1d86e3f538b4ea41819de6799848,
     type: 3}
   m_PrefabInstance: {fileID: 4686252584922225067}
   m_PrefabAsset: {fileID: 0}

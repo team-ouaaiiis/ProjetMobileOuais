@@ -303,7 +303,7 @@ public class PlayerWeapon : Interactable
 
         if (percent > activeTimeMin && percent < activeTimeMax)
         {
-            Debug.Log("ACTIVE");
+            //Debug.Log("ACTIVE");
             ThrowHitBox();
         }
     }
@@ -311,7 +311,7 @@ public class PlayerWeapon : Interactable
     void ThrowHitBox()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, weapon.throwRadiusRange, attackTargetLayer, QueryTriggerInteraction.Collide);
-        Debug.Log("THROW ATTACK");
+        //Debug.Log("THROW ATTACK");
 
         if (colliders.Length > 0)
         {
@@ -321,7 +321,7 @@ public class PlayerWeapon : Interactable
                 if (damageListener != null)
                 {
                     damageListener.TakeDamage(weapon.damagePoint);
-                    Debug.Log("Damaging something with throw attack");
+                    //Debug.Log("Damaging something with throw attack");
                 }
             }
         }
@@ -370,7 +370,7 @@ public class PlayerWeapon : Interactable
     {
         if (isAttacking)
         {
-            Debug.LogWarning("Already attacking");
+            //Debug.LogWarning("Already attacking");
             return;
         }
 
@@ -398,11 +398,11 @@ public class PlayerWeapon : Interactable
     void Attack()
     {
         Collider[] colliders = Physics.OverlapBox(transform.position + attackBoxOffset, attackBoxSize / 2, Quaternion.identity, attackTargetLayer, QueryTriggerInteraction.Collide);
-        Debug.Log("ATTACKING");
+        //Debug.Log("ATTACKING");
 
         if (colliders.Length > 0)
         {
-            Debug.Log("Somehting detected");
+            //Debug.Log("Somehting detected");
             for (int i = 0; i < colliders.Length; i++)
             {
                 IDamageListener damageListener = colliders[i].GetComponent<IDamageListener>();
@@ -410,7 +410,7 @@ public class PlayerWeapon : Interactable
                 {
                     damageListener.TakeDamage(weapon.damagePoint);
                     GameManager.instance.CallPlayerWeaponHitEntity();
-                    Debug.Log("Damaging something");
+                    //Debug.Log("Damaging something");
                 }
             }
         }        

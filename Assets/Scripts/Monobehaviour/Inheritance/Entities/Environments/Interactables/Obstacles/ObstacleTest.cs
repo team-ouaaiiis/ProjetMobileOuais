@@ -14,7 +14,7 @@ public class ObstacleTest : Obstacle
         if(HealthPoints >= 0)
         {
             Player.playerInstance.weapon.HitObstacle();
-            Debug.Log("Reverse Direction");
+            //Debug.Log("Reverse Direction");
             onDestroy.Invoke();
         }
         

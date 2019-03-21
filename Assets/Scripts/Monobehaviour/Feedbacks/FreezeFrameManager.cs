@@ -21,7 +21,7 @@ public class FreezeFrameManager : Manager
     /// </summary>
     public override void FreezeFrame(AnimationCurve curve, float speed)
     {
-        Debug.Log("Freeze");
+
         base.FreezeFrame(curve, speed);
         if(!isFreezeFraming)
         {

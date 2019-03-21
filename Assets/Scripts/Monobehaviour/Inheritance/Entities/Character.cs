@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class Character : Entity
 {
+    [SerializeField] private Animator anim;
+
+    public override void OnDisable()
+    {
+        base.OnDisable();
+        Debug.Log(gameObject.name + " was Disabled", gameObject);
+    }
+
     public override void TakeDamage(float dmg)
     {
         base.TakeDamage(dmg);
@@ -13,4 +21,7 @@ public class Character : Entity
             Death();
         }
     }
+
+    public Animator Anim { get => anim; }
+
 }
