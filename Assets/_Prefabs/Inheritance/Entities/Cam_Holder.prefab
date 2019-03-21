@@ -73,7 +73,6 @@ GameObject:
   - component: {fileID: 7091358403051245287}
   - component: {fileID: 7091358403051245285}
   - component: {fileID: 7091358403051245286}
-  - component: {fileID: 7091358403417034961}
   m_Layer: 0
   m_Name: Cam_Main
   m_TagString: Untagged
@@ -125,7 +124,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 5943
+    m_Bits: 71479
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -145,19 +144,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7091358403051245288}
   m_Enabled: 1
---- !u!114 &7091358403417034961
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7091358403051245288}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abfcb02f0749cdf4a98ad356605e72c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mat: {fileID: 2100000, guid: 122494c1821eb6f46b503381b8e035a6, type: 2}
 --- !u!1 &7091358403150234758
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,14 +225,9 @@ MonoBehaviour:
   cam: {fileID: 7091358403051245285}
   zooms:
   - name: 'Default : Do Not Remove! '
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 0
-      m_PostInfinity: 0
-      m_RotationOrder: 0
     speed: 0
     shouldStay: 0
+  enableDebug: 0
   debugBind: 103
   debugIndex: 0
 --- !u!114 &7091358403150234754
@@ -261,6 +242,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f605da14f41a54d49bd3cc693185f996, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasHealth: 0
+  healthPoints: 1
+  isDead: 0
+  onTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  feedbacks: []
   objectToShake: {fileID: 7091358402737032598}
   space: 0
   x: 1
@@ -282,6 +277,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebbb56a881852964ca8e7b205329b803, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasHealth: 0
+  healthPoints: 1
+  isDead: 0
+  onTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  feedbacks: []
   objectToShake: {fileID: 7091358401982920816}
   space: 0
   x: 1

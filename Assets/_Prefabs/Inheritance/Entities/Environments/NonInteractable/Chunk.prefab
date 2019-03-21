@@ -12,7 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eca5ec0e0fddada4a9002d000a548328, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasHealth: 0
   healthPoints: 1
+  isDead: 0
+  onTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  feedbacks: []
+  chunkManager: {fileID: 0}
 --- !u!1001 &8086946701786722894
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -104,6 +118,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 940204628218528849, guid: c26633b73b98715458465e424fee4dcc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8705872845850003828, guid: c26633b73b98715458465e424fee4dcc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8114013947081390929, guid: c26633b73b98715458465e424fee4dcc,
         type: 3}

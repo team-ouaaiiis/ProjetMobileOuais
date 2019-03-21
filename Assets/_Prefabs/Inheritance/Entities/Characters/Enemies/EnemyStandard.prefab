@@ -26,8 +26,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 000599dcf70802640b87f2645abcda6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasHealth: 0
   healthPoints: 1
   isDead: 0
+  onTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  feedbacks: []
   enemyCollider: {fileID: 0}
   attackRange: 1
   damageBoxSize: {x: 1, y: 2, z: 1}
@@ -140,6 +152,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7536237305013874078, guid: 2735dd363c3237a47901310d692b9ecb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 50e37325b71154b4c90f641008b73a39, type: 2}
+    - target: {fileID: 7623180852814772541, guid: 2735dd363c3237a47901310d692b9ecb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 50e37325b71154b4c90f641008b73a39, type: 2}
+    - target: {fileID: 9025996748538217319, guid: 2735dd363c3237a47901310d692b9ecb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 50e37325b71154b4c90f641008b73a39, type: 2}
+    - target: {fileID: 2902192243524204646, guid: 2735dd363c3237a47901310d692b9ecb,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

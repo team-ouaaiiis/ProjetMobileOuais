@@ -19,6 +19,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_EDE55E:
+        m_Texture: {fileID: 2800000, guid: c593953d55c29294ea64c0a42bae3460, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -52,7 +56,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_638FFFCE: -90
+    - Vector1_638FFFCE: 0
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -74,7 +78,8 @@ Material:
     m_Colors:
     - Vector4_49843E78: {r: 1, g: 1, b: 0, a: 0}
     - Vector4_9FD38906: {r: 0.01, g: 0.02, b: 0, a: 0}
+    - Vector4_AB88CF33: {r: 300, g: 300, b: 0.8, a: 0}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _ShadowColor: {r: 0.6981132, g: 0.6981132, b: 0.6981132, a: 0}
+    - _ShadowColor: {r: 0.15606081, g: 0.15633288, b: 0.19811314, a: 0.7254902}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}

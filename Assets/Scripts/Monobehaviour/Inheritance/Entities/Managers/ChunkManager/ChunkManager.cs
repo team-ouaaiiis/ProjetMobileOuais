@@ -65,7 +65,6 @@ public class ChunkManager : Manager
         
         if(GameManager.instance.BiomeManager.CurrentBiomeAsset.SpecificPatternRate < Random.Range(0 , 1f)) //Chaque Biome possède des Chunks Patterns spécifiques, ainsi qu'une probabilité d'utiliser l'un de ces chunks patterns (entre 0 et 1)
         {
-
             newChunk.InitializeChunk(generalPatterns[Random.Range(0, generalPatterns.Length)]); //Si la variable est inférieure à un float random entre 0 et 1f, on choisit un pattern "Général".
         }
 
