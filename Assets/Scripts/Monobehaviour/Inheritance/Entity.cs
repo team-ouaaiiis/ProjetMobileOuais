@@ -24,7 +24,7 @@ public class Entity : MonoBehaviour, IDamageListener
 
     [HideInInspector][SerializeField] private List<Feedback> feedbacks = new List<Feedback>();
     private Transform holder;
-    private bool isInitialized = false;
+    //private bool isInitialized = false;
     private Chunk parentChunk;
 
     #endregion
@@ -61,9 +61,11 @@ public class Entity : MonoBehaviour, IDamageListener
     {
         if(parentChunk != null)
         {
+            //Debug.Log(gameObject.name + " 's Parent Chunk not null. Removing it from chunk elements");
             parentChunk.ChunkElements.Remove(this);
             parentChunk = null;
         }
+
         GameManager.instance.UnregisterEntity(this);
     }
 
@@ -99,12 +101,7 @@ public class Entity : MonoBehaviour, IDamageListener
     #endregion
 
     #region Public Methods
-
-    public virtual void Initialize(bool initialize)
-    {
-        IsInitialized = initialize;
-    }
-
+        
     [ContextMenu("Add Feedback")]
     public virtual void AddFeedback()
     {
@@ -233,7 +230,7 @@ public class Entity : MonoBehaviour, IDamageListener
     public Transform Holder { get => holder; set => holder = value; }
     public List<Feedback> Feedbacks { get => feedbacks; set => feedbacks = value; }
     public bool HasHealth { get => hasHealth; }
-    public bool IsInitialized { get => isInitialized; set => isInitialized = value; }
+    //public bool IsInitialized { get => isInitialized; set => isInitialized = value; }
 
     public Chunk ParentChunk { get => parentChunk; set => parentChunk = value; }
 

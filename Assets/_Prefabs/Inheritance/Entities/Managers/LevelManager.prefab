@@ -39,19 +39,37 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 2
-      outSlope: 2
+      time: 0.3088578
+      value: 0.09539315
+      inSlope: 0.6177156
+      outSlope: 0.6177156
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.8680104
+      value: 0.81855726
+      inSlope: 1.409288
+      outSlope: 1.409288
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.001648
+      value: 1
+      inSlope: 1.2173615
+      outSlope: 1.2173615
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.5556464
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  speedAmplitude: {x: 5, y: 15}
-  timeToReachMaxSpeed: 500
+  speedAmplitude: {x: 7, y: 20}
+  timeToReachMaxSpeed: 200
   countdown: 0
 --- !u!1001 &7415491519963871907
 PrefabInstance:
@@ -63,7 +81,7 @@ PrefabInstance:
     - target: {fileID: 3919007408676732524, guid: ddf36c1bd20622142873cf2d61afbf14,
         type: 3}
       propertyPath: m_Name
-      value: LevelManager (1)
+      value: LevelManager
       objectReference: {fileID: 0}
     - target: {fileID: 3919007408676732527, guid: ddf36c1bd20622142873cf2d61afbf14,
         type: 3}

@@ -63,12 +63,11 @@ public class Chunk : NonInteractable
         {
             //Replacer les entities dans les pools
             ChunkElements[i].transform.parent = ChunkElements[i].Holder;
-            ChunkElements[i].Initialize(false);
-            ChunkElements[i].gameObject.SetActive(false);
+            ChunkElements[i].gameObject.SetActive(false);   //argument out of range error sometimes? Killing an enemy at the frame where the chunk deactivates?
         }
 
         chunkManager.SpawnNewChunk();
-        Debug.Log(gameObject.name + " Chunk was disabled", gameObject);
+
         gameObject.SetActive(false);
     }
 
@@ -96,8 +95,6 @@ public class Chunk : NonInteractable
                 newEntity.gameObject.transform.localPosition = new Vector3(x, 0, z);
                 ChunkElements.Add(newEntity);
                 newEntity.ParentChunk = this;
-
-                newEntity.Initialize(true);
             }
         }
     }

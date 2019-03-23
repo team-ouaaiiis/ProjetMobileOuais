@@ -12,14 +12,7 @@ public class GameManager : MonoBehaviour
     private BiomeManager biomeManager;
     private ChunkManager chunkManager;
 
-    public ParticleSystem fxDeath;
-
     #endregion
-
-    public void DebugParticle()
-    {
-        fxDeath.Play();
-    }
 
     #region MonoBehaviour Callbacks
 

@@ -61,7 +61,7 @@ public class EnemyZigZag : Enemy
     {
         base.Update();
 
-        if (canChangeLine && IsInitialized)
+        if (canChangeLine)
         {
             CheckPlayerDistance();
             ChangeTick();

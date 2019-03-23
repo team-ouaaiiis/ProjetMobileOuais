@@ -38,10 +38,7 @@ public class Enemy : Character, IDamageListener, IRepulseListener
     public override void Update()
     {
         base.Update();
-        if(IsInitialized)
-        {
-            ReceiveDamageMovement();
-        }
+        ReceiveDamageMovement();    
     }
 
     public override void LateUpdate()
@@ -55,6 +52,7 @@ public class Enemy : Character, IDamageListener, IRepulseListener
         base.OnEnable();
         canAttack = true;
         ResetHealth();
+        onDamageMovement = false;
     }
 
     #endregion
@@ -159,10 +157,12 @@ public class Enemy : Character, IDamageListener, IRepulseListener
         base.Death();
         canAttack = false;
         //Debug.Log(gameObject.name + " DIED", gameObject);
-        //DEBUG TEST
+        if (Holder != null)
+        {
+            transform.parent = Holder;
+        }
         gameObject.SetActive(false);
-        GameManager.instance.DebugParticle();
-        transform.parent = Holder;
+        onDamageMovement = false;
     }    
 
     #endregion
