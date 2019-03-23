@@ -38,7 +38,10 @@ public class Enemy : Character, IDamageListener, IRepulseListener
     public override void Update()
     {
         base.Update();
-        ReceiveDamageMovement();
+        if(IsInitialized)
+        {
+            ReceiveDamageMovement();
+        }
     }
 
     public override void LateUpdate()

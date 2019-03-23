@@ -63,6 +63,7 @@ public class Chunk : NonInteractable
         {
             //Replacer les entities dans les pools
             ChunkElements[i].transform.parent = ChunkElements[i].Holder;
+            ChunkElements[i].Initialize(false);
             ChunkElements[i].gameObject.SetActive(false);
         }
 
@@ -75,7 +76,7 @@ public class Chunk : NonInteractable
 
     #region Public Methods
 
-    public void InitializeChunk(ChunkPattern pattern, string chunkName)
+    public void InitializeChunk(ChunkPattern pattern)
     {
         ChunkElements.Clear();
         chunkPattern = pattern;
@@ -96,8 +97,7 @@ public class Chunk : NonInteractable
                 ChunkElements.Add(newEntity);
                 newEntity.ParentChunk = this;
 
-                newEntity.Initialize(chunkName);
-                newEntity.Refs.TextChunk.transform.localEulerAngles = new Vector3(90, 0, 180);
+                newEntity.Initialize(true);
             }
         }
     }

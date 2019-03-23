@@ -62,18 +62,16 @@ public class ChunkManager : Manager
         Chunk newChunk = NewChunk();
         newChunk.gameObject.SetActive(true);
         newChunk.transform.localPosition = new Vector3(0, 0, GetFurthestChunkZ() + chunkLength);
-        string chunkName = newChunk.gameObject.name;
-        newChunk.Initialize(chunkName);
 
         if(GameManager.instance.BiomeManager.CurrentBiomeAsset.SpecificPatternRate < Random.Range(0 , 1f)) //Chaque Biome possède des Chunks Patterns spécifiques, ainsi qu'une probabilité d'utiliser l'un de ces chunks patterns (entre 0 et 1)
         {
-            newChunk.InitializeChunk(generalPatterns[Random.Range(0, generalPatterns.Length)], chunkName); //Si la variable est inférieure à un float random entre 0 et 1f, on choisit un pattern "Général".
+            newChunk.InitializeChunk(generalPatterns[Random.Range(0, generalPatterns.Length)]); //Si la variable est inférieure à un float random entre 0 et 1f, on choisit un pattern "Général".
         }
 
         else
         {
             Debug.Log("Spawning Biome Chunk");
-            newChunk.InitializeChunk(GameManager.instance.BiomeManager.CurrentBiomeAsset.BiomeSpecificPatterns[Random.Range(0, GameManager.instance.BiomeManager.CurrentBiomeAsset.BiomeSpecificPatterns.Length)], chunkName);
+            newChunk.InitializeChunk(GameManager.instance.BiomeManager.CurrentBiomeAsset.BiomeSpecificPatterns[Random.Range(0, GameManager.instance.BiomeManager.CurrentBiomeAsset.BiomeSpecificPatterns.Length)]);
         } //Sinon, on prend un des patterns spécifique au Biome.
 
     }

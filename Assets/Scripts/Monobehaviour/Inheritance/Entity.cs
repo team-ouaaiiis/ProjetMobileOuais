@@ -8,7 +8,6 @@ public class Entity : MonoBehaviour, IDamageListener
 {
     #region Fields
 
-    private EntityReferences refs;
     [SerializeField] private bool hasHealth = false;
     
     [ShowIf("hasHealth")]
@@ -101,15 +100,9 @@ public class Entity : MonoBehaviour, IDamageListener
 
     #region Public Methods
 
-    public virtual void Initialize(string chunk)
+    public virtual void Initialize(bool initialize)
     {
-        if(Refs == null)
-        {
-            Refs = GetComponent<EntityReferences>();
-        }
-
-        IsInitialized = true;
-        Refs.TextChunk.text = chunk;
+        IsInitialized = initialize;
     }
 
     [ContextMenu("Add Feedback")]
@@ -241,7 +234,7 @@ public class Entity : MonoBehaviour, IDamageListener
     public List<Feedback> Feedbacks { get => feedbacks; set => feedbacks = value; }
     public bool HasHealth { get => hasHealth; }
     public bool IsInitialized { get => isInitialized; set => isInitialized = value; }
-    public EntityReferences Refs { get => refs; set => refs = value; }
+
     public Chunk ParentChunk { get => parentChunk; set => parentChunk = value; }
 
     #endregion
