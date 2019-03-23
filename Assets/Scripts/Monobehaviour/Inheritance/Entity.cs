@@ -8,6 +8,7 @@ public class Entity : MonoBehaviour, IDamageListener
 {
     #region Fields
 
+    private EntityReferences refs;
     [SerializeField] private bool hasHealth = false;
     
     [ShowIf("hasHealth")]
@@ -25,6 +26,7 @@ public class Entity : MonoBehaviour, IDamageListener
     [HideInInspector][SerializeField] private List<Feedback> feedbacks = new List<Feedback>();
     private Transform holder;
     private bool isInitialized = false;
+    private Chunk parentChunk;
 
     #endregion
 
@@ -58,6 +60,11 @@ public class Entity : MonoBehaviour, IDamageListener
 
     public virtual void OnDisable()
     {
+        if(parentChunk != null)
+        {
+            parentChunk.ChunkElements.Remove(this);
+            parentChunk = null;
+        }
         GameManager.instance.UnregisterEntity(this);
     }
 
@@ -94,9 +101,15 @@ public class Entity : MonoBehaviour, IDamageListener
 
     #region Public Methods
 
-    public virtual void Initialize()
+    public virtual void Initialize(string chunk)
     {
+        if(Refs == null)
+        {
+            Refs = GetComponent<EntityReferences>();
+        }
+
         IsInitialized = true;
+        Refs.TextChunk.text = chunk;
     }
 
     [ContextMenu("Add Feedback")]
@@ -122,7 +135,6 @@ public class Entity : MonoBehaviour, IDamageListener
 
     public virtual void PlayFeedback(string name)
     {
-
         for (int i = 0; i < Feedbacks.Count; i++)
         {
             if (Feedbacks[i].FeedbackName == name)
@@ -229,6 +241,8 @@ public class Entity : MonoBehaviour, IDamageListener
     public List<Feedback> Feedbacks { get => feedbacks; set => feedbacks = value; }
     public bool HasHealth { get => hasHealth; }
     public bool IsInitialized { get => isInitialized; set => isInitialized = value; }
+    public EntityReferences Refs { get => refs; set => refs = value; }
+    public Chunk ParentChunk { get => parentChunk; set => parentChunk = value; }
 
     #endregion
 }

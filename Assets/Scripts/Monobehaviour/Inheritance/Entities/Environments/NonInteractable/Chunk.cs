@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class Chunk : NonInteractable
 {
     #region Fields
@@ -60,11 +59,11 @@ public class Chunk : NonInteractable
 
     private void DeactivateChunk()
     {
-        for (int i = 0; i < chunkElements.Count; i++)
+        for (int i = 0; i < ChunkElements.Count; i++)
         {
             //Replacer les entities dans les pools
-            chunkElements[i].transform.parent = chunkElements[i].Holder;
-            chunkElements[i].gameObject.SetActive(false);
+            ChunkElements[i].transform.parent = ChunkElements[i].Holder;
+            ChunkElements[i].gameObject.SetActive(false);
         }
 
         chunkManager.SpawnNewChunk();
@@ -76,9 +75,9 @@ public class Chunk : NonInteractable
 
     #region Public Methods
 
-    public void InitializeChunk(ChunkPattern pattern)
+    public void InitializeChunk(ChunkPattern pattern, string chunkName)
     {
-        chunkElements.Clear();
+        ChunkElements.Clear();
         chunkPattern = pattern;
 
         for (int i = 0; i < chunkPattern.ChunkElements.Count; i++)
@@ -94,11 +93,20 @@ public class Chunk : NonInteractable
                 float z = CustomMethod.Interpolate(-chunkManager.SpawnZoneLength / 2, chunkManager.SpawnZoneLength / 2, 0, chunkManager.Rows - 1, chunkPattern.ChunkElements[i].ZPos);
                 //Debug.Log("x = " + x, ", z = " + z);
                 newEntity.gameObject.transform.localPosition = new Vector3(x, 0, z);
-                chunkElements.Add(newEntity);
-                newEntity.Initialize();
+                ChunkElements.Add(newEntity);
+                newEntity.ParentChunk = this;
+
+                newEntity.Initialize(chunkName);
+                newEntity.Refs.TextChunk.transform.localEulerAngles = new Vector3(90, 0, 180);
             }
         }
     }
+
+    #endregion
+
+    #region Properties
+
+    public List<Entity> ChunkElements { get => chunkElements; set => chunkElements = value; }
 
     #endregion
 }
