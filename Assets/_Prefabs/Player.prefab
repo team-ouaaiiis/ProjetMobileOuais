@@ -1982,7 +1982,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9150350138313528715
 Transform:
   m_ObjectHideFlags: 0
@@ -2311,6 +2311,7 @@ MonoBehaviour:
   feedbacks:
   - {fileID: 4727218622530772053}
   - {fileID: 4727218622530772050}
+  anim: {fileID: 0}
   weapon: {fileID: 0}
   power: {fileID: 0}
   debugWithKeyboard: 1
@@ -2389,16 +2390,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6878785380603422794, guid: ca100be3cc6fe604e92ae44e843e2860,
-        type: 3}
-      propertyPath: m_Layer
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 1297928992894295532, guid: ca100be3cc6fe604e92ae44e843e2860,
-        type: 3}
-      propertyPath: m_Layer
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 7484443340308091081, guid: ca100be3cc6fe604e92ae44e843e2860,
         type: 3}
       propertyPath: m_Layer
       value: 16
@@ -2504,16 +2495,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6878785380603422794, guid: ca100be3cc6fe604e92ae44e843e2860,
-        type: 3}
-      propertyPath: m_Layer
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 1297928992894295532, guid: ca100be3cc6fe604e92ae44e843e2860,
-        type: 3}
-      propertyPath: m_Layer
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 7484443340308091081, guid: ca100be3cc6fe604e92ae44e843e2860,
         type: 3}
       propertyPath: m_Layer
       value: 16
