@@ -12,10 +12,9 @@ GameObject:
   - component: {fileID: 7346162581086075068}
   - component: {fileID: 5726351927267793523}
   - component: {fileID: 8094455806229118213}
-  - component: {fileID: 7755271994564097487}
   - component: {fileID: 2382019607165130885}
   m_Layer: 0
-  m_Name: Weapon
+  m_Name: WeaponMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,6 +32,7 @@ Transform:
   m_LocalScale: {x: 1.25, y: 1, z: 1.25}
   m_Children:
   - {fileID: 1286985473210646837}
+  - {fileID: 2407590411870022054}
   m_Father: {fileID: 8406232579795901197}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -51,7 +51,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 508626387047461129}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -94,150 +94,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7755271994564097487
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 508626387047461129}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77eb204744fbc7149a7e2437a4865b8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hasHealth: 0
-  healthPoints: 1
-  isDead: 0
-  onTakeDamage:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  onDeath:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  feedbacks: []
-  weapon:
-    damagePoint: 1
-    maxDamagePoints: 5
-    isEquipped: 0
-    isThrown: 0
-    reverse: 0
-    reverseMovement: 1
-    cancelPower: 1
-    range: 2
-    throwRadiusRange: 0.6
-  trajectory: {fileID: 7380211930189869098}
-  throwTime: 0.15
-  throwDirection: 0
-  speedEvolution:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  attackBoxOffset: {x: 0, y: 0, z: 0.5}
-  thrownHitboxActiveTime: {x: 0.3, y: 0.7}
-  damageEvolution:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.6
-      value: 0.15
-      inSlope: 0.6696494
-      outSlope: 0.6696494
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.23741464
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 3.8422267
-      outSlope: 3.8422267
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.08616778
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  maxThrown: 20
-  thrown: 0
-  timeBeforePowerOff: 1
-  attackDelay: 0
-  attackDuration: 0.35
-  attackTargetLayer:
-    serializedVersion: 2
-    m_Bits: 512
-  currentDamage: 0
-  isAttacking: 0
-  onAttackStart:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5586350898420281105}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  onAttackEnd:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5586350898420281105}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  showDebugBox: 1
-  attackBoxColor: {r: 1, g: 0, b: 0, a: 1}
-  throwSphereColor: {r: 0, g: 0, b: 1, a: 1}
-  curveActiveColor: {r: 0, g: 1, b: 0.30203557, a: 1}
 --- !u!96 &2382019607165130885
 TrailRenderer:
   serializedVersion: 2
@@ -648,6 +504,226 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 525dbbcf9e8054141adac6d12695b20b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7287927438740134007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8406232579795901198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77eb204744fbc7149a7e2437a4865b8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasHealth: 0
+  healthPoints: 1
+  isDead: 0
+  onTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  feedbacks: []
+  weaponTransform: {fileID: 4752899481946215083}
+  weapon:
+    damagePoint: 1
+    maxDamagePoints: 5
+    isEquipped: 0
+    isThrown: 0
+    reverse: 0
+    reverseMovement: 1
+    cancelPower: 1
+    range: 2
+    throwRadiusRange: 0.6
+  trajectory: {fileID: 7380211930189869098}
+  throwTime: 0.15
+  throwDirection: 0
+  speedEvolution:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  attackBoxOffset: {x: 0, y: 0, z: 0.5}
+  thrownHitboxActiveTime: {x: 0.3, y: 0.7}
+  damageEvolution:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.6
+      value: 0.15
+      inSlope: 0.6696494
+      outSlope: 0.6696494
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.23741464
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 3.8422267
+      outSlope: 3.8422267
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.08616778
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  maxThrown: 20
+  thrown: 0
+  timeBeforePowerOff: 1
+  attackDelay: 0
+  attackDuration: 0.35
+  attackTargetLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  currentDamage: 0
+  isAttacking: 0
+  onAttackStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5586350898420281105}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onAttackEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5586350898420281105}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  showDebugBox: 1
+  attackBoxColor: {r: 1, g: 0, b: 0, a: 1}
+  throwSphereColor: {r: 0, g: 0, b: 1, a: 1}
+  curveActiveColor: {r: 0, g: 1, b: 0.30203557, a: 1}
+--- !u!1001 &2407590411869631264
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4752899481946215083}
+    m_Modifications:
+    - target: {fileID: 100006, guid: cf5fcfa9897cd75439e59d1a988ea6f4, type: 3}
+      propertyPath: m_Name
+      value: SwordStandard_WIP
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: cf5fcfa9897cd75439e59d1a988ea6f4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.8352
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: cf5fcfa9897cd75439e59d1a988ea6f4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.49699998
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: cf5fcfa9897cd75439e59d1a988ea6f4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.516
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: cf5fcfa9897cd75439e59d1a988ea6f4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.4076596
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: cf5fcfa9897cd75439e59d1a988ea6f4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5554095
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: cf5fcfa9897cd75439e59d1a988ea6f4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.35988528
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: cf5fcfa9897cd75439e59d1a988ea6f4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.62913954
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: cf5fcfa9897cd75439e59d1a988ea6f4, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: cf5fcfa9897cd75439e59d1a988ea6f4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -65.884
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: cf5fcfa9897cd75439e59d1a988ea6f4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 82.87701
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: cf5fcfa9897cd75439e59d1a988ea6f4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: cf5fcfa9897cd75439e59d1a988ea6f4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: cf5fcfa9897cd75439e59d1a988ea6f4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4.166948
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: cf5fcfa9897cd75439e59d1a988ea6f4, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 4.833053
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cf5fcfa9897cd75439e59d1a988ea6f4, type: 3}
+--- !u!4 &2407590411870022054 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400006, guid: cf5fcfa9897cd75439e59d1a988ea6f4,
+    type: 3}
+  m_PrefabInstance: {fileID: 2407590411869631264}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9135574409983230229
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -715,8 +791,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2053126247450097755, guid: 07e66bc0f7197da47baf8feb96009019,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07e66bc0f7197da47baf8feb96009019, type: 3}
+--- !u!1 &8406232579795901198 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 747874032103184923, guid: 07e66bc0f7197da47baf8feb96009019,
+    type: 3}
+  m_PrefabInstance: {fileID: 9135574409983230229}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8406232579795901197 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 747874032103184920, guid: 07e66bc0f7197da47baf8feb96009019,

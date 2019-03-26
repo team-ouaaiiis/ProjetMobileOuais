@@ -6,9 +6,11 @@ using UnityEngine.Events;
 
 public class PlayerWeapon : Interactable
 {
+    
     #region Fields
 
     [Space(20)]
+    [BoxGroup("References"), SerializeField] Transform weaponTransform;
     public WeaponStats weapon;
 
     [Header("Weapon Movement")]
@@ -105,15 +107,15 @@ public class PlayerWeapon : Interactable
 
         //attackBoxSize box
         Gizmos.color = new Color(attackBoxColor.r, attackBoxColor.g, attackBoxColor.b, boxAlpha);
-        Gizmos.DrawCube(transform.position + attackBoxOffset, attackBoxSize);
+        Gizmos.DrawCube(weaponTransform.position + attackBoxOffset, attackBoxSize);
         Gizmos.color = new Color(attackBoxColor.r, attackBoxColor.g, attackBoxColor.b, 1);
-        Gizmos.DrawWireCube(transform.position + attackBoxOffset, attackBoxSize);
+        Gizmos.DrawWireCube(weaponTransform.position + attackBoxOffset, attackBoxSize);
 
         //attack box throw
         Gizmos.color = new Color(throwSphereColor.r, throwSphereColor.g, throwSphereColor.b, 0.4f);
-        Gizmos.DrawSphere(transform.position, weapon.throwRadiusRange);
+        Gizmos.DrawSphere(weaponTransform.position, weapon.throwRadiusRange);
         Gizmos.color = new Color(throwSphereColor.r, throwSphereColor.g, throwSphereColor.b, 1);
-        Gizmos.DrawWireSphere(transform.position, weapon.throwRadiusRange);
+        Gizmos.DrawWireSphere(weaponTransform.position, weapon.throwRadiusRange);
 
         //CURVE
         Gizmos.color = curveActiveColor;
@@ -281,7 +283,7 @@ public class PlayerWeapon : Interactable
             posT = 1 - posT;
         }
 
-        transform.position = trajectory.BezierCurvePoint(posT);
+        weaponTransform.position = trajectory.BezierCurvePoint(posT);
     }
 
     void SwitchDirection()
@@ -310,7 +312,7 @@ public class PlayerWeapon : Interactable
 
     void ThrowHitBox()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, weapon.throwRadiusRange, attackTargetLayer, QueryTriggerInteraction.Collide);
+        Collider[] colliders = Physics.OverlapSphere(weaponTransform.position, weapon.throwRadiusRange, attackTargetLayer, QueryTriggerInteraction.Collide);
         //Debug.Log("THROW ATTACK");
 
         if (colliders.Length > 0)
@@ -397,7 +399,7 @@ public class PlayerWeapon : Interactable
 
     void Attack()
     {
-        Collider[] colliders = Physics.OverlapBox(transform.position + attackBoxOffset, attackBoxSize / 2, Quaternion.identity, attackTargetLayer, QueryTriggerInteraction.Collide);
+        Collider[] colliders = Physics.OverlapBox(weaponTransform.position + attackBoxOffset, attackBoxSize / 2, Quaternion.identity, attackTargetLayer, QueryTriggerInteraction.Collide);
         //Debug.Log("ATTACKING");
 
         if (colliders.Length > 0)
@@ -427,4 +429,5 @@ public class PlayerWeapon : Interactable
     }
 
     #endregion
+
 }
