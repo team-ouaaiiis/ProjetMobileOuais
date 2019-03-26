@@ -11,6 +11,7 @@ public class PlayerWeapon : Interactable
 
     [Space(20)]
     [BoxGroup("References"), SerializeField] Transform weaponTransform;
+    [BoxGroup("References"), SerializeField] Animator weaponAnim;
     public WeaponStats weapon;
 
     [Header("Weapon Movement")]
@@ -51,6 +52,8 @@ public class PlayerWeapon : Interactable
     [ReadOnly] public bool isAttacking;
     public UnityEvent onAttackStart;
     public UnityEvent onAttackEnd;
+    public UnityEvent onThrowStart;
+    public UnityEvent onThrowEnd;
     IEnumerator attack;
     bool attackLaunched;
 
@@ -227,6 +230,7 @@ public class PlayerWeapon : Interactable
         IsThrown = false;
         currentThrowTime = 0; //reset timer
         SwitchDirection();
+        onThrowEnd.Invoke();
     }
 
     /// <summary>
@@ -272,6 +276,8 @@ public class PlayerWeapon : Interactable
             case ThrowDirection.Left:
                 break;
         }
+
+        onThrowStart.Invoke();
     }
 
     void ThrowMovement(float _timePercent)
@@ -429,5 +435,12 @@ public class PlayerWeapon : Interactable
     }
 
     #endregion
+
+    //SHIT CODE
+
+    public void AnimDebug(bool launched)
+    {
+        weaponAnim.SetBool("isLaunched", launched);
+    }
 
 }
