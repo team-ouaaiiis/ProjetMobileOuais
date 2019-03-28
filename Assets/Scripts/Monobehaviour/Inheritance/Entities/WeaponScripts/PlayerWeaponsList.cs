@@ -23,6 +23,7 @@ public class PlayerWeaponsList : Manager
     {
         base.Awake();
         playerWeaponsList = this;
+        //Load Data
     }
 
     #endregion
