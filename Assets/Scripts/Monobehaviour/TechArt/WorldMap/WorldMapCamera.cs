@@ -24,6 +24,7 @@ public class WorldMapCamera : MonoBehaviour
     private Vector2 initialPosPointer;
     private Vector3 initialPosMap;
     private float scroll = 0f;
+    private float targetSize;
 
     //Zoom
     [SerializeField] private bool hasTwoFingers = false;
@@ -33,6 +34,7 @@ public class WorldMapCamera : MonoBehaviour
     private void Start()
     {
         initialCamSize = cam.orthographicSize;
+        targetSize = initialCamSize;
     }
 
     private void Update()
@@ -45,18 +47,20 @@ public class WorldMapCamera : MonoBehaviour
     private void ZoomManager()
     {
 
+        scroll = Mathf.Clamp(scroll, 0, 1);
+        targetSize = Mathf.Lerp(minCamSize, maxCamSize, scroll);
+        cam.orthographicSize = Mathf.SmoothDamp(cam.orthographicSize, targetSize, ref currentVelSmooth, scrollSmooth);       
+
 #if UNITY_EDITOR
-        scroll += Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime * scrollSpeed;
-        float targetSize = initialCamSize - scroll;
-        targetSize = Mathf.Clamp(targetSize, minCamSize, maxCamSize);
-        cam.orthographicSize = Mathf.SmoothDamp(cam.orthographicSize, targetSize, ref currentVelSmooth, scrollSmooth);
+
+        scroll -= Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime * scrollSpeed;
+
 #endif
 
 #if UNITY_ANDROID
         if (hasTwoFingers)
         {
-
-
+            scroll = initialDistanceBetweenTwoFingers +  Vector3.Distance(TouchPos(0), TouchPos(1));
         }
 #endif
     }
@@ -116,7 +120,6 @@ public class WorldMapCamera : MonoBehaviour
 
 #if UNITY_EDITOR
 
-
         if (Input.GetMouseButtonDown(0))
         {
             OnMainInputClicked(true);
@@ -175,6 +178,7 @@ public class WorldMapCamera : MonoBehaviour
 
         else
         {
+            scroll = Mathf.InverseLerp(minCamSize, maxCamSize, cam.orthographicSize);
             initialDistanceBetweenTwoFingers = Vector3.Distance(TouchPos(0), TouchPos(1));
         }
     }

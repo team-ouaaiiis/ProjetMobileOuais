@@ -7,13 +7,13 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_InnacurateVertex
-  m_Shader: {fileID: 4800000, guid: 513102866b638f547abea4870b04a9f0, type: 3}
+  m_Name: M_InnacurateVertexOutline
+  m_Shader: {fileID: 4800000, guid: f94a8391ff58ee049a5b3b15efb6f2fc, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2000
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -23,13 +23,17 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _CircleTex:
+        m_Texture: {fileID: 2800000, guid: c593953d55c29294ea64c0a42bae3460, type: 3}
+        m_Scale: {x: 200, y: 200}
+        m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 9b7099ac61ec73747a96de6726069455, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 100, y: 100}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
@@ -61,12 +65,14 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _Strength: 100
+    - _Strength: 80
     - _Surface: 0
-    - _Tiling: 0.0001
+    - _Tiling: 0.0002
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _ColorA: {r: 0, g: 0, b: 0, a: 1}
+    - _ColorB: {r: 0.15265131, g: 0, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}

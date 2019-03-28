@@ -43,15 +43,7 @@ public class MaterialPropertySharer : MonoBehaviour
     [SerializeField] private Material[] mats;
 
     [SerializeField] private MaterialProperty[] properties; 
-
-    //[Header("Settings")]
-    //[SerializeField] private float seed = 5f;
-    //[SerializeField] private float normalStrength = 50f;
-    //[Range(0,0.015f)] [SerializeField] private float voronoiDensity = 5f;
-    //[SerializeField] private Vector2 earthWaterRatio;
-    //[SerializeField] private Vector2 smoothstepWater;
-    //[SerializeField] private Vector4 biomes;
-
+    
     public MaterialProperty[] Properties { get => properties; set => properties = value; }
 
     public void Update()

@@ -6,11 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/_Scenes/Testing/Nicolo/SceneTest_Nicolo_Map.unity
+    guid: 6634f18b404681d45a0d1d5597b8f604
+  - enabled: 0
     path: Assets/_Scenes/Testing/Nicolo/SceneTest_Nicolo_Gameplay.unity
     guid: 074702d04ab108b448405806e14e4bed
-  - enabled: 0
-    path: Assets/_Scenes/Testing/Nicolo/SceneTest_Nicolo_Map.unity
-    guid: 0ab205df4cb15af479cb4751fb844a52
   - enabled: 0
     path: Assets/_Scenes/Testing/Vincent/SceneTest_Vincent_01.unity
     guid: f453acdcee258084095cfb2d24fe9c92
