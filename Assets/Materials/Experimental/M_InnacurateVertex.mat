@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_Ground
-  m_Shader: {fileID: 4800000, guid: e339450ef770918488e988383576f9b8, type: 3}
+  m_Name: M_InnacurateVertex
+  m_Shader: {fileID: 4800000, guid: 8c8a5b7aec8baa349a9f430587978459, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,10 +19,6 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_EDE55E:
-        m_Texture: {fileID: 2800000, guid: c593953d55c29294ea64c0a42bae3460, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -32,7 +28,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 8400000, guid: a2e5b8728f65e0841bb79cf4083bc052, type: 2}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -43,25 +39,18 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _ShadowTex:
-        m_Texture: {fileID: 8400000, guid: a2e5b8728f65e0841bb79cf4083bc052, type: 2}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _Tex:
-        m_Texture: {fileID: 2800000, guid: 8c6089e84d8d0324698b755a08c6b8c2, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_638FFFCE: 0
+    - Vector1_3C8F8008: 1.43
+    - Vector1_7ACF634D: 0.01
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
     - _Cull: 2
-    - _Cutoff: 1
+    - _Cutoff: 0.5
     - _DstBlend: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
@@ -76,10 +65,6 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Vector4_49843E78: {r: 1, g: 1, b: 0, a: 0}
-    - Vector4_9FD38906: {r: 0.01, g: 0.02, b: 0, a: 0}
-    - Vector4_AB88CF33: {r: 300, g: 300, b: 0.8, a: 0}
-    - _Color: {r: 0.1484069, g: 0.16635886, b: 0.21698111, a: 0.5529412}
+    - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _ShadowColor: {r: 0.21867211, g: 0.21961717, b: 0.24528301, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}

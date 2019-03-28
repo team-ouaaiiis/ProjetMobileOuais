@@ -44,27 +44,20 @@ public class MaterialPropertySharer : MonoBehaviour
 
     [SerializeField] private MaterialProperty[] properties; 
 
-    [Header("Settings")]
-    [SerializeField] private float seed = 5f;
-    [SerializeField] private float normalStrength = 50f;
-    [Range(0,0.015f)] [SerializeField] private float voronoiDensity = 5f;
-    [SerializeField] private Vector2 earthWaterRatio;
-    [SerializeField] private Vector2 smoothstepWater;
-    [SerializeField] private Vector4 biomes;
+    //[Header("Settings")]
+    //[SerializeField] private float seed = 5f;
+    //[SerializeField] private float normalStrength = 50f;
+    //[Range(0,0.015f)] [SerializeField] private float voronoiDensity = 5f;
+    //[SerializeField] private Vector2 earthWaterRatio;
+    //[SerializeField] private Vector2 smoothstepWater;
+    //[SerializeField] private Vector4 biomes;
 
     public MaterialProperty[] Properties { get => properties; set => properties = value; }
 
     public void Update()
     {
-        for (int i = 0; i < mats.Length; i++)
-        {
-            mats[i].SetVector("_Voronoi", new Vector4(seed, 0.008f, 0, 0));
-            mats[i].SetVector("_Levels", new Vector4(earthWaterRatio.x, earthWaterRatio.y, 0, 0));
-            mats[i].SetVector("_VoronoiBiomes", biomes);
-            mats[i].SetFloat("_NormalStrength", normalStrength);
-        }
-        //if(mats.Length > 0 && Properties.Length > 0)
-            //ShareProperties();
+        if (mats.Length > 0 && Properties.Length > 0)
+            ShareProperties();
     }
 
     private void ShareProperties()
