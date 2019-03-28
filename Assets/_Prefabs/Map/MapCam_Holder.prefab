@@ -159,6 +159,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 3113278164935945399}
   cam: {fileID: 3113278165952563867}
+  debugOppositeMouse: {fileID: 0}
+  scrollSpeed: 1500
+  scrollSmooth: 0.2
+  minCamSize: 20
+  maxCamSize: 120
   sensitivity: -0.15
   smoothCam: 0.1
   zoomAmnt: 10
+  hasTwoFingers: 0

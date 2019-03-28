@@ -8,6 +8,13 @@ public class WorldMapCamera : MonoBehaviour
     [SerializeField] private GameObject target;
     [SerializeField] private Camera cam;
 
+    [Header("Zoom")]
+    [SerializeField] private float scrollSpeed = 50f;
+    [SerializeField] private float scrollSmooth = 0.2f;
+    [SerializeField] private float minCamSize = 20f;
+    [SerializeField] private float maxCamSize = 120f;
+    private float currentVelSmooth;
+
     [Header("Settings")]
     [SerializeField] private float sensitivity = 5f;
     [SerializeField] private float smoothCam = 0.2f;
@@ -16,89 +23,176 @@ public class WorldMapCamera : MonoBehaviour
     private bool isMoving = false;
     private Vector2 initialPosPointer;
     private Vector3 initialPosMap;
-    private float initialDistance;
+    private float scroll = 0f;
+
+    //Zoom
+    [SerializeField] private bool hasTwoFingers = false;
+    private float initialDistanceBetweenTwoFingers;
+    private float initialCamSize = 20f;
+
+    private void Start()
+    {
+        initialCamSize = cam.orthographicSize;
+    }
 
     private void Update()
     {
         Position();
-        MouseDetection();
+        Inputs();
+        ZoomManager();
+    }
+
+    private void ZoomManager()
+    {
+
+#if UNITY_EDITOR
+        scroll += Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime * scrollSpeed;
+        float targetSize = initialCamSize - scroll;
+        targetSize = Mathf.Clamp(targetSize, minCamSize, maxCamSize);
+        cam.orthographicSize = Mathf.SmoothDamp(cam.orthographicSize, targetSize, ref currentVelSmooth, scrollSmooth);
+#endif
+
+#if UNITY_ANDROID
+        if (hasTwoFingers)
+        {
+
+
+        }
+#endif
     }
 
     private void Position()
     {
         Vector3 diff = new Vector3();
 #if UNITY_EDITOR
-        diff = (new Vector3(ConvertedMousePos().x, 0, ConvertedMousePos().y) - new Vector3(initialPosPointer.x, 0, initialPosPointer.y));
+        diff = (new Vector3(MousePos().x, 0, MousePos().y) - new Vector3(initialPosPointer.x, 0, initialPosPointer.y));
 #endif
 
 #if UNITY_ANDROID
-        if(Input.touchCount > 0 )
+        if (Input.touchCount > 0)
             diff = (new Vector3(TouchPos(0).x, 0, TouchPos(0).y) - new Vector3(initialPosPointer.x, 0, initialPosPointer.y));
 
-        if (Input.touchCount >= 2)
-        {
-            cam.orthographicSize = 50 + (1f / (initialDistance - Vector3.Distance(TouchPos(0), TouchPos(1))) * zoomAmnt);
-        }
 #endif
 
-        if (isMoving)
+        if (isMoving && !hasTwoFingers)
         {
             target.transform.position = initialPosMap + diff * sensitivity;
         }
         cam.transform.position = Vector3.SmoothDamp(cam.transform.position, target.transform.position, ref currentVelCam, smoothCam);
     }
 
-    private void MouseDetection()
+    private void Inputs()
     {
 #if UNITY_ANDROID
 
-        if(Input.touchCount > 0)
+        if (Input.touchCount > 0)
         {
-            if (Input.GetTouch(0).phase == TouchPhase.Began)
+            if (Input.GetTouch(0).phase == TouchPhase.Began) //Started moving
             {
-                isMoving = true;
-                initialPosPointer = TouchPos(0);
-                initialPosMap = target.transform.position;
+                OnMainInputClicked(false);
             }
 
-            if (Input.GetTouch(0).phase == TouchPhase.Ended)
+            if (Input.GetTouch(0).phase == TouchPhase.Ended) //Stopped moving
             {
-                isMoving = false;
+                OnMainInputReleased(false);
             }
-            
-            if (Input.touchCount > 1)
+
+            if (Input.touchCount > 1) // Second Finger -> Zoom
             {
-                if (Input.GetTouch(1).phase == TouchPhase.Began)
+                if (Input.GetTouch(1).phase == TouchPhase.Began) //On Second touch, getting the distance between fingers
                 {
-                    initialDistance = Vector3.Distance(TouchPos(0), TouchPos(1));
+                    OnSecondInputClicked(false);
+
+                }
+
+                if (Input.GetTouch(1).phase == TouchPhase.Ended) // Released second touch, stop zoom
+                {
+                    OnSecondInputReleased(false);
                 }
             }
         }
-
-        
 
 #endif
 
 #if UNITY_EDITOR
 
+
         if (Input.GetMouseButtonDown(0))
         {
-            isMoving = true;
-            initialPosPointer = ConvertedMousePos();
-            initialPosMap = target.transform.position;
+            OnMainInputClicked(true);
+
         }
 
         if (Input.GetMouseButtonUp(0))
         {
-            isMoving = false;
+            OnMainInputReleased(true);
+            OnSecondInputReleased(true);
+        }
+#endif
+    }
+
+    /// <summary>
+    /// Called when clicking with the main Input (first finger or mouse click)
+    /// </summary>
+    /// <param name="editor"></param>
+    private void OnMainInputClicked(bool editor)
+    {
+        isMoving = true;
+        initialPosMap = target.transform.position;
+
+        if (editor)
+        {
+            initialPosPointer = MousePos();
         }
 
- #endif
+        else
+        {
+            initialPosPointer = TouchPos(0);
+        }
     }
+
+    /// <summary>
+    /// Called when releasing the main Input (first finger or mouse click)
+    /// </summary>
+    /// <param name="editor"></param>
+    private void OnMainInputReleased(bool editor)
+    {
+        isMoving = false;
+    }
+
+    /// <summary>
+    /// Called when clicking with the secondary Input (second finger or debug Key)
+    /// </summary>
+    /// <param name="editor"></param>
+    private void OnSecondInputClicked(bool editor)
+    {
+        initialCamSize = cam.orthographicSize;
+
+        if (editor)
+        {
+
+        }
+
+        else
+        {
+            initialDistanceBetweenTwoFingers = Vector3.Distance(TouchPos(0), TouchPos(1));
+        }
+    }
+
+    /// <summary>
+    /// Called when releasing the secondary Input (second finger or debug Key)
+    /// </summary>
+    /// <param name="editor"></param>
+    private void OnSecondInputReleased(bool editor)
+    {
+
+    }
+
+    #region Returns
 
     private Vector3 TouchPos(int i)
     {
-        if(Input.touchCount > 0)
+        if (Input.touchCount > 0)
         {
             return new Vector3(Input.GetTouch(i).position.x, Input.GetTouch(i).position.y, transform.position.z);
         }
@@ -108,8 +202,15 @@ public class WorldMapCamera : MonoBehaviour
         }
     }
 
-    private Vector3 ConvertedMousePos()
+    private Vector3 MousePos()
     {
         return Input.mousePosition;
     }
+
+    private Vector3 WorldMousePos()
+    {
+        return Camera.main.ScreenToWorldPoint(MousePos());
+    }
+
+    #endregion
 }
