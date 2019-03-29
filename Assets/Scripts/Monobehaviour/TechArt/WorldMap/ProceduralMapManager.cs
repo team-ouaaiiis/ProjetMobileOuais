@@ -23,7 +23,7 @@ public class ProceduralMapManager : Manager
 
     private IEnumerator Deactivating()
     {
-        yield return new WaitForSecondsRealtime(2f);
+        yield return new WaitForSecondsRealtime(0.5f);
         DeactivateRealtimeMap();
     }
 
@@ -47,6 +47,7 @@ public class ProceduralMapManager : Manager
 
     private void RefreshMap()
     {
+        
     }
 
     [Button("Resize Map")]

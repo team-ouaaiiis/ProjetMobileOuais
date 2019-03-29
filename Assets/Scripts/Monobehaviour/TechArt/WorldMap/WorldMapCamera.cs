@@ -151,6 +151,7 @@ public class WorldMapCamera : MonoBehaviour
     /// <param name="editor"></param>
     private void OnMainInputClicked(bool editor)
     {
+
         isMoving = true;
         initialPosMap = target.transform.position;
 

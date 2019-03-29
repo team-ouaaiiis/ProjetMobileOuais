@@ -21,8 +21,9 @@ public class CameraShake : Shake
 
     #region MonoBehaviour Callbacks
 
-    private void Update()
+    public override void Update()
     {
+        base.Update();
         if (Input.GetKeyDown(debugBind) && enableDebug)
         {
             Shake(durationTest, amountTest);
