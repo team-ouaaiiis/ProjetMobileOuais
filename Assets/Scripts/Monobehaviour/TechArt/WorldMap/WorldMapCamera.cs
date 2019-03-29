@@ -9,14 +9,21 @@ public class WorldMapCamera : MonoBehaviour
     [SerializeField] private Camera cam;
 
     [Header("Zoom")]
+
     [SerializeField] private float scrollSpeed = 50f;
     [SerializeField] private float scrollSmooth = 0.2f;
     [SerializeField] private float minCamSize = 20f;
     [SerializeField] private float maxCamSize = 120f;
     private float currentVelSmooth;
 
-    [Header("Settings")]
+    [Header("Pinch")]
+    [SerializeField] private float minDistanceBetweenFingers = 10f;
+    [SerializeField] private float maxDistanceBetweenFingers = 50f;
+
+    [Header("Position")]
     [SerializeField] private float sensitivity = 5f;
+    [SerializeField] private float minSens = 0.2f;
+    [SerializeField] private float maxSens = 1f;
     [SerializeField] private float smoothCam = 0.2f;
     [SerializeField] private float zoomAmnt = 10f;
     private Vector3 currentVelCam;
@@ -26,16 +33,19 @@ public class WorldMapCamera : MonoBehaviour
     private float scroll = 0f;
     private float targetSize;
 
+    [Header("Double Tap")]
+    [SerializeField] private float waitForDoubleTapTime = 0.08f;
+    [SerializeField] private float waitForTapRelase = 0.08f;
+    [SerializeField] private bool waitingForTapRelease = false;
+    [SerializeField] private bool waitingForDoubleTap = false;
+    private Coroutine IWaitingForTapRelease;
+    private Coroutine IWaitingForDoubleTap;
+
     //Zoom
     [SerializeField] private bool hasTwoFingers = false;
-    private float initialDistanceBetweenTwoFingers;
-    private float initialCamSize = 20f;
-
-    private void Start()
-    {
-        initialCamSize = cam.orthographicSize;
-        targetSize = initialCamSize;
-    }
+    private float initialDistance;
+    private float initialScroll;
+    
 
     private void Update()
     {
@@ -46,7 +56,6 @@ public class WorldMapCamera : MonoBehaviour
 
     private void ZoomManager()
     {
-
         scroll = Mathf.Clamp(scroll, 0, 1);
         targetSize = Mathf.Lerp(minCamSize, maxCamSize, scroll);
         cam.orthographicSize = Mathf.SmoothDamp(cam.orthographicSize, targetSize, ref currentVelSmooth, scrollSmooth);       
@@ -60,7 +69,10 @@ public class WorldMapCamera : MonoBehaviour
 #if UNITY_ANDROID
         if (hasTwoFingers)
         {
-            scroll = initialDistanceBetweenTwoFingers +  Vector3.Distance(TouchPos(0), TouchPos(1));
+            float dist = Vector3.Distance(TouchPos(0), TouchPos(1)) - initialDistance;
+            float t = dist + Mathf.Lerp(maxDistanceBetweenFingers, 0, initialScroll);            
+            scroll = Mathf.InverseLerp(maxDistanceBetweenFingers, 0, t);            
+            Debug.Log(scroll);
         }
 #endif
     }
@@ -80,7 +92,7 @@ public class WorldMapCamera : MonoBehaviour
 
         if (isMoving && !hasTwoFingers)
         {
-            target.transform.position = initialPosMap + diff * sensitivity;
+            target.transform.position = initialPosMap + diff * sensitivity * Mathf.Lerp(minSens, maxSens, scroll);
         }
         cam.transform.position = Vector3.SmoothDamp(cam.transform.position, target.transform.position, ref currentVelCam, smoothCam);
     }
@@ -99,6 +111,7 @@ public class WorldMapCamera : MonoBehaviour
             if (Input.GetTouch(0).phase == TouchPhase.Ended) //Stopped moving
             {
                 OnMainInputReleased(false);
+                OnSecondInputReleased(false);
             }
 
             if (Input.touchCount > 1) // Second Finger -> Zoom
@@ -106,7 +119,6 @@ public class WorldMapCamera : MonoBehaviour
                 if (Input.GetTouch(1).phase == TouchPhase.Began) //On Second touch, getting the distance between fingers
                 {
                     OnSecondInputClicked(false);
-
                 }
 
                 if (Input.GetTouch(1).phase == TouchPhase.Ended) // Released second touch, stop zoom
@@ -123,7 +135,6 @@ public class WorldMapCamera : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             OnMainInputClicked(true);
-
         }
 
         if (Input.GetMouseButtonUp(0))
@@ -152,6 +163,34 @@ public class WorldMapCamera : MonoBehaviour
         {
             initialPosPointer = TouchPos(0);
         }
+
+        if (waitingForDoubleTap)
+        {
+            waitingForDoubleTap = false;
+
+            if (scroll < 0.5)
+            {
+                scroll = 1;
+            }
+
+            else
+            {
+                scroll = 0;
+            }
+        }
+
+        else
+        {
+            waitingForTapRelease = true;
+            if (IWaitingForTapRelease != null) StopCoroutine(IWaitingForTapRelease);
+            IWaitingForTapRelease = StartCoroutine(WaitingForTapRelease());
+        }
+    }
+
+    private IEnumerator WaitingForTapRelease()
+    {
+        yield return new WaitForSeconds(waitForTapRelase);
+        waitingForTapRelease = false;
     }
 
     /// <summary>
@@ -161,6 +200,20 @@ public class WorldMapCamera : MonoBehaviour
     private void OnMainInputReleased(bool editor)
     {
         isMoving = false;
+
+        if(waitingForTapRelease)
+        {
+            waitingForTapRelease = false;
+            waitingForDoubleTap = true;
+            if (IWaitingForDoubleTap != null) StopCoroutine(IWaitingForDoubleTap);
+            IWaitingForDoubleTap = StartCoroutine(WaitingForDoubleTap());
+        }        
+    }
+
+    private IEnumerator WaitingForDoubleTap()
+    {
+        yield return new WaitForSeconds(waitForTapRelase);
+        waitingForDoubleTap = false;
     }
 
     /// <summary>
@@ -169,7 +222,6 @@ public class WorldMapCamera : MonoBehaviour
     /// <param name="editor"></param>
     private void OnSecondInputClicked(bool editor)
     {
-        initialCamSize = cam.orthographicSize;
 
         if (editor)
         {
@@ -178,8 +230,10 @@ public class WorldMapCamera : MonoBehaviour
 
         else
         {
-            scroll = Mathf.InverseLerp(minCamSize, maxCamSize, cam.orthographicSize);
-            initialDistanceBetweenTwoFingers = Vector3.Distance(TouchPos(0), TouchPos(1));
+            initialDistance = Vector3.Distance(TouchPos(0), TouchPos(1));
+            initialScroll = scroll;
+            hasTwoFingers = true;
+            //scroll = Mathf.InverseLerp(minCamSize, maxCamSize, cam.orthographicSize);
         }
     }
 
@@ -189,7 +243,7 @@ public class WorldMapCamera : MonoBehaviour
     /// <param name="editor"></param>
     private void OnSecondInputReleased(bool editor)
     {
-
+        hasTwoFingers = false;
     }
 
     #region Returns
@@ -199,6 +253,19 @@ public class WorldMapCamera : MonoBehaviour
         if (Input.touchCount > 0)
         {
             return new Vector3(Input.GetTouch(i).position.x, Input.GetTouch(i).position.y, transform.position.z);
+        }
+        else
+        {
+            return Vector3.zero;
+        }
+    }
+
+    private Vector3 WorldTouchPos(int i)
+    {
+        if (Input.touchCount > 0)
+        {
+            Vector3 touch = new Vector3(Input.GetTouch(i).position.x, Input.GetTouch(i).position.y, transform.position.z);
+            return Camera.main.ScreenToWorldPoint(touch);
         }
         else
         {

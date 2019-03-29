@@ -160,10 +160,18 @@ MonoBehaviour:
   target: {fileID: 3113278164935945399}
   cam: {fileID: 3113278165952563867}
   scrollSpeed: 100
-  scrollSmooth: 0.15
-  minCamSize: 20
+  scrollSmooth: 0.08
+  minCamSize: 40
   maxCamSize: 120
-  sensitivity: -0.15
-  smoothCam: 0.1
+  minDistanceBetweenFingers: 100
+  maxDistanceBetweenFingers: 800
+  sensitivity: -0.25
+  minSens: 0.3
+  maxSens: 1
+  smoothCam: 0.08
   zoomAmnt: 10
+  waitForDoubleTapTime: 0.15
+  waitForTapRelase: 0.15
+  waitingForTapRelease: 0
+  waitingForDoubleTap: 0
   hasTwoFingers: 0
