@@ -44,7 +44,7 @@ public class Player : Character
 
         //Get Weapon
         weaponsList = PlayerWeaponsList.playerWeaponsList;
-        weaponsList.LoadCurrentWeapon();
+        weaponsList.SetCurrentWeapon();
         weapon = weaponsList.currentWeapon.playerWeapon;
 
         //Get Power

@@ -12,6 +12,14 @@ public class WeaponData : SavedData
     public int equipedWeaponIndex;
     JSONObject weaponJson = new JSONObject();
 
+    public static WeaponData instance;
+
+    public override void Awake()
+    {
+        base.Awake();
+        instance = this;
+    }
+
     public override void SaveData()
     {
         base.SaveData();
@@ -51,9 +59,13 @@ public class WeaponData : SavedData
         Debug.Log("LOADED DATA");
     }
 
-    public void UpdateData(bool[] _locks, int equipedIndex)
+    public void UpdateData(Weapon[] _weaponlocks, int _equipedIndex)
     {
-        weaponLock = _locks;
-        equipedWeaponIndex = equipedIndex;
+        for (int i = 0; i < _weaponlocks.Length; i++)
+        {
+            weaponLock[i] = _weaponlocks[i].weaponIsLocked;
+        }
+
+        equipedWeaponIndex = _equipedIndex;
     }
 }

@@ -23,7 +23,7 @@ public class PlayerWeaponsList : Manager
     {
         base.Awake();
         playerWeaponsList = this;
-        //Load Data
+        LoadWeaponData();
     }
 
     #endregion
@@ -66,7 +66,7 @@ public class PlayerWeaponsList : Manager
     }
 
     [Button]
-    public void LoadCurrentWeapon()
+    public void SetCurrentWeapon()
     {
         if (!weapons[currentWeaponIndex].weaponIsLocked)
         {
@@ -76,7 +76,7 @@ public class PlayerWeaponsList : Manager
         else
         {
             currentWeaponIndex = 0;
-            LoadCurrentWeapon();
+            SetCurrentWeapon();
         }
     }
 
@@ -87,5 +87,26 @@ public class PlayerWeaponsList : Manager
         {
             playerWeaponInstances[i].SetActive(false);
         }
+    }
+
+    void LoadWeaponData()
+    {
+        WeaponData data = WeaponData.instance;
+        data.LoadData();
+
+        //Apply all loaded data
+        currentWeaponIndex = data.equipedWeaponIndex;
+
+        for (int i = 0; i < data.weaponLock.Length; i++)
+        {
+            weapons[i].weaponIsLocked = data.weaponLock[i];
+        }
+    }
+
+    public void SaveWeaponData()
+    {
+        WeaponData data = WeaponData.instance;
+        data.UpdateData(weapons, currentWeaponIndex);
+        data.SaveData();
     }
 }

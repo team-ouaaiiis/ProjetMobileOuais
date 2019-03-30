@@ -14,11 +14,12 @@ public class SavedData : MonoBehaviour
     public virtual void Awake()
     {
         SetPath();
+        DataManager.instance.AddSavedData(this);
     }
 
     public virtual void Start()
     {
-        DataManager.instance.AddSavedData(this);
+        
     }
 
     [Button]
@@ -30,7 +31,11 @@ public class SavedData : MonoBehaviour
     [Button]
     public virtual void LoadData()
     {
-
+        if (!File.Exists(path))
+        {
+            Debug.LogWarning("DATA NOT FOUND IN " + gameObject.name);
+            return;
+        }
     }
 
     [Button]

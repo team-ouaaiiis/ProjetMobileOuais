@@ -7,7 +7,7 @@ using NaughtyAttributes;
 public class PlayerTravelledDistance : Entity
 {
 
-    public float travelledDistance = 0;
+    public PlayerJourney journey;
     ChunkManager chunkManager;
 
     [BoxGroup("DEBUG PLACEHOLDER"), SerializeField] TextMeshProUGUI textMesh;
@@ -39,19 +39,23 @@ public class PlayerTravelledDistance : Entity
 
     public void AddDistance()
     {
-        travelledDistance += chunkManager.ScrollSpeed/2 * Time.deltaTime;
+        journey.journeyDistance += chunkManager.ScrollSpeed/2 * Time.deltaTime;
     }
 
+    [Button]
     public void SaveDistanceData()
     {
         //SAVE DATA
+        PlayerJourneyData journeyData = PlayerJourneyData.instance;
+        journeyData.UpdateData(journey);
+        journeyData.SaveData();
     }
 
     void PLACEHOLDER_DistanceText()
     {
         if (textMesh == null) return;
 
-        int dis = Mathf.RoundToInt(travelledDistance);
+        int dis = Mathf.RoundToInt(journey.journeyDistance);
         textMesh.text = dis.ToString();
     }
 }

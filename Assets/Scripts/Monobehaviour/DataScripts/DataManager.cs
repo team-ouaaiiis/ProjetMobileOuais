@@ -13,12 +13,12 @@ public class DataManager : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log("AWAKE");
         instance = this;
+        Debug.Log("AWAKE");
     }
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-    public static void InitialiazeTEST()
+    public void InitialiazeTEST()
     {
         
         Debug.Log("OUAIIIS JE SUIS LA REGARDE");
