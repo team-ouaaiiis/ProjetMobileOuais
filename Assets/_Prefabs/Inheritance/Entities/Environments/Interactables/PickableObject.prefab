@@ -1,5 +1,45 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!65 &4070109127487676437
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2432956318292806689}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &661657680049491101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2432956318292806689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0602ee75cce9424f974ffbd310ff2d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasHealth: 0
+  healthPoints: 1
+  isDead: 0
+  onTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  feedbacks: []
+  isTaken: 0
 --- !u!1001 &3144466477203936826
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10,7 +50,12 @@ PrefabInstance:
     - target: {fileID: 747874032103184923, guid: 07e66bc0f7197da47baf8feb96009019,
         type: 3}
       propertyPath: m_Name
-      value: Interactable
+      value: PickableObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 747874032103184923, guid: 07e66bc0f7197da47baf8feb96009019,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 747874032103184920, guid: 07e66bc0f7197da47baf8feb96009019,
         type: 3}
@@ -67,5 +112,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2053126247450097755, guid: 07e66bc0f7197da47baf8feb96009019,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7055074498872477531, guid: 07e66bc0f7197da47baf8feb96009019,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c2d8f77fcf1586a4a82d97f905d13266, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07e66bc0f7197da47baf8feb96009019, type: 3}
+--- !u!1 &2432956318292806689 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 747874032103184923, guid: 07e66bc0f7197da47baf8feb96009019,
+    type: 3}
+  m_PrefabInstance: {fileID: 3144466477203936826}
+  m_PrefabAsset: {fileID: 0}

@@ -151,5 +151,12 @@ public static class CustomMethod
 
         return new Vector3(x, y, z);
     }
+
+    public static Color GetColorWithAlpha(Color color, float alpha)
+    {
+        alpha = Mathf.Clamp(alpha, 0, 1);
+        Color newColor = new Color(color.r, color.g, color.b, alpha);
+        return newColor;
+    }
 }
 
