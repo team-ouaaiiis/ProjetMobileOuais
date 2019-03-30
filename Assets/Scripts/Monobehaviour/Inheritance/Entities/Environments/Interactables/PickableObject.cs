@@ -24,7 +24,6 @@ public class PickableObject : Interactable, IPickableObject
     {
         if (isTaken) return;
         isTaken = true;
-        gameObject.SetActive(false);
     }
 
     #endregion
